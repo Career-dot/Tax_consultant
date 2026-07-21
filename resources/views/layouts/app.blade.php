@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/auth-modal.css') }}">
 
     @stack('styles')
 </head>
@@ -45,18 +47,15 @@
         @include('includes.footer')
     </div>
 
+    @include('includes.auth-modal')
+
     <button id="backBTn" class="backbtn" type="button" aria-label="Back to top">
         <i class="fa fa-angle-up" aria-hidden="true"></i>
     </button>
 
-    <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/js/ajax-mail.js') }}"></script>
-    <script src="{{ asset('assets/js/active.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    @vite('resources/js/app.js')
+    <script src="{{ asset('assets/js/services.js') }}" defer></script>
+    <script src="{{ asset('assets/js/auth-modal.js') }}" defer></script>
 
     @stack('scripts')
 </body>

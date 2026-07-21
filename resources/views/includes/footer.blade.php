@@ -1,80 +1,87 @@
-<footer id="footer" class="footer-area fixed--footer">
-    <div class="footer-area__widgets section-padding--md bg--dark--light">
-        <div class="container">
-            <div class="footer-area__logo text-center">
-                <a href="{{ url('/') }}" aria-label="Korde home">
-                    <img src="{{ asset('assets/images/logo/career-institute-logo.webp') }}" alt="Career Institute">
-                </a>
+@php
+    $footerServices = [
+        ['label' => 'Tax Filing', 'url' => url('/services')],
+        ['label' => 'NTN Registration', 'url' => url('/services')],
+        ['label' => 'GST Registration', 'url' => url('/services')],
+        ['label' => 'Business Registration', 'url' => url('/services')],
+        ['label' => 'USA LLC Support', 'url' => url('/contact')],
+    ];
+
+    $footerCompany = [
+        ['label' => 'About Us', 'url' => url('/about')],
+        ['label' => 'Services', 'url' => url('/services')],
+
+        ['label' => 'Pricing', 'url' => url('/pricing')],
+        ['label' => 'FAQ', 'url' => route('faq')],
+        ['label' => 'Blogs', 'url' => url('/blogs')],
+        ['label' => 'Contact Us', 'url' => url('/contact')],
+    ];
+@endphp
+
+<footer id="footer" class="pf-footer">
+    <div class="container">
+        <div class="row g-4 g-lg-5">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="pf-footer-brand">
+                    <a href="{{ url('/') }}" aria-label="Career Institute home">
+                        <img src="{{ asset('assets/images/logo/logo.jpeg') }}" alt="Career Institute">
+                    </a>
+                    <p>Online tax filing, NTN, GST and business compliance handled by qualified consultants across Pakistan.</p>
+                    <form class="pf-footer-newsletter" action="{{ url('/contact') }}" method="GET">
+                        <label class="visually-hidden" for="footer-newsletter-email">Email address</label>
+                        <input id="footer-newsletter-email" type="email" name="email" placeholder="Email address" aria-label="Email address">
+                        <button type="submit" aria-label="Subscribe"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                    <ul class="pf-footer-social">
+                        <li><a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/" aria-label="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/" aria-label="Instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="widget-area footer--widgets">
-                <section class="widget widget-about">
-                    <h5 class="widget-title">ABOUT KORDE</h5>
-                    <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium oloremque laudantium, totam rem onsectetur sires to obtain pain of itself because.</p>
-                    <div class="social-icons social-icons--rounded">
-                        <ul>
-                            <li class="facebook">
-                                <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li class="twitter">
-                                <a href="https://twitter.com/" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li class="instagram">
-                                <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section class="widget widget-quick-links">
-                    <h5 class="widget-title">QUICK LINKS</h5>
+            <div class="col-lg-2 col-sm-6 col-12">
+                <section class="pf-footer-widget">
+                    <h2>Services</h2>
                     <ul>
-                        <li><a href="{{ url('/services') }}">Our Services</a></li>
-                        <li><a href="{{ url('/features') }}">Features</a></li>
-                        <li><a href="{{ url('/about') }}">About Us</a></li>
-                        <li><a href="{{ url('/blogs') }}">Blogs</a></li>
-                        <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+                        @foreach ($footerServices as $service)
+                            <li><a href="{{ $service['url'] }}">{{ $service['label'] }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
+            </div>
 
-                <section class="widget widget-twitter-feed">
-                    <h5 class="widget-title">Twitter Feed</h5>
+            <div class="col-lg-2 col-sm-6 col-12">
+                <section class="pf-footer-widget">
+                    <h2>Company</h2>
                     <ul>
-                        <li>
-                            <p><a href="https://twitter.com/">@Alex Smith</a>, unde omnis te us error sit voluptatem</p>
-                            <span class="time"><a href="https://twitter.com/">10 Mins ago</a></span>
-                        </li>
-                        <li>
-                            <p><a href="https://twitter.com/">@Justin Bieber</a>, unde omnis te us error sit voluptatem</p>
-                            <span class="time"><a href="https://twitter.com/">12 Mins ago</a></span>
-                        </li>
+                        @foreach ($footerCompany as $item)
+                            <li><a href="{{ $item['url'] }}">{{ $item['label'] }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
+            </div>
 
-                <section class="widget widget-contact-info">
-                    <h5 class="widget-title">Contact Info</h5>
+            <div class="col-lg-4 col-md-6 col-12">
+                <section class="pf-footer-widget pf-footer-contact">
+                    <h2>Contact</h2>
                     <ul>
-                        <li>
-                            <p>256 North Tower, Western City Mid Town, Las Vegas, USA</p>
-                        </li>
-                        <li>
-                            <p><a href="tel:+00812568987789">+008 12568 987 789</a></p>
-                            <p><a href="tel:+00835687567458">+008 35687 567 458</a></p>
-                        </li>
-                        <li>
-                            <p><a href="mailto:info@korde.com">info@korde.com</a></p>
-                            <p><a href="{{ url('/') }}">www.korde.com</a></p>
-                        </li>
+                        <li><i class="fa fa-map-marker"></i><span>Office 256, North Tower, Main Boulevard, Pakistan</span></li>
+                        <li><i class="fa fa-phone"></i><a href="tel:+923001234567">+92 322 2244000</a></li>
+                        <li><i class="fa fa-envelope-o"></i><a href="mailto:info@taxco.com">info@taxco.com</a></li>
+                        <li><i class="fa fa-globe"></i><a href="{{ url('/') }}">www.taxconsultant.com</a></li>
                     </ul>
                 </section>
             </div>
         </div>
-    </div>
 
-    <div class="footer-area__copyright bg--dark">
-        <div class="container">
-            <div class="copyright text-center">
-                <p>&copy; {{ date('Y') }} <span>Korde</span> Made with <i class="fa fa-heart"></i> by <a href="https://hasthemes.com/">HasThemes</a></p>
+        <div class="pf-footer-bottom">
+            <p>&copy; {{ date('Y') }} <span>Career Institute</span>. All rights reserved.</p>
+            <div>
+                <a href="{{ url('/contact') }}">Privacy Policy</a>
+                <a href="{{ url('/contact') }}">Terms of Service</a>
+                <a href="{{ url('/contact') }}">Support</a>
             </div>
         </div>
     </div>

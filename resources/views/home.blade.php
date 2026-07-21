@@ -20,16 +20,14 @@
                             </div> -->
                              <div class="banner__single bg-image--2" data-black-overlay="6">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="banner__single__content text-center">
-                                <h1 class="mt-5 pt-5">Your
+                    <div class="row justify-content-left">
+                        <div class="col-lg-9">
+                            <div class="banner__single__content">
+                                <h1 class="mt-">Your
                                     <span class="color--theme">Taxes,</span>filed in
                                     <span class="color--theme">6</span> minutes.</h1>
-                                    <p>CA/ACCA consultants handle everything â€” income tax, NTN, GST, business registration, and USA LLC â€” fully online. You answer a few questions; we do the rest.</p>
-                                <a href="{{ url('/contact') }}" class="cr-btn">
-                                    <span>File my tax return </span>
-                                </a>
+                                    <p class="pr-5">CA/ACCA consultants handle everything â€” income tax, <br> NTN, GST, business registration, and USA LLC â€” fully <br> online. You answer a few questions; we do the rest.</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -116,447 +114,219 @@
         </section>
         <!-- //About Area -->
 
+        @php
+            $serviceCards = [
+                ['icon' => 'fa-user-o', 'title' => 'File Your Tax', 'text' => 'Salary, business, freelancer and property tax returns prepared online by tax consultants.', 'url' => url('/services')],
+                ['icon' => 'fa-id-card-o', 'title' => 'NTN Registration', 'text' => 'Get registered with FBR and receive your NTN without visiting an office.', 'url' => url('/services')],
+                ['icon' => 'fa-building-o', 'title' => 'Business Setup', 'text' => 'Register sole proprietorships, partnerships, companies and keep compliance on track.', 'url' => url('/services')],
+                ['icon' => 'fa-bars', 'title' => 'GST Registration', 'text' => 'Sales tax registration, monthly returns and notices handled by specialists.', 'url' => url('/services')],
+                ['icon' => 'fa-check-circle-o', 'title' => 'Active Tax Status', 'text' => 'Move onto the ATL and keep your active taxpayer profile updated each year.', 'url' => url('/features')],
+                ['icon' => 'fa-calculator', 'title' => 'Tax Calculator', 'text' => 'Estimate salary, business and withholding tax before you file.', 'url' => url('/features')],
+                ['icon' => 'fa-home', 'title' => 'Property Taxes', 'text' => 'Capital gains, rent income and property purchase documentation made simple.', 'url' => url('/services')],
+                ['icon' => 'fa-globe', 'title' => 'USA LLC Support', 'text' => 'Formation, EIN guidance and bookkeeping support for founders working globally.', 'url' => url('/contact')],
+            ];
+
+            $trustCards = [
+                ['icon' => 'fa-shield', 'title' => 'CA Certified Expertise', 'text' => 'Your case is reviewed by qualified tax professionals before submission.'],
+                ['icon' => 'fa-lock', 'title' => 'Bank-Grade Security', 'text' => 'Documents and personal details are handled through a secure online process.'],
+                ['icon' => 'fa-clock-o', 'title' => 'Fast Turnaround Times', 'text' => 'Most salaried returns are prepared quickly after the required details are complete.'],
+                ['icon' => 'fa-folder', 'title' => 'Affordable Pricing', 'text' => 'Transparent, flat-fee pricing with no hidden charges. Personal tax filing starts from just Rs 999, the most competitive rate in Pakistan.'],
+                ['icon' => 'fa-headphones', 'title' => 'Dedicated Support', 'text' => 'Get real-time support via WhatsApp, email, or phone. Our tax experts are available Monday to Saturday, 9 AM to 6 PM PKT.'],
+                ['icon' => 'fa-mobile', 'title' => '100% Online Process', 'text' => 'File from anywhere in Pakistan or abroad. No physical documents needed. Everything is handled digitally through our secure platform.'],
+            ];
+
+            $pricingPlans = [
+                ['title' => 'Salary Tax Filing', 'price' => 'Starting from Rs 999', 'featured' => true],
+                ['title' => 'Business Tax Return', 'price' => 'Starting from Rs 4,000', 'featured' => false],
+                ['title' => 'NTN Registration', 'price' => 'Starting from Rs 500', 'featured' => false],
+            ];
+
+            $testimonials = [
+                ['name' => 'Ayesha Khan', 'role' => 'Salaried Professional', 'image' => 'testimonial-author-1.webp', 'text' => 'The process was clean, quick and easy to understand. My filer status was handled without repeated office visits.'],
+                ['name' => 'Hamza Ali', 'role' => 'Business Owner', 'image' => 'testimonial-author-2.webp', 'text' => 'Their consultant explained each document and filed the return on time. The pricing was transparent from the start.'],
+                ['name' => 'Sara Niazi', 'role' => 'Freelancer', 'image' => 'testimonial-author-3.webp', 'text' => 'I had foreign income and several questions. The team guided me patiently and kept everything organized online.'],
+            ];
+
+            $faqs = [
+                ['question' => 'What documents do I need to file my income tax return?', 'answer' => 'For most individuals, you need CNIC, salary certificate or income details, bank statements, tax deduction certificates, property or vehicle details and any expense records relevant to your return.'],
+                ['question' => 'Can I become a filer without visiting an FBR office?', 'answer' => 'Yes. Our consultants can help you register your NTN and prepare your return online after collecting the required information.'],
+                ['question' => 'How long does it take to file a tax return?', 'answer' => 'Simple salary cases can often be completed quickly once documents are ready. Business, property or notice cases may need more review.'],
+                ['question' => 'Do you also handle GST and business registration?', 'answer' => 'Yes. We support GST registration, monthly sales tax returns, company registration and ongoing compliance.'],
+                ['question' => 'Is my personal and financial information secure?', 'answer' => 'Yes. We use a controlled process, limit access to your case details and only request information required for filing or registration.'],
+            ];
+        @endphp
+
         <!-- Features Area -->
-        <section id="features-area" class="cr-section features-area">
-            <div class="row g-0">
-                <div class="col-lg-4">
-                    <div class="feature">
-                        <div class="feature__icon">
-                            <span><i class="flaticon-shield"></i></span>
-                            <span><i class="flaticon-shield"></i></span>
-                        </div>
-                        <div class="feature__content">
-                            <h4 class="wow fadeInUp">
-                                <a href="{{ url('/features') }}">ENSURE SECURITY</a>
-                            </h4>
-                            <p class="wow fadeInUp" data-wow-delay="0.15s">Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem aperiam eaque </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="feature active">
-                        <div class="feature__icon">
-                            <span><i class="flaticon-team"></i></span>
-                            <span><i class="flaticon-team"></i></span>
-                        </div>
-                        <div class="feature__content">
-                            <h4 class="wow fadeInUp">
-                                <a href="{{ url('/features') }}">EXPERT TEAM</a>
-                            </h4>
-                            <p class="wow fadeInUp" data-wow-delay="0.15s">Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem aperiam eaque </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="feature">
-                        <div class="feature__icon">
-                            <span><i class="flaticon-24-hours"></i></span>
-                            <span><i class="flaticon-24-hours"></i></span>
-                        </div>
-                        <div class="feature__content">
-                            <h4 class="wow fadeInUp">
-                                <a href="{{ url('/features') }}">24/7 SUPPORT</a>
-                            </h4>
-                            <p class="wow fadeInUp" data-wow-delay="0.15s">Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem aperiam eaque </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--// Features Area -->
-
-        <!-- Service Area -->
-        <section id="service-area" class="service-area section-padding--xlg bg--white">
+        <section id="features-area" class="cr-section features-area pf-home-section pf-services-section bg-white">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-10">
-                        <div class="section-title">
-                            <h4>OUR SERVICES</h4>
-                            <h2>PROVIDE BEST
-                                <span class="color--theme">SERVICES</span>
-                            </h2>
-                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                ipsa quae</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <div class="service-area__services">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 wow flipInX">
-                                    <div class="service">
-                                        <div class="service__icon">
-                                            <img src="{{ asset('assets/images/icons/service-icon-user.webp') }}" alt="service icon">
-                                        </div>
-                                        <div class="service__content">
-                                            <h5><a href="{{ url('/services') }}">PERSONAL TAX</a></h5>
-                                            <p>Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem per </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 wow flipInX">
-                                    <div class="service">
-                                        <div class="service__icon">
-                                            <img src="{{ asset('assets/images/icons/service-icon-bar.webp') }}" alt="service icon">
-                                        </div>
-                                        <div class="service__content">
-                                            <h5><a href="{{ url('/services') }}">CORPORATE TAX</a></h5>
-                                            <p>Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem per </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 wow flipInX">
-                                    <div class="service">
-                                        <div class="service__icon">
-                                            <img src="{{ asset('assets/images/icons/service-icon-briefcase.webp') }}" alt="service icon">
-                                        </div>
-                                        <div class="service__content">
-                                            <h5><a href="{{ url('/services') }}">Business TAX</a></h5>
-                                            <p>Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem per </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 wow flipInX">
-                                    <div class="service">
-                                        <div class="service__icon">
-                                            <img src="{{ asset('assets/images/icons/service-icon-pie.webp') }}" alt="service icon">
-                                        </div>
-                                        <div class="service__content">
-                                            <h5><a href="{{ url('/services') }}">Finance TAX</a></h5>
-                                            <p>Perspiciatis unde omnis ist natus error sit voluptatem accusantium loremque tium totam rem per </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="service-area__bars text-center">
-                            <div class="cr-bars justify-content-lg-end justify-content-center">
-                                <div class="cr-bar" data-bar-percent="25" data-bar-title="2013"></div>
-                                <div class="cr-bar" data-bar-percent="45" data-bar-title="2014"></div>
-                                <div class="cr-bar" data-bar-percent="37" data-bar-title="2015"></div>
-                                <div class="cr-bar" data-bar-percent="69" data-bar-title="2016"></div>
-                                <div class="cr-bar" data-bar-percent="88" data-bar-title="2022"></div>
-                            </div>
-                            <span class="cr-bars__name">Our progress</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--// Service Area -->
-
-        <!-- Tax Calculation Area -->
-        <section id="tax-calculation" class="tax-calculation-area bg--grey--light">
-            <div class="taxcalc">
-                <div class="row no-gutters align-items-center">
-                    <div class="col-xl-5">
-                        <div class="taxcalc__content" data-black-overlay="4">
-                            <div class="taxcalc__content__inner">
-                                <h3>TAX
-                                    <span class="color--theme">CALCULATION</span>
-                                </h3>
-                                <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudanti, totam rem aperiam, eaque
-                                    ipsa quae so some thing new for tax calculation </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-7">
-                        <div class="taxcalc__calculation">
-                            <div class="taxcalc__calculation__inner">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-6 col-md-6 wow fadeInUp">
-                                        <div class="single-input">
-                                            <label for="taxcalc-business-area">Choose Your Business Area*</label>
-                                            <select name="taxcalc-business-area" id="taxcalc-business-area">
-                                                <option value="1">Select your business</option>
-                                                <option value="2">Marketing</option>
-                                                <option value="3">IT Industries</option>
-                                                <option value="4">Management Industries</option>
-                                                <option value="5">Property Business</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.15">
-                                        <div class="single-input">
-                                            <label for="taxcalc-country-residence">Country of residence*</label>
-                                            <select name="taxcalc-country-residence" id="taxcalc-country-residence">
-                                                <option value="1">Australia</option>
-                                                <option value="2">United States</option>
-                                                <option value="3">United Kingdom</option>
-                                                <option value="4">Germany</option>
-                                                <option value="5">Netherland</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3">
-                                        <div class="single-input">
-                                            <label for="taxcalc-employee-counter">Number of Employees</label>
-                                            <select name="taxcalc-employee-counter" id="taxcalc-employee-counter">
-                                                <option value="1">Select Here</option>
-                                                <option value="2">0 - 20</option>
-                                                <option value="3">21 - 50</option>
-                                                <option value="4">51 - 150</option>
-                                                <option value="5">151 - 500</option>
-                                                <option value="6">500+</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.45">
-                                        <div class="single-input">
-                                            <label for="taxcalc-tax-year">Tax Year*</label>
-                                            <select name="taxcalc-tax-year" id="taxcalc-tax-year">
-                                                <option value="1">2000 - 2005</option>
-                                                <option value="2">2006 - 2010</option>
-                                                <option value="3">2011 - 2015</option>
-                                                <option value="4">2016 - 2020</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.6">
-                                        <div class="single-input">
-                                            <label for="taxcalc-yearly-income">Yearly Total Income</label>
-                                            <select name="taxcalc-yearly-income" id="taxcalc-yearly-income">
-                                                <option value="1">Select Range</option>
-                                                <option value="2">0 - 1 Million</option>
-                                                <option value="3">1 Million - 3 Million</option>
-                                                <option value="4">3 Million - 10 Million</option>
-                                                <option value="5">10 Million - 20 Million</option>
-                                                <option value="6">20 Million+</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-8 col-md-8 wow fadeInUp" data-wow-delay="0.75">
-                                        <div class="button-holder">
-                                            <button class="cr-btn" type="submit">
-                                                <span>Calculate</span>
-                                            </button>
-                                            <span class="equal-sign">=</span>
-                                            <div class="single-input">
-                                                <label for="taxcalc-total-calculation">Total Payable Tax</label>
-                                                <input type="text" id="taxcalc-total-calculation" placeholder="$000.00" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--// Tax Calculation Area -->
-
-        <!-- Team Area -->
-        <section id="team-area" class="advisor-area bg--white section-padding--xlg">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10">
-                        <div class="section-title text-center">
-                            <h4>OUR TEAM</h4>
-                            <h2>MEET OUR
-                                <span class="color--theme">TAX ADVISOR</span>
-                            </h2>
-                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                ipsa quae</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row advisors">
-                    @foreach ([
-                        ['image' => 'advisor-1.webp', 'name' => 'ALEX SMITH', 'role' => 'Tax Advisor'],
-                        ['image' => 'advisor-2.webp', 'name' => 'JUSTIN BIEBER', 'role' => 'Tax Advisor'],
-                        ['image' => 'advisor-3.webp', 'name' => 'JONATHAN DOE', 'role' => 'Tax Advisor'],
-                        ['image' => 'advisor-4.webp', 'name' => 'JONATHAN SMITH', 'role' => 'Tax Advisor'],
-                    ] as $advisor)
-                        <div class="col-lg-3 col-sm-6">
-                            <figure class="advisor">
-                                <div class="advisor__image">
-                                    <img src="{{ asset('assets/images/advisors/' . $advisor['image']) }}" alt="team member">
-                                </div>
-                                <figcaption class="advisor__content">
-                                    <h6>{{ $advisor['name'] }}</h6>
-                                    <p>{{ $advisor['role'] }}</p>
-                                </figcaption>
-                            </figure>
+                <div class="row g-4">
+                    @foreach ($serviceCards as $service)
+                        <div class="col-xl-3 col-md-6">
+                            <a class="pf-service-card wow fadeInUp" href="{{ $service['url'] }}">
+                                <span class="pf-card-icon"><i class="fa {{ $service['icon'] }}"></i></span>
+                                <span class="pf-card-title">{{ $service['title'] }}</span>
+                                <span class="pf-card-text">{{ $service['text'] }}</span>
+                                <span class="pf-card-link">Learn more <i class="fa fa-angle-right"></i></span>
+                            </a>
                         </div>
                     @endforeach
                 </div>
             </div>
         </section>
-        <!--// Team Area -->
+        <!--// Features Area -->
 
-        <!-- Funfact Area -->
-        <section id="funfact-area" class="funfact-area bg--grey--light section-padding--lg">
+        <!-- Filing Steps Area -->
+        <section id="filing-steps-area" class="pf-home-section pf-steps-section">
             <div class="container">
-                <div class="row funfacts">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="funfact text-center">
-                            <h2><span class="counter">349</span></h2>
-                            <h5>TRUSTED CLIENTS</h5>
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">How it works</span>
+                    <h2>File Your Taxes in 3 Simple Steps</h2>
+                    <p>You answer a few simple questions. Our consultants review your documents, prepare the return and file it with FBR.</p>
+                </div>
+
+                <div class="pf-steps row g-4 justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="pf-step-card">
+                            <span class="pf-step-number">1</span>
+                            <h3>Share Your Details</h3>
+                            <p>Choose your tax service and upload the required documents through our online process.</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="funfact text-center">
-                            <h2><span class="counter">109</span></h2>
-                            <h5>AWARDS WIN</h5>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="pf-step-card">
+                            <span class="pf-step-number">2</span>
+                            <h3>Review With Consultant</h3>
+                            <p>A tax expert reviews your case, confirms deductions and prepares an accurate return.</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="funfact text-center">
-                            <h2><span class="counter">459</span></h2>
-                            <h5>PROJECT DONE</h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="funfact text-center">
-                            <h2><span class="counter">19</span></h2>
-                            <h5>EXPERT ADVISOR</h5>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="pf-step-card">
+                            <span class="pf-step-number">3</span>
+                            <h3>Get Filed With FBR</h3>
+                            <p>We submit your return, share acknowledgement and help you track active taxpayer status.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--// Funfact Area -->
+        <!--// Filing Steps Area -->
+
+        <!-- Trust Area -->
+        <section id="trust-area" class="pf-home-section pf-trust-section bg-white">
+            <div class="container">
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">Why choose us</span>
+                    <h2>Tax Filing Made Simple, Secure & Certified</h2>
+                    <p>From first-time filers to growing businesses, we combine tax expertise with a smooth online experience.</p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    @foreach ($trustCards as $card)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="pf-trust-card wow fadeInUp">
+                                <span class="pf-card-icon"><i class="fa {{ $card['icon'] }}"></i></span>
+                                <h3>{{ $card['title'] }}</h3>
+                                <p>{{ $card['text'] }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <!--// Trust Area -->
+
+        <!-- Pricing Area -->
+        <section id="pricing-area" class="pf-home-section pf-pricing-section">
+            <div class="container">
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">Affordable pricing</span>
+                    <h2>Honest, Affordable Tax Filing Fees</h2>
+                    <p>No surprise costs. Choose the service you need and speak with a consultant before filing.</p>
+                </div>
+
+                <div class="row g-4 justify-content-center align-items-stretch">
+                    @foreach ($pricingPlans as $plan)
+                        <div class="col-lg-3 col-md-4 col-sm-8">
+                            <a href="{{ url('/contact') }}" class="pf-price-card {{ $plan['featured'] ? 'is-featured' : '' }}">
+                                <span>{{ $plan['title'] }}</span>
+                                <strong>{{ $plan['price'] }}</strong>
+                                <small>Click to get started</small>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{{ url('/services') }}" class="pf-link-button">See all services <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </section>
+        <!--// Pricing Area -->
 
         <!-- Testimonial Area -->
-        <section id="testimonial-area" class="testimonial-area section-padding--xlg bg--white">
+        <section id="testimonial-area" class="pf-home-section pf-testimonial-section bg-white">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10">
-                        <div class="section-title text-center">
-                            <h4>OUR TESTIMONIAL</h4>
-                            <h2>CLIENT
-                                <span class="color--theme">FEEDBACK</span>
-                            </h2>
-                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                ipsa quae</p>
-                        </div>
-                    </div>
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">Client stories</span>
+                    <h2>Trusted by Thousands of Pakistanis</h2>
+                    <p>People across Pakistan trust our consultants for income tax, NTN and business compliance.</p>
                 </div>
-                <div class="testimonial testimonial-slider-active">
-                    <div class="testimonial__single">
-                        <!-- <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque -->
-                            <!-- ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> -->
-                        <div class="testimonial__author">
-                            <img src="{{ asset('assets/images/testimonial/testimonial-author-1.webp') }}" alt="testimonial author">
-                            <h6>ALEX SMITH</h6>
-                            <span>CEO, Company</span>
+
+                <div class="row g-4">
+                    @foreach ($testimonials as $testimonial)
+                        <div class="col-lg-4 col-md-6">
+                            <article class="pf-testimonial-card">
+                                <p>{{ $testimonial['text'] }}</p>
+                                <div class="pf-testimonial-author">
+                                    <img src="{{ asset('assets/images/testimonial/' . $testimonial['image']) }}" alt="{{ $testimonial['name'] }}">
+                                    <div>
+                                        <h3>{{ $testimonial['name'] }}</h3>
+                                        <span>{{ $testimonial['role'] }}</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                    <div class="testimonial__single">
-                        <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        <div class="testimonial__author">
-                            <img src="{{ asset('assets/images/testimonial/testimonial-author-2.webp') }}" alt="testimonial author">
-                            <h6>JUSTIN BIEBER</h6>
-                            <span>CEO, Company</span>
-                        </div>
-                    </div>
-                    <div class="testimonial__single">
-                        <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        <div class="testimonial__author">
-                            <img src="{{ asset('assets/images/testimonial/testimonial-author-3.webp') }}" alt="testimonial author">
-                            <h6>JONATHAN DOE</h6>
-                            <span>CEO, Company</span>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
         <!--// Testimonial Area -->
 
-        <!-- Blog Area -->
-        <section id="blog-area" class="blog-area bg--grey--light section-padding--xlg">
+        <!-- FAQ Area -->
+        <section id="faq-area" class="pf-home-section pf-faq-section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10">
-                        <div class="section-title text-center">
-                            <h4>OUR BLOG</h4>
-                            <h2>LATEST
-                                <span class="color--theme">NEWS</span>
-                            </h2>
-                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                ipsa quae</p>
-                        </div>
-                    </div>
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">Have questions?</span>
+                    <h2>Answers to Your Most Asked Tax Questions</h2>
                 </div>
-                <div class="row blogs">
-                    <div class="col-lg-6">
-                        <article class="blog sticky">
-                            <div class="blog__thumb">
-                                <a href="{{ url('/blogs') }}">
-                                    <img src="{{ asset('assets/images/blog/blog-thumbnail-1.webp') }}" alt="blog thumbnail">
-                                </a>
+
+                <div class="pf-faq mx-auto" id="homepageFaq">
+                    @foreach ($faqs as $index => $faq)
+                        <details class="pf-faq-item" {{ $index === 0 ? 'open' : '' }}>
+                            <summary>{{ $faq['question'] }}</summary>
+                            <div class="pf-faq-answer">
+                                {{ $faq['answer'] }}
                             </div>
-                            <div class="blog__content">
-                                <h4><a href="{{ url('/blogs') }}">How to save tax and get best return from your business</a></h4>
-                                <footer class="blog__content__footer">
-                                    <ul class="blog__content__meta">
-                                        <li>October 28.</li>
-                                        <li><a href="{{ url('/blogs') }}">Alex Smith.</a></li>
-                                        <li><a href="{{ url('/blogs') }}">4 Comments</a></li>
-                                    </ul>
-                                    <p>Perspiciatis unde omnis iste natus error sit tatem accusantium doloremque laudanti, totam rem aperiam, eaque ipsa
-                                        quae so some ulation </p>
-                                </footer>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-6">
-                        <article class="blog">
-                            <div class="blog__thumb">
-                                <a href="{{ url('/blogs') }}">
-                                    <img src="{{ asset('assets/images/blog/blog-thumbnail-2.webp') }}" alt="blog thumbnail">
-                                </a>
-                            </div>
-                            <div class="blog__content">
-                                <h4><a href="{{ url('/blogs') }}">Tax planning is the first step toward financial stability</a></h4>
-                                <footer class="blog__content__footer">
-                                    <ul class="blog__content__meta">
-                                        <li>October 28.</li>
-                                        <li><a href="{{ url('/blogs') }}">Alex Smith.</a></li>
-                                        <li><a href="{{ url('/blogs') }}">4 Comments</a></li>
-                                    </ul>
-                                    <p>Perspiciatis unde omnis iste natus error sit tatem accusantium doloremque laudanti, totam rem aperiam, eaque ipsa
-                                        quae so some ulation </p>
-                                </footer>
-                            </div>
-                        </article>
-                    </div>
+                        </details>
+                    @endforeach
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{{ url('/contact') }}" class="pf-link-button">Need help? Talk to a consultant <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </section>
-        <!--// Blog Area -->
+        <!--// FAQ Area -->
 
         <!-- Call To Action Area -->
-        <section id="cta-area" class="cta-area section-padding--sm bg--grey--light bg--abstruct-mask">
+        <section id="cta-area" class="pf-cta-section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="calltoaction text-center">
-                            <h3>NEED ANY HELP AT
-                                <span class="color--theme"> YOUR TAX SOLUTION?</span>
-                            </h3>
-                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                ipsa Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci </p>
-                            <h6>JUST DAIL
-                                <a href="tel:+00812548359874">+008 12548 359 874</a> (TOLL FREE)</h6>
-                        </div>
+                <div class="pf-cta-panel text-center">
+                    <h2>Ready to Become a Tax Filer Today?</h2>
+                    <p>Join thousands of Pakistanis who file their taxes online, accurately and on time.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="{{ url('/contact') }}" class="btn pf-cta-primary">Start Filing Now</a>
+                        <a href="{{ url('/contact') }}" class="btn pf-cta-secondary"><i class="fa fa-whatsapp"></i> Talk to a Consultant</a>
                     </div>
                 </div>
             </div>

@@ -1,115 +1,65 @@
 @php
     $mainNavigation = [
         ['label' => 'HOME', 'url' => url('/')],
-        ['label' => 'Services', 'url' => url('/about')],
-        ['label' => 'Calculator', 'url' => url('/features')],
-        ['label' => 'Pricing', 'url' => url('/services')],
-        ['label' => 'BLOG', 'url' => url('/blogs')],
-        ['label' => 'About', 'url' => url('/blogs')],
-        ['label' => 'CONTACT', 'url' => url('/contact')],
+        ['label' => 'Pricing', 'url' => url('/pricing')],
+        ['label' => 'About Us', 'url' => url('/about')],
+        ['label' => 'FAQ', 'url' => route('faq')],
+        ['label' => 'CONTACT Us', 'url' => url('/contact')],
     ];
 @endphp
 
-<header id="header" class="header sticky--header">
-    <div class="header__top bg--blue d-none d-lg-block">
+<header id="header" class="pf-header sticky-top">
+    <div class="pf-header-top d-none d-xl-block">
         <div class="container">
-            <div class="header__top__inner">
-                <ul class="header__top__info">
-                    <li class="d-flex gap-3 p-2">
-                        <a href="tel:01354568787">📅 FBR Deadline: <span class="tb-cd">⏳ <span class="tb-cd-num">75</span> days left</span> <span class="tb-sep">|</span>
-  File before Sep 30, 2026 to stay active taxpayer.
-  </a>
-  <a class="" href="{{ url('/contact') }}">
-                        <span> File Now →</span>
-                    </a>
-                    </li>
-                    <!-- <li>
-                        <a href="mailto:info@taxco.com"><i class="flaticon-black-back-closed-envelope-shape"></i> career@.com</a>
-                    </li> -->
+            <div class="d-flex align-items-center justify-content-center gap-3 py-2 text-center">
+                <a class="pf-header-alert" href="{{ url('/contact') }}">
+                    <span>FBR Deadline:</span>
+                    <strong>75 days left</strong>
+                    <span class="pf-header-separator">|</span>
+                    <span>File before Sep 30, 2026 to stay active taxpayer.</span>
+                </a>
+                <a class="pf-header-file-link" href="{{ url('/contact') }}">File Now <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-xl pf-navbar bg-white" aria-label="Primary navigation">
+        <div class="container">
+            <a class="navbar-brand pf-navbar-brand" href="{{ url('/') }}" aria-label="Career Institute home">
+                <img src="{{ asset('assets/images/logo/logo.jpeg') }}" alt="Career Institute">
+            </a>
+
+            <button class="navbar-toggler pf-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbar" aria-controls="primaryNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="collapse navbar-collapse pf-navbar-collapse" id="primaryNavbar">
+                <ul class="navbar-nav pf-navbar-nav mx-xl-auto">
+                    @foreach ($mainNavigation as $item)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ $item['url'] }}">{{ $item['label'] }}</a>
+                        </li>
+
+                        @if ($loop->first)
+                            @include('includes.services-dropdown')
+                        @endif
+                    @endforeach
                 </ul>
-                <div class="">
-                    
+
+                <div class="pf-mobile-actions d-grid gap-2 d-xl-none">
+                    <a class="btn pf-mobile-btn pf-mobile-btn-muted" href="#" data-auth-open="sign-in">Sign In</a>
+                    <a class="btn pf-mobile-btn pf-mobile-btn-outline" href="#" data-auth-open="sign-up">Register</a>
+                    <a class="btn pf-mobile-btn pf-mobile-btn-primary" href="#" data-auth-open="get-started">Get Started</a>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="header__bottom bg--white">
-        <div class="container">
-            <div class="header__bottom__inner">
-                <div class="header__logo">
-                    <a href="{{ url('/') }}" aria-label="Korde home">
-                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Career Institute">
-                    </a>
-                </div>
-
-                <nav id="main-navigation" class="header__menu main-navigation d-none d-lg-flex" aria-label="Primary navigation">
-                    <ul>
-                        @foreach ($mainNavigation as $item)
-                            <li>
-                                <a href="{{ $item['url'] }}">{{ $item['label'] }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </nav>
-
-                <div>
-                    <a class="btn btn-outline-secondary" href="{{ url('/contact') }}">
-                        <span>Sign In</span>
-                    </a>
-                    <a class="btn btn-outline-success" href="{{ url('/contact') }}">
-                        <span>Register</span>
-                    </a>
-                    <a class="btn btn-outline-danger" href="{{ url('/contact') }}">
-                        <span>Get Started</span>
-                    </a>
-                </div>
-
-                <button class="header__toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Open navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <div class="pf-desktop-actions d-none d-xl-flex align-items-center gap-2">
+                <a class="btn btn-outline-secondary" href="#" data-auth-open="sign-in">Sign In</a>
+                <a class="btn btn-outline-success" href="#" data-auth-open="sign-up">Register</a>
+                <a class="btn btn-outline-danger" href="#" data-auth-open="get-started">Get Started</a>
             </div>
         </div>
-    </div>
+    </nav>
 </header>
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-    <div class="offcanvas-header">
-        <div class="offcanvas__logo" id="offcanvasMenuLabel">
-            <a href="{{ url('/') }}" aria-label="Korde home">
-                <img src="{{ asset('assets/images/logo/logo.png') }}" alt="career institute">
-            </a>
-        </div>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <ul class="offcanvas__info">
-            <li>
-                <a href="tel:01354568787"><i class="flaticon-old-typical-phone"></i> 01354 568 787</a>
-            </li>
-            <li>
-                <a href="mailto:info@taxco.com"><i class="flaticon-black-back-closed-envelope-shape"></i> info@taxco.com</a>
-            </li>
-        </ul>
-
-        <nav class="canvas-menu" aria-label="Mobile navigation">
-            <ul>
-                @foreach ($mainNavigation as $item)
-                    <li>
-                        <a href="{{ $item['url'] }}">{{ $item['label'] }}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </nav>
-
-        <div class="offcanvas__button">
-            <a class="cr-btn cr-btn--lg" href="{{ url('/contact') }}">
-                <span>Make an appointment</span>
-            </a>
-        </div>
-    </div>
-</div>
-
-
