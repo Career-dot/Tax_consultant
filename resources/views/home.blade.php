@@ -26,7 +26,7 @@
                                 <h1 class="mt-">Your
                                     <span class="color--theme">Taxes,</span>filed in
                                     <span class="color--theme">6</span> minutes.</h1>
-                                    <p class="pr-5">CA/ACCA consultants handle everything â€” income tax, <br> NTN, GST, business registration, and USA LLC â€” fully <br> online. You answer a few questions; we do the rest.</p>
+                                    <p class="pr-5">CA/ACCA consultants handle everything: income tax, NTN, GST, business registration, and USA LLC support, fully online. You answer a few questions; we do the rest.</p>
                                 
                             </div>
                         </div>
@@ -116,13 +116,13 @@
 
         @php
             $serviceCards = [
-                ['icon' => 'fa-user-o', 'title' => 'File Your Tax', 'text' => 'Salary, business, freelancer and property tax returns prepared online by tax consultants.', 'url' => url('/services')],
-                ['icon' => 'fa-id-card-o', 'title' => 'NTN Registration', 'text' => 'Get registered with FBR and receive your NTN without visiting an office.', 'url' => url('/services')],
-                ['icon' => 'fa-building-o', 'title' => 'Business Setup', 'text' => 'Register sole proprietorships, partnerships, companies and keep compliance on track.', 'url' => url('/services')],
-                ['icon' => 'fa-bars', 'title' => 'GST Registration', 'text' => 'Sales tax registration, monthly returns and notices handled by specialists.', 'url' => url('/services')],
-                ['icon' => 'fa-check-circle-o', 'title' => 'Active Tax Status', 'text' => 'Move onto the ATL and keep your active taxpayer profile updated each year.', 'url' => url('/features')],
-                ['icon' => 'fa-calculator', 'title' => 'Tax Calculator', 'text' => 'Estimate salary, business and withholding tax before you file.', 'url' => url('/features')],
-                ['icon' => 'fa-home', 'title' => 'Property Taxes', 'text' => 'Capital gains, rent income and property purchase documentation made simple.', 'url' => url('/services')],
+                ['icon' => 'fa-user-o', 'title' => 'File Your Tax', 'text' => 'Salary, business, freelancer and property tax returns prepared online by tax consultants.', 'url' => route('services.personal')],
+                ['icon' => 'fa-id-card-o', 'title' => 'NTN Registration', 'text' => 'Get registered with FBR and receive your NTN without visiting an office.', 'url' => route('services.ntn')],
+                ['icon' => 'fa-building-o', 'title' => 'Business Setup', 'text' => 'Register sole proprietorships, partnerships, companies and keep compliance on track.', 'url' => route('services.business')],
+                ['icon' => 'fa-bars', 'title' => 'GST Registration', 'text' => 'Sales tax registration, monthly returns and notices handled by specialists.', 'url' => route('services.gst')],
+                ['icon' => 'fa-check-circle-o', 'title' => 'Active Tax Status', 'text' => 'Move onto the ATL and keep your active taxpayer profile updated each year.', 'url' => route('services.iris')],
+                ['icon' => 'fa-calculator', 'title' => 'Tax Calculator', 'text' => 'Estimate salary, business and withholding tax before you file.', 'url' => route('services.salary')],
+                ['icon' => 'fa-home', 'title' => 'Property Taxes', 'text' => 'Capital gains, rent income and property purchase documentation made simple.', 'url' => route('services.personal')],
                 ['icon' => 'fa-globe', 'title' => 'USA LLC Support', 'text' => 'Formation, EIN guidance and bookkeeping support for founders working globally.', 'url' => url('/contact')],
             ];
 
@@ -257,7 +257,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="{{ url('/services') }}" class="pf-link-button">See all services <i class="fa fa-angle-right"></i></a>
+                    <a href="{{ route('home') }}#features-area" class="pf-link-button">See all services <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </section>

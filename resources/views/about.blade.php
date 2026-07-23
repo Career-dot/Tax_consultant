@@ -62,7 +62,7 @@
         <div class="container">
             <div class="cr-breadcrumb ">
                 <h1>Pakistan's Most Trusted Online <span> Tax Consultant</span> Platform</h1>
-                <p>We started Pak Filer with a simple mission: to make Pakistan's complex tax system accessible, understandable, and manageable for every citizen, from first-time filers to established businesses.</p>
+                <p>We started Tax Consultant with a simple mission: to make Pakistan's complex tax system accessible, understandable, and manageable for every citizen, from first-time filers to established businesses.</p>
                 
             </div>
         </div>

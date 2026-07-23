@@ -19,9 +19,9 @@
         <div class="hero-eyebrow">GST Registration</div>
         <h1 id="hero-title">GST Registration in Pakistan: Register for Sales Tax with FBR</h1>
         <p class="hero-text">If your business supplies taxable goods or services above the mandatory threshold, GST
-          registration with FBR is a legal requirement. Pak Filer's experts handle the entire registration process, from
+          registration with FBR is a legal requirement. Tax Consultant's experts handle the entire registration process, from
           documentation to STRN issuance.</p>
-        <a href="{{ route('home') }}#features-area" class="btn-hero-primary">Register for GST Now <i class="fa fa-arrow-right"
+        <a href="{{ route('contact') }}" class="btn-hero-primary">Register for GST Now <i class="fa fa-arrow-right"
             aria-hidden="true"></i></a>
         <ul class="hero-badges" role="list">
           <li class="hero-badge">Flat Fee Rs 9,000</li>
@@ -48,7 +48,7 @@
               <span class="dot yellow" aria-hidden="true"></span>
               <span class="dot green" aria-hidden="true"></span>
             </div>
-            <div class="mockup-title">Pak Filer Dashboard</div>
+            <div class="mockup-title">Tax Consultant Dashboard</div>
           </div>
 
           <div class="mockup-steps" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3">
@@ -72,23 +72,23 @@
 
             <div class="field">
               <label for="businessName">Business Name <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="businessName" placeholder="Enter business name" disabled>
+              <input type="text" id="businessName" placeholder="Enter business name">
             </div>
 
             <div class="field-group-row">
               <div class="field">
                 <label for="businessType">Business Type <span class="req" aria-hidden="true">*</span></label>
-                <select id="businessType" disabled>
+                <select id="businessType">
                   <option>Select business type</option>
                 </select>
               </div>
               <div class="field">
                 <label for="startDate">Start Date <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="startDate" placeholder="mm/dd/yyyy" disabled>
+                <input type="text" id="startDate" placeholder="mm/dd/yyyy">
               </div>
               <div class="field">
                 <label for="businessNature">Business Nature <span class="req" aria-hidden="true">*</span></label>
-                <select id="businessNature" disabled>
+                <select id="businessNature">
                   <option>Select business nature</option>
                 </select>
               </div>
@@ -96,21 +96,21 @@
 
             <div class="field">
               <label for="description">Description</label>
-              <textarea id="description" rows="2" placeholder="Describe your business activities" disabled></textarea>
+              <textarea id="description" rows="2" placeholder="Describe your business activities"></textarea>
             </div>
 
             <div class="field">
               <label for="consumerNumber">Consumer Number (GAS/Electricity)</label>
-              <input type="text" id="consumerNumber" placeholder="Enter consumer number" disabled>
+              <input type="text" id="consumerNumber" placeholder="Enter consumer number">
             </div>
 
             <div class="field">
               <label for="businessAddress">Business Address <span class="req" aria-hidden="true">*</span></label>
-              <textarea id="businessAddress" rows="2" placeholder="Enter complete business address" disabled></textarea>
+              <textarea id="businessAddress" rows="2" placeholder="Enter complete business address"></textarea>
             </div>
 
             <div class="browser-footer" style="border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem;">
-              <a href="{{ route('home') }}#features-area" class="browser-back-link">
+              <a href="{{ route('contact') }}" class="browser-back-link">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Dashboard
               </a>
               <button class="browser-btn-submit">Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
@@ -154,7 +154,7 @@
     <section class="section-light" aria-labelledby="covered-title">
       <div class="container">
         <div class="section-header-center">
-          <h2 id="covered-title" class="section-heading">What Pak Filer's GST Registration Covers</h2>
+          <h2 id="covered-title" class="section-heading">What Tax Consultant's GST Registration Covers</h2>
         </div>
 
         <ul class="checklist" role="list">
@@ -272,9 +272,9 @@
           <h2 id="cta-title">Ready to Become a Tax Filer Today?</h2>
           <p>Join thousands of Pakistanis who file their taxes online, quickly, securely, and affordably.</p>
           <div class="cta-btn-row">
-            <a href="{{ route('home') }}#features-area" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
+            <a href="{{ route('contact') }}" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
-            <a href="{{ route('home') }}#features-area" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
+            <a href="{{ route('contact') }}" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
               an Expert</a>
           </div>
         </div>

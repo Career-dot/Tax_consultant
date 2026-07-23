@@ -207,14 +207,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   modal.querySelectorAll('[data-modal-password-toggle]').forEach((button) => {
     const input = document.getElementById(button.getAttribute('aria-controls'));
+    const icon = button.querySelector('i.fa');
 
     if (!input) return;
+
+    function syncPasswordIcon() {
+      const isVisible = input.type === 'text';
+      if (icon) {
+        icon.classList.toggle('fa-eye', !isVisible);
+        icon.classList.toggle('fa-eye-slash', isVisible);
+      }
+      button.setAttribute('aria-label', isVisible ? 'Hide password' : 'Show password');
+    }
+
+    syncPasswordIcon();
 
     button.addEventListener('click', () => {
       const shouldShow = input.type === 'password';
       input.type = shouldShow ? 'text' : 'password';
-      button.textContent = shouldShow ? 'Hide' : 'Show';
-      button.setAttribute('aria-label', shouldShow ? 'Hide password' : 'Show password');
+      syncPasswordIcon();
     });
   });
 

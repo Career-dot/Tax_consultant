@@ -1,19 +1,17 @@
 @php
     $footerServices = [
-        ['label' => 'Tax Filing', 'url' => url('/services')],
-        ['label' => 'NTN Registration', 'url' => url('/services')],
-        ['label' => 'GST Registration', 'url' => url('/services')],
-        ['label' => 'Business Registration', 'url' => url('/services')],
+        ['label' => 'Tax Filing', 'url' => route('services.personal')],
+        ['label' => 'NTN Registration', 'url' => route('services.ntn')],
+        ['label' => 'GST Registration', 'url' => route('services.gst')],
+        ['label' => 'Business Registration', 'url' => route('services.business')],
         ['label' => 'USA LLC Support', 'url' => url('/contact')],
     ];
 
     $footerCompany = [
         ['label' => 'About Us', 'url' => url('/about')],
-        ['label' => 'Services', 'url' => url('/services')],
-
+        ['label' => 'Services', 'url' => route('home') . '#features-area'],
         ['label' => 'Pricing', 'url' => url('/pricing')],
         ['label' => 'FAQ', 'url' => route('faq')],
-        ['label' => 'Blogs', 'url' => url('/blogs')],
         ['label' => 'Contact Us', 'url' => url('/contact')],
     ];
 @endphp
@@ -67,10 +65,10 @@
                 <section class="pf-footer-widget pf-footer-contact">
                     <h2>Contact</h2>
                     <ul>
-                        <li><i class="fa fa-map-marker"></i><span>Office 256, North Tower, Main Boulevard, Pakistan</span></li>
-                        <li><i class="fa fa-phone"></i><a href="tel:+923001234567">+92 322 2244000</a></li>
-                        <li><i class="fa fa-envelope-o"></i><a href="mailto:info@taxco.com">info@taxco.com</a></li>
-                        <li><i class="fa fa-globe"></i><a href="{{ url('/') }}">www.taxconsultant.com</a></li>
+                        <li><i class="fa fa-map-marker"></i><span>Blue Area, Islamabad, Pakistan</span></li>
+                        <li><i class="fa fa-phone"></i><a href="tel:+923222244000">+92 322 2244000</a></li>
+                        <li><i class="fa fa-envelope-o"></i><a href="mailto:support@taxconsultant.com">support@taxconsultant.com</a></li>
+                        <li><i class="fa fa-globe"></i><a href="{{ url('/') }}">taxconsultant.com</a></li>
                     </ul>
                 </section>
             </div>

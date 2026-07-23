@@ -103,7 +103,7 @@
             </div>
         </section>
 
-        <section class="cta-area section-padding--sm bg--grey--light bg--abstruct-mask">
+        <section class="cta-area section-padding--sm pf-cta-section bg--abstruct-mask">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">

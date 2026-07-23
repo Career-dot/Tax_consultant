@@ -12,7 +12,7 @@
         <!-- <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="{{ route('home') }}">Home</a>
           <span aria-hidden="true">/</span>
-          <a href="{{ route('home') }}#features-area">Services</a>
+          <a href="{{ route('contact') }}">Services</a>
           <span aria-hidden="true">/</span>
           <span>Salary Tax Calculator</span>
         </nav> -->
@@ -76,7 +76,7 @@
         </div>
 
         <div class="calc-below">
-          <a href="{{ route('home') }}#features-area" class="calc-link">Ready to File? Start Your Tax Return from Rs 999 <i
+          <a href="{{ route('contact') }}" class="calc-link">Ready to File? Start Your Tax Return from Rs 999 <i
               class="fa fa-arrow-right" aria-hidden="true"></i></a>
         </div>
         <p class="calc-disclaimer">This calculator provides an estimate only. Actual tax liability may vary based on
@@ -193,9 +193,9 @@
           <h2 id="cta-title">Ready to Become a Tax Filer Today?</h2>
           <p>Join thousands of Pakistanis who file their taxes online, quickly, securely, and affordably.</p>
           <div class="cta-btn-row">
-            <a href="{{ route('home') }}#features-area" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
+            <a href="{{ route('contact') }}" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
-            <a href="{{ route('home') }}#features-area" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
+            <a href="{{ route('contact') }}" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
               an Expert</a>
           </div>
         </div>

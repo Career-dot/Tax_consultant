@@ -1,6 +1,30 @@
 @php
     $serviceMenuItems = [
         [
+            'title' => 'Personal Tax Filing',
+            'description' => 'File your FBR income tax return as an individual or salaried employee.',
+            'route' => 'services.personal',
+            'icon' => 'fa-user-o',
+        ],
+        [
+            'title' => 'Family Tax Filing',
+            'description' => 'Manage and file tax returns for multiple family members.',
+            'route' => 'services.family',
+            'icon' => 'fa-users',
+        ],
+        [
+            'title' => 'Business Tax Return',
+            'description' => 'CA-reviewed tax return filing for businesses and entities.',
+            'route' => 'services.business-tax',
+            'icon' => 'fa-building-o',
+        ],
+        [
+            'title' => 'NTN Registration',
+            'description' => 'Get your National Tax Number registered with FBR.',
+            'route' => 'services.ntn',
+            'icon' => 'fa-id-card-o',
+        ],
+        [
             'title' => 'IRIS Profile Update',
             'description' => 'Update your FBR IRIS profile for salary or business changes.',
             'route' => 'services.iris',
@@ -39,7 +63,7 @@
 
     <div class="pf-services-megamenu" aria-label="Services submenu">
         <div class="container">
-            <div class="pf-services-megamenu-grid">
+            <div class="pf-services-megamenu-grid pf-services-megamenu-grid-expanded">
                 @foreach ($serviceMenuItems as $service)
                     <div class="pf-services-megamenu-col">
                         <a

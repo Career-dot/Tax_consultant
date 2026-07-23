@@ -1,0 +1,1008 @@
+/* ============ RESET & BASE ============ */
+.family-tax-frontend.business-tax-page, .family-tax-frontend.business-tax-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.family-tax-frontend.business-tax-page {
+    --green-900: #0f3d27;
+    --green-800: #14522f;
+    --green-700: #1b6b3a;
+    --green-600: var(--green); /* Maps to #39a935 from style.css */
+    --green-500: var(--green); /* Maps to #39a935 from style.css */
+    --green-100: #e7f5ec;
+    --ink: #222222;
+    --ink-soft: var(--text-gray); /* Maps to #555 from style.css */
+    --gray-bg: #fafcfb;
+    --border: #eeeeee;
+    --white: #ffffff;
+    --radius: 12px;
+    --shadow-sm: 0 2px 8px rgba(15, 61, 39, 0.06);
+    --shadow-md: 0 8px 24px rgba(15, 61, 39, 0.10);
+    --transition: all 0.25s ease;
+}
+
+.family-tax-frontend.business-tax-page {
+    scroll-behavior: smooth;
+}
+
+.family-tax-frontend.business-tax-page {
+    color: var(--ink);
+    line-height: 1.55;
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+}
+
+.family-tax-frontend.business-tax-page .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.family-tax-frontend.business-tax-page a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.family-tax-frontend.business-tax-page ul {
+    list-style: none;
+}
+
+.family-tax-frontend.business-tax-page img {
+    max-width: 100%;
+    display: block;
+}
+
+.family-tax-frontend.business-tax-page .section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: normal;
+    margin-bottom: 12px;
+    color: var(--navy); /* Maps to #2e3192 from style.css */
+}
+
+.family-tax-frontend.business-tax-page .section-subtitle {
+    text-align: center;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    font-size: 1.02rem;
+}
+
+/* ============ BUTTONS ============ */
+.family-tax-frontend.business-tax-page .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.family-tax-frontend.business-tax-page .btn-white {
+    background: var(--white);
+    color: var(--green-700);
+}
+
+.family-tax-frontend.business-tax-page .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.family-tax-frontend.business-tax-page .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.family-tax-frontend.business-tax-page .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .btn-outline-light {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.family-tax-frontend.business-tax-page .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.family-tax-frontend.business-tax-page .arrow {
+    transition: transform 0.2s ease;
+}
+
+.family-tax-frontend.business-tax-page .btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+.family-tax-frontend.business-tax-page .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.family-tax-frontend.business-tax-page .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: var(--green-700);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: -0.5px;
+}
+
+.family-tax-frontend.business-tax-page .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.family-tax-frontend.business-tax-page .logo-text strong {
+    font-size: 1.08rem;
+    color: var(--ink);
+}
+
+.family-tax-frontend.business-tax-page .logo-text small {
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+
+/* ============ HERO ============ */
+.family-tax-frontend.business-tax-page .hero {
+    background: linear-gradient(135deg, var(--green-800) 0%, var(--green-600) 100%);
+    color: var(--white);
+    padding: 56px 0 64px;
+}
+
+.family-tax-frontend.business-tax-page .breadcrumb {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.family-tax-frontend.business-tax-page .breadcrumb span {
+    margin: 0 6px;
+}
+
+.family-tax-frontend.business-tax-page .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 14px;
+}
+
+.family-tax-frontend.business-tax-page .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: normal;
+    max-width: 780px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.family-tax-frontend.business-tax-page .hero-desc {
+    max-width: 680px;
+    font-size: 1.08rem;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 32px;
+}
+
+.family-tax-frontend.business-tax-page .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.family-tax-frontend.business-tax-page .hero-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.family-tax-frontend.business-tax-page .badge {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ============ PLATFORM DEMO ============ */
+.family-tax-frontend.business-tax-page .platform {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .platform-grid {
+    display: grid;
+    grid-template-columns: minmax(auto, 520px) minmax(auto, 520px);
+    gap: 32px;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 24px;
+}
+
+.family-tax-frontend.business-tax-page .platform-column {
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    width: 100%;
+}
+
+.family-tax-frontend.business-tax-page .platform-column-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--green-600);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.family-tax-frontend.business-tax-page .dashboard-mock {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.family-tax-frontend.business-tax-page .dashboard-titlebar {
+    background: #eef1ef;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.family-tax-frontend.business-tax-page .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.family-tax-frontend.business-tax-page .dot-red {
+    background: #ff5f57;
+}
+
+.family-tax-frontend.business-tax-page .dot-yellow {
+    background: #febc2e;
+}
+
+.family-tax-frontend.business-tax-page .dot-green {
+    background: #28c840;
+}
+
+.family-tax-frontend.business-tax-page .dashboard-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+}
+
+.family-tax-frontend.business-tax-page .dashboard-body {
+    padding: 20px 20px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.family-tax-frontend.business-tax-page .dashboard-body h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.family-tax-frontend.business-tax-page .dashboard-sub {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+}
+
+.family-tax-frontend.business-tax-page .steps-track {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.family-tax-frontend.business-tax-page .step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.family-tax-frontend.business-tax-page .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    border: 1.5px solid var(--border);
+    color: var(--ink-soft);
+    flex-shrink: 0;
+}
+
+.family-tax-frontend.business-tax-page .step.done .step-num {
+    background: var(--green-600);
+    border-color: var(--green-600);
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .step.done {
+    color: var(--green-700);
+}
+
+.family-tax-frontend.business-tax-page .step-sep {
+    color: var(--border);
+    margin: 0 2px;
+}
+
+.family-tax-frontend.business-tax-page .method-card-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: var(--gray-bg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.family-tax-frontend.business-tax-page .method-inner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.family-tax-frontend.business-tax-page .method-inner h4 {
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.family-tax-frontend.business-tax-page .method-inner>p {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.family-tax-frontend.business-tax-page .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    flex-grow: 1;
+}
+
+.family-tax-frontend.business-tax-page .method-option {
+    border-radius: 10px;
+    padding: 14px 14px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.family-tax-frontend.business-tax-page .method-option .method-icon {
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--green-600);
+}
+
+.family-tax-frontend.business-tax-page .method-option.selected .method-icon {
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .method-option .method-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.family-tax-frontend.business-tax-page .method-option h5 {
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.family-tax-frontend.business-tax-page .method-option>p.desc {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.family-tax-frontend.business-tax-page .method-option ul {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.family-tax-frontend.business-tax-page .method-option ul li::before {
+    content: "•";
+    margin-right: 6px;
+}
+
+.family-tax-frontend.business-tax-page .method-option:not(.selected) ul li::before {
+    color: var(--green-600);
+}
+
+.family-tax-frontend.business-tax-page .method-option .select-bar {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.family-tax-frontend.business-tax-page .method-option.selected {
+    background: var(--green-700);
+    color: var(--white);
+    border-color: var(--green-700);
+}
+
+.family-tax-frontend.business-tax-page .method-option.selected .select-bar {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.family-tax-frontend.business-tax-page .method-option.selected .check-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 22px;
+    height: 22px;
+    background: var(--white);
+    color: var(--green-700);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.family-tax-frontend.business-tax-page .method-option:not(.selected) {
+    color: var(--ink);
+}
+
+.family-tax-frontend.business-tax-page .method-option:not(.selected) .select-bar {
+    background: var(--gray-bg);
+    color: var(--ink-soft);
+    display: none;
+}
+
+/* ============ ENTITIES ============ */
+.family-tax-frontend.business-tax-page .entities {
+    padding: 80px 0;
+    background: var(--gray-bg);
+}
+
+.family-tax-frontend.business-tax-page .entity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.family-tax-frontend.business-tax-page .entity-card {
+    background: var(--white);
+    border-left: 4px solid var(--green-600);
+    border-radius: 10px;
+    padding: 26px 28px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.family-tax-frontend.business-tax-page .entity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.family-tax-frontend.business-tax-page .entity-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--green-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+}
+
+.family-tax-frontend.business-tax-page .entity-card h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.family-tax-frontend.business-tax-page .entity-card p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+}
+
+/* ============ CHECK LISTS (Included / Documents) ============ */
+.family-tax-frontend.business-tax-page .included,
+.family-tax-frontend.business-tax-page .documents {
+    padding: 72px 0;
+    background: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .documents {
+    background: var(--gray-bg);
+}
+
+.family-tax-frontend.business-tax-page .check-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.family-tax-frontend.business-tax-page .documents .check-list {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.family-tax-frontend.business-tax-page .check-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.family-tax-frontend.business-tax-page .check-list li:hover {
+    border-color: var(--green-500);
+    box-shadow: var(--shadow-sm);
+}
+
+.family-tax-frontend.business-tax-page .check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--green-500);
+    background: transparent;
+    color: var(--green-500);
+    font-weight: 800;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* ============ PRICING ============ */
+.family-tax-frontend.business-tax-page .pricing {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.family-tax-frontend.business-tax-page .price-box {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+.family-tax-frontend.business-tax-page .price-box h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.family-tax-frontend.business-tax-page .price-box ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.family-tax-frontend.business-tax-page .price-box ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.92rem;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.family-tax-frontend.business-tax-page .price-box ul li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.family-tax-frontend.business-tax-page .price-box ul li strong {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.family-tax-frontend.business-tax-page .price-box-featured {
+    background: linear-gradient(160deg, var(--green-700), var(--green-600));
+    color: var(--white);
+    border: none;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.family-tax-frontend.business-tax-page .price-box-featured h3 {
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .price-box-featured ul li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.family-tax-frontend.business-tax-page .price-box-featured ul li strong {
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .popular-tag {
+    position: absolute;
+    top: -12px;
+    left: 28px;
+    background: var(--white);
+    color: var(--green-700);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+/* ============ FAQ ============ */
+.family-tax-frontend.business-tax-page .faq {
+    padding: 80px 0;
+    background: var(--gray-bg);
+}
+
+.family-tax-frontend.business-tax-page .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.family-tax-frontend.business-tax-page .faq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.family-tax-frontend.business-tax-page .faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 20px 22px;
+    font-weight: 700;
+    font-size: 0.98rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+.family-tax-frontend.business-tax-page .faq-toggle {
+    font-size: 1.2rem;
+    color: var(--green-700);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.family-tax-frontend.business-tax-page .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 22px;
+}
+
+.family-tax-frontend.business-tax-page .faq-answer p {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    padding-bottom: 20px;
+}
+
+.family-tax-frontend.business-tax-page .faq-item.open .faq-answer {
+    max-height: 300px;
+}
+
+/* ============ CTA ============ */
+.family-tax-frontend.business-tax-page .cta {
+    background: linear-gradient(135deg, var(--green-800), var(--green-600));
+    color: var(--white);
+    padding: 70px 0;
+    text-align: center;
+}
+
+.family-tax-frontend.business-tax-page .cta h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.family-tax-frontend.business-tax-page .cta p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto 30px;
+}
+
+.family-tax-frontend.business-tax-page .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ============ FOOTER ============ */
+.family-tax-frontend.business-tax-page .site-footer {
+    background: #0c1f14;
+    color: rgba(255, 255, 255, 0.75);
+    padding-top: 56px;
+}
+
+.family-tax-frontend.business-tax-page .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 48px;
+}
+
+.family-tax-frontend.business-tax-page .footer-brand p {
+    font-size: 0.88rem;
+    margin: 14px 0 18px;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+.family-tax-frontend.business-tax-page .footer-brand h4 {
+    color: var(--white);
+    font-size: 1rem;
+    margin-top: 18px;
+    margin-bottom: 4px;
+}
+
+.family-tax-frontend.business-tax-page .footer-brand .logo-mark {
+    background: var(--green-600);
+}
+
+.family-tax-frontend.business-tax-page .footer-brand .logo-text strong {
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.family-tax-frontend.business-tax-page .social-icons a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.family-tax-frontend.business-tax-page .social-icons a:hover {
+    background: var(--green-600);
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .footer-col h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.family-tax-frontend.business-tax-page .footer-col a,
+.family-tax-frontend.business-tax-page .footer-col p {
+    display: block;
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+    transition: var(--transition);
+}
+
+.family-tax-frontend.business-tax-page .footer-col a:hover {
+    color: var(--white);
+}
+
+.family-tax-frontend.business-tax-page .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.family-tax-frontend.business-tax-page .footer-tags {
+    background: #08160e;
+    padding: 14px 0;
+    font-size: 0.8rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 992px) {
+    .family-tax-frontend.business-tax-page .hero h1 {
+        font-size: 28px;
+    }
+
+    .family-tax-frontend.business-tax-page .entity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .family-tax-frontend.business-tax-page .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .family-tax-frontend.business-tax-page .price-box-featured {
+        transform: none;
+        order: -1;
+    }
+
+    .family-tax-frontend.business-tax-page .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .family-tax-frontend.business-tax-page .platform-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .family-tax-frontend.business-tax-page .platform-column {
+        max-width: 450px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .family-tax-frontend.business-tax-page .hero {
+        padding: 40px 0 48px;
+    }
+
+    .family-tax-frontend.business-tax-page .hero h1 {
+        font-size: 24px;
+    }
+
+    .family-tax-frontend.business-tax-page .hero-desc {
+        font-size: 1rem;
+    }
+
+    .family-tax-frontend.business-tax-page .hero-actions {
+        flex-direction: column;
+    }
+
+    .family-tax-frontend.business-tax-page .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .family-tax-frontend.business-tax-page .section-title {
+        font-size: 22px;
+    }
+
+    .family-tax-frontend.business-tax-page .platform,
+    .family-tax-frontend.business-tax-page .entities,
+    .family-tax-frontend.business-tax-page .included,
+    .family-tax-frontend.business-tax-page .documents,
+    .family-tax-frontend.business-tax-page .pricing,
+    .family-tax-frontend.business-tax-page .faq {
+        padding: 56px 0;
+    }
+
+    .family-tax-frontend.business-tax-page .method-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .family-tax-frontend.business-tax-page .documents .check-list {
+        grid-template-columns: 1fr;
+    }
+
+    .family-tax-frontend.business-tax-page .dashboard-body {
+        padding: 22px;
+    }
+
+    .family-tax-frontend.business-tax-page .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .family-tax-frontend.business-tax-page .method-tabs {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .family-tax-frontend.business-tax-page .tab-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .family-tax-frontend.business-tax-page .hero h1 {
+        font-size: 20px;
+    }
+
+    .family-tax-frontend.business-tax-page .cta h2 {
+        font-size: 20px;
+    }
+
+    .family-tax-frontend.business-tax-page .cta-actions {
+        flex-direction: column;
+    }
+
+    .family-tax-frontend.business-tax-page .cta-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .family-tax-frontend.business-tax-page .steps-track {
+        font-size: 0.72rem;
+    }
+}

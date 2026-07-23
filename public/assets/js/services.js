@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   initServicesDropdown();
   initServiceFaqs();
+  initGlobalReveal();
+  initStickyHeader();
   initSalaryTaxCalculator();
 });
 
@@ -30,6 +32,54 @@ function initServicesDropdown() {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') close();
   });
+}
+
+function initGlobalReveal() {
+  const revealItems = document.querySelectorAll([
+    '.pf-service-card',
+    '.pf-trust-card',
+    '.pf-step-card',
+    '.pf-testimonial-card',
+    '.korde-price-card',
+    '.korde-business-card',
+    '.about-feature-card',
+    '.about-process-card',
+    '.contact-form-card',
+    '.info-card',
+    '.pf-service-page section',
+    '.family-tax-frontend section',
+  ].join(','));
+
+  if (!revealItems.length) return;
+
+  revealItems.forEach((item) => item.classList.add('pf-reveal'));
+
+  if (!('IntersectionObserver' in window)) {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
+function initStickyHeader() {
+  const header = document.querySelector('.pf-header');
+  if (!header) return;
+
+  const sync = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
 }
 
 function initServiceFaqs() {

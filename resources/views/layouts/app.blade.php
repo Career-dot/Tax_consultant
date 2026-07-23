@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Korde - Finance & Tax Consultancy')</title>
-    <meta name="description" content="@yield('meta_description', 'Korde finance and tax consultancy website.')">
+    <title>@yield('title', 'Tax Consultant - Online Tax Filing & Business Compliance')</title>
+    <meta name="description" content="@yield('meta_description', 'Online tax filing, NTN registration, GST, IRIS profile updates, salary tax calculation, and business compliance support for Pakistan.')">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.webp') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/pe-icon-7-stroke.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/font-awesome.min.css') }}">
@@ -28,11 +28,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/plyr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/datepicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/auth-modal.css') }}">
-
     @stack('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/auth-modal.css') }}">
 </head>
 <body class="@yield('body_class')">
     <div class="fakeloader"></div>

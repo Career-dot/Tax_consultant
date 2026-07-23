@@ -1,11 +1,13 @@
 @php
     $mainNavigation = [
-        ['label' => 'HOME', 'url' => url('/')],
+        ['label' => 'Home', 'url' => route('home')],
         ['label' => 'Pricing', 'url' => url('/pricing')],
         ['label' => 'About Us', 'url' => url('/about')],
         ['label' => 'FAQ', 'url' => route('faq')],
-        ['label' => 'CONTACT Us', 'url' => url('/contact')],
+        ['label' => 'Contact', 'url' => url('/contact')],
     ];
+    $deadline = \Carbon\Carbon::create(2026, 9, 30)->endOfDay();
+    $daysLeft = max(0, now()->diffInDays($deadline, false));
 @endphp
 
 <header id="header" class="pf-header sticky-top">
@@ -14,7 +16,7 @@
             <div class="d-flex align-items-center justify-content-center gap-3 py-2 text-center">
                 <a class="pf-header-alert" href="{{ url('/contact') }}">
                     <span>FBR Deadline:</span>
-                    <strong>75 days left</strong>
+                    <strong>{{ $daysLeft }} days left</strong>
                     <span class="pf-header-separator">|</span>
                     <span>File before Sep 30, 2026 to stay active taxpayer.</span>
                 </a>

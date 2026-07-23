@@ -19,12 +19,12 @@
         <div class="hero-eyebrow">Business Incorporation</div>
         <h1 id="hero-title">Business Incorporation &amp; Company Registration in Pakistan</h1>
         <p class="hero-text">From registering a Private Limited Company with SECP to setting up an NPO or obtaining PSEB
-          certification, Pak Filer's incorporation experts handle the entire process so you can focus on building your
+          certification, Tax Consultant's incorporation experts handle the entire process so you can focus on building your
           business.</p>
         <div class="hero-btn-row">
-          <a href="{{ route('home') }}#features-area" class="btn-hero-primary">Start My Business Registration <i class="fa fa-arrow-right"
+          <a href="{{ route('contact') }}" class="btn-hero-primary">Start My Business Registration <i class="fa fa-arrow-right"
               aria-hidden="true"></i></a>
-          <a href="{{ route('home') }}#features-area" class="btn-hero-secondary">Explore All Incorporation Services</a>
+          <a href="{{ route('contact') }}" class="btn-hero-secondary">Explore All Incorporation Services</a>
         </div>
       </div>
     </section>
@@ -45,13 +45,13 @@
               <span class="dot yellow" aria-hidden="true"></span>
               <span class="dot green" aria-hidden="true"></span>
             </div>
-            <div class="mockup-title">Pak Filer Dashboard</div>
+            <div class="mockup-title">Tax Consultant Dashboard</div>
           </div>
 
           <div class="mockup-head">
             <h3 class="mockup-heading">Business Incorporation</h3>
             <p class="mockup-sub">Register your business with the relevant authorities</p>
-            <a href="{{ route('home') }}#features-area" class="mockup-back">&larr; Back to Services</a>
+            <a href="{{ route('contact') }}" class="mockup-back">&larr; Back to Services</a>
           </div>
 
           <div class="category-grid">
@@ -392,7 +392,7 @@
     <section class="section-light" aria-labelledby="why-title">
       <div class="container">
         <div class="section-header-center">
-          <h2 id="why-title" class="section-heading">Why Choose Pak Filer for Business Incorporation?</h2>
+          <h2 id="why-title" class="section-heading">Why Choose Tax Consultant for Business Incorporation?</h2>
         </div>
 
         <ul class="checklist" role="list">
@@ -483,9 +483,9 @@
           <h2 id="cta-title">Ready to Become a Tax Filer Today?</h2>
           <p>Join thousands of Pakistanis who file their taxes online, quickly, securely, and affordably.</p>
           <div class="cta-btn-row">
-            <a href="{{ route('home') }}#features-area" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
+            <a href="{{ route('contact') }}" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
-            <a href="{{ route('home') }}#features-area" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
+            <a href="{{ route('contact') }}" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
               an Expert</a>
           </div>
         </div>

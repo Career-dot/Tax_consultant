@@ -1,0 +1,1109 @@
+/* ============ RESET / BASE ============ */
+.family-tax-frontend, .family-tax-frontend * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.family-tax-frontend {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  background-color: #ffffff;
+}
+
+/* ============ COLOR VARIABLES (easy to tweak) ============ */
+.family-tax-frontend {
+  --navy: #2e3192;
+  --green: #39a935;
+  --teal-bg: #cdeef0;
+  --text-gray: #555;
+}
+
+/* ============ TOP INFO BAR ============ */
+.family-tax-frontend .top-bar {
+  background-color: var(--navy);
+  color: #ffffff;
+}
+
+.family-tax-frontend .top-bar-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 6px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.family-tax-frontend .top-bar-left {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.family-tax-frontend .appointment-btn {
+  background-color: var(--green);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.family-tax-frontend .appointment-btn:hover {
+  background-color: #2f8b28;
+}
+
+/* ============ NAVBAR ============ */
+.family-tax-frontend .navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.family-tax-frontend .nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 10px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo */
+.family-tax-frontend .logo-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.family-tax-frontend .logo-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.family-tax-frontend .logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--navy);
+}
+
+.family-tax-frontend .logo-text span {
+  color: var(--green);
+}
+
+/* Nav links */
+.family-tax-frontend .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.family-tax-frontend .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.family-tax-frontend .nav-links a:hover {
+  color: var(--green);
+}
+
+.family-tax-frontend .arrow {
+  font-size: 11px;
+}
+
+/* Services dropdown button - matches the other nav links */
+.family-tax-frontend .dropdown-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.family-tax-frontend .dropdown-btn:hover,
+.family-tax-frontend .dropdown-btn.active {
+  color: var(--green);
+}
+
+/* ============ SERVICES DROPDOWN PANEL ============ */
+.family-tax-frontend .services-panel {
+  display: none;
+  border-top: 1px solid #eee;
+  background-color: #fafcfb;
+}
+
+.family-tax-frontend .services-panel.open {
+  display: block;
+}
+
+.family-tax-frontend .services-panel-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 24px 30px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.family-tax-frontend .service-option {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: none;
+  border: none;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.family-tax-frontend .service-option:hover {
+  background-color: #eef1fb;
+}
+
+.family-tax-frontend .option-icon {
+  background-color: #e8e9f7;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.family-tax-frontend .option-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.family-tax-frontend .option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.family-tax-frontend .option-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #1a1a1a;
+
+}
+
+.family-tax-frontend .option-desc {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.4;
+}
+
+/* ============ INTERNAL PAGES CSS ============ */
+.family-tax-frontend .page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.family-tax-frontend .page-section {
+  padding: 40px 0;
+}
+
+.family-tax-frontend .bg-light {
+  background-color: #fafcfb;
+}
+
+.family-tax-frontend .text-center {
+  text-align: center;
+}
+
+.family-tax-frontend .section-title {
+  font-size: 28px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.family-tax-frontend .section-subtitle {
+  font-size: 15px;
+  color: var(--text-gray);
+  margin-bottom: 25px;
+}
+
+/* ============ MARKETING BUTTONS ============ */
+.family-tax-frontend .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.family-tax-frontend .btn .arrow {
+  transition: transform 0.2s ease;
+}
+
+.family-tax-frontend .btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+.family-tax-frontend .btn-white {
+  background-color: #ffffff;
+  color: #2f7a4d;
+}
+
+.family-tax-frontend .btn-white:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.family-tax-frontend .btn-outline-light {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.family-tax-frontend .btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+/* ============ INTERNAL PAGE BUTTONS ============ */
+.family-tax-frontend .btn-primary {
+  display: inline-block;
+  background-color: var(--green);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.family-tax-frontend .btn-primary:hover {
+  background-color: #2f8b28;
+}
+
+.family-tax-frontend .btn-primary.outline {
+  background-color: transparent;
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+
+.family-tax-frontend .btn-primary.outline:hover {
+  background-color: var(--green);
+  color: #fff;
+}
+
+/* Family Tax Filing Hero Section */
+
+.family-tax-frontend .hero {
+  background: linear-gradient(135deg, #3f9160 0%, #2f7a4d 100%);
+  padding: 50px 30px;
+  /* border-radius: 12px; */
+}
+
+.family-tax-frontend .hero-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+.family-tax-frontend .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.family-tax-frontend .breadcrumb a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.family-tax-frontend .breadcrumb a:hover {
+  color: #ffffff;
+}
+
+.family-tax-frontend .breadcrumb .separator {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.family-tax-frontend .breadcrumb .current {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Eyebrow label */
+.family-tax-frontend .eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Title */
+.family-tax-frontend .hero-title {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 24px 0;
+  max-width: 950px;
+}
+
+/* Description */
+.family-tax-frontend .hero-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 0 32px 0;
+}
+
+/* Buttons */
+.family-tax-frontend .hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .hero {
+    padding: 40px 24px;
+  }
+
+  .family-tax-frontend .hero-title {
+    font-size: 32px;
+  }
+
+  .family-tax-frontend .hero-description {
+    font-size: 16px;
+  }
+
+  .family-tax-frontend .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .family-tax-frontend .btn {
+    justify-content: center;
+  }
+}
+
+/* Who Can Use Family Tax Filing Section */
+
+.family-tax-frontend .who-can-use {
+  background-color: #ffffff;
+  padding: 60px 30px;
+}
+
+.family-tax-frontend .who-can-use-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.family-tax-frontend .who-title {
+  color: #1a1a1a;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+}
+
+.family-tax-frontend .who-description {
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto 48px auto;
+}
+
+.family-tax-frontend .who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+}
+
+.family-tax-frontend .who-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: #f7f8f7;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+
+.family-tax-frontend .who-card p {
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.family-tax-frontend .check-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: #3f9160;
+  margin-top: 2px;
+}
+
+.family-tax-frontend .check-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .who-can-use {
+    padding: 56px 24px;
+  }
+
+  .family-tax-frontend .who-title {
+    font-size: 28px;
+  }
+
+  .family-tax-frontend .who-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Why File as a Family Through Pak Filer Section */
+
+.family-tax-frontend .why-family {
+  background-color: #f5f6f5;
+  padding: 60px 30px;
+}
+
+.family-tax-frontend .why-family-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.family-tax-frontend .why-title {
+  color: #1a1a1a;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 48px 0;
+}
+
+.family-tax-frontend .why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.family-tax-frontend .why-card {
+  background-color: #ffffff;
+  border-left: 4px solid #3f9160;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.family-tax-frontend .why-icon {
+  width: 44px;
+  height: 44px;
+  background-color: #e3f3e8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3f9160;
+  margin-bottom: 20px;
+}
+
+.family-tax-frontend .why-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.family-tax-frontend .why-card h3 {
+  color: #1a1a1a;
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.family-tax-frontend .why-card p {
+  color: #555555;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .why-family {
+    padding: 56px 24px;
+  }
+
+  .family-tax-frontend .why-title {
+    font-size: 28px;
+  }
+
+  .family-tax-frontend .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Documents Needed per Family Member Section */
+
+.family-tax-frontend .docs-needed {
+  background-color: #ffffff;
+  padding: 60px 30px;
+}
+
+.family-tax-frontend .docs-needed-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.family-tax-frontend .docs-title {
+  color: #1a1a1a;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 48px 0;
+}
+
+.family-tax-frontend .docs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.family-tax-frontend .docs-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #f7f8f7;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 18px 24px;
+}
+
+.family-tax-frontend .docs-item p {
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.family-tax-frontend .check-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: #3f9160;
+}
+
+.family-tax-frontend .check-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.family-tax-frontend .docs-note {
+  color: #777777;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .docs-needed {
+    padding: 56px 24px;
+  }
+
+  .family-tax-frontend .docs-title {
+    font-size: 28px;
+  }
+
+  .family-tax-frontend .docs-item {
+    padding: 16px 18px;
+  }
+}
+
+/* Process & Pricing Section */
+
+.family-tax-frontend .pricing {
+  background-color: #f5f6f5;
+  padding: 60px 30px;
+}
+
+.family-tax-frontend .pricing-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.family-tax-frontend .pricing-title {
+  color: #1a1a1a;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+}
+
+.family-tax-frontend .pricing-description {
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 40px 0;
+}
+
+.family-tax-frontend .pricing-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin: 0 auto 32px auto;
+  max-width: 480px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.family-tax-frontend .pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.family-tax-frontend .pricing-row+.pricing-row {
+  border-top: 1px solid #eeeeee;
+}
+
+.family-tax-frontend .pricing-label {
+  color: #555555;
+  font-size: 16px;
+}
+
+.family-tax-frontend .pricing-value {
+  color: #3f9160;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.family-tax-frontend .btn-quote {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #3f9160;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.family-tax-frontend .btn-quote:hover {
+  background-color: #347a4f;
+  transform: translateY(-1px);
+}
+
+.family-tax-frontend .btn-quote .arrow {
+  transition: transform 0.2s ease;
+}
+
+.family-tax-frontend .btn-quote:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .pricing {
+    padding: 56px 24px;
+  }
+
+  .family-tax-frontend .pricing-title {
+    font-size: 28px;
+  }
+
+  .family-tax-frontend .pricing-card {
+    padding: 24px;
+  }
+
+  .family-tax-frontend .pricing-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Frequently Asked Questions Section */
+
+.family-tax-frontend .faq {
+  background-color: #ffffff;
+  padding: 60px 30px;
+}
+
+.family-tax-frontend .faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.family-tax-frontend .faq-title {
+  color: #1a1a1a;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 40px 0;
+}
+
+.family-tax-frontend .faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.family-tax-frontend .faq-item {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.family-tax-frontend .faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 22px 24px;
+  text-align: left;
+  font-family: inherit;
+}
+
+.family-tax-frontend .faq-question span:first-child {
+  color: #1a1a1a;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.family-tax-frontend .faq-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #1a1a1a;
+  transition: transform 0.25s ease;
+}
+
+.family-tax-frontend .faq-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.family-tax-frontend .faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.family-tax-frontend .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 24px;
+}
+
+.family-tax-frontend .faq-answer p {
+  color: #555555;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 22px 0;
+}
+
+.family-tax-frontend .faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .faq {
+    padding: 56px 24px;
+  }
+
+  .family-tax-frontend .faq-title {
+    font-size: 28px;
+  }
+
+  .family-tax-frontend .faq-question {
+    padding: 18px 20px;
+  }
+
+  .family-tax-frontend .faq-question span:first-child {
+    font-size: 16px;
+  }
+}
+
+/* Ready to Become a Tax Filer CTA Section */
+
+.family-tax-frontend .cta {
+  background: linear-gradient(135deg, #3f9160 0%, #2f7a4d 100%);
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.family-tax-frontend .cta-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.family-tax-frontend .cta-title {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.family-tax-frontend .cta-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.family-tax-frontend .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.family-tax-frontend .chat-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .family-tax-frontend .cta {
+    padding: 48px 24px;
+  }
+
+  .family-tax-frontend .cta-title {
+    font-size: 28px;
+  }
+
+  .family-tax-frontend .cta-description {
+    font-size: 16px;
+  }
+
+  .family-tax-frontend .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .family-tax-frontend .btn {
+    justify-content: center;
+  }
+}
+
+/* Footer Section */
+
+.family-tax-frontend .site-footer {
+  background-color: #10201a;
+  padding: 50px 30px 0 30px;
+}
+
+.family-tax-frontend .footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.family-tax-frontend .footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 56px;
+}
+
+/* Brand column */
+.family-tax-frontend .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.family-tax-frontend .logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #ffffff;
+  color: #3f9160;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+.family-tax-frontend .footer-logo .logo-text {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.family-tax-frontend .footer-tagline {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.family-tax-frontend .footer-about {
+  color: #9aa79f;
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  max-width: 360px;
+}
+
+.family-tax-frontend .footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.family-tax-frontend .footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: #22352c;
+  color: #ffffff;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.family-tax-frontend .footer-socials a:hover {
+  background-color: #3f9160;
+}
+
+.family-tax-frontend .footer-socials svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Link columns */
+.family-tax-frontend .footer-col h4 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 22px 0;
+}
+
+.family-tax-frontend .footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.family-tax-frontend .footer-col a {
+  color: #9aa79f;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.family-tax-frontend .footer-col a:hover {
+  color: #ffffff;
+}
+
+/* Contact list */
+.family-tax-frontend .contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #9aa79f;
+  font-size: 15px;
+}
+
+.family-tax-frontend .contact-list svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: #3f9160;
+}
+
+/* Bottom bar */
+.family-tax-frontend .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid #22352c;
+  padding: 24px 0;
+}
+
+.family-tax-frontend .footer-bottom p {
+  color: #7c887f;
+  font-size: 13.5px;
+  margin: 0;
+}
+
+.family-tax-frontend .flag {
+  color: #7c887f;
+  font-size: 11px;
+  vertical-align: super;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .family-tax-frontend .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .family-tax-frontend .site-footer {
+    padding: 48px 24px 0 24px;
+  }
+
+  .family-tax-frontend .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-tax-frontend .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -12,7 +12,7 @@
         <!-- <nav class="breadcrumb-eyebrow" aria-label="Breadcrumb">
           <a href="{{ route('home') }}" class="breadcrumb-link">Home</a>
           <span class="breadcrumb-separator" aria-hidden="true">&rsaquo;</span>
-          <a href="{{ route('home') }}#features-area" class="breadcrumb-link">Services</a>
+          <a href="{{ route('contact') }}" class="breadcrumb-link">Services</a>
           <span class="breadcrumb-separator" aria-hidden="true">&rsaquo;</span>
           <span>IRIS Profile Update</span>
         </nav> -->
@@ -22,7 +22,7 @@
         <p class="lead-text">
           Your FBR IRIS profile is your official tax identity on Pakistan's tax portal.
           Any changes in employment, business income, or personal details should be
-          updated accurately. PakFiler handles profile updates quickly and correctly.
+          updated accurately. Tax Consultant handles profile updates quickly and correctly.
         </p>
         <a href="#how-it-works" class="btn-light-green">
           Update My IRIS Profile
@@ -56,7 +56,7 @@
               <span class="browser-dot dot-yellow" aria-hidden="true"></span>
               <span class="browser-dot dot-green" aria-hidden="true"></span>
             </div>
-            <div class="browser-title">Pak Filer Dashboard</div>
+            <div class="browser-title">Tax Consultant Dashboard</div>
             <div class="browser-header-spacer"></div>
           </div>
 
@@ -113,7 +113,7 @@
             </div>
 
             <div class="browser-footer">
-              <a href="{{ route('home') }}#features-area" class="browser-back-link">
+              <a href="{{ route('contact') }}" class="browser-back-link">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Dashboard
               </a>
               <button class="browser-btn-submit">Continue <i class="fa fa-arrow-right"
@@ -298,7 +298,7 @@
               <p class="faq-accordion-body">
                 Yes, you can submit profile updates through the FBR portal.
                 However, incorrect information may result in delays or notices.
-                PakFiler helps ensure everything is updated accurately.
+                Tax Consultant helps ensure everything is updated accurately.
               </p>
             </dd>
           </div>
@@ -316,11 +316,11 @@
             quickly, securely, and affordably.
           </p>
           <div class="cta-buttons">
-            <a href="{{ route('home') }}#features-area" class="btn-cta-light">
+            <a href="{{ route('contact') }}" class="btn-cta-light">
               Start Filing Now
               <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="{{ route('home') }}#features-area" class="btn-cta-outline">
+            <a href="{{ route('contact') }}" class="btn-cta-outline">
               <i class="fa fa-headphones" aria-hidden="true"></i>
               Talk to an Expert
             </a>

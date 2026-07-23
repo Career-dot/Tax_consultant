@@ -767,3 +767,37 @@ body.pf-auth-modal-lock {
     padding-bottom: 4px;
   }
 }
+.pf-auth-input-icon {
+  position: relative;
+}
+
+.pf-auth-input-icon input {
+  padding-right: 2.75rem;
+}
+
+.pf-auth-input-icon .pf-auth-password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: var(--pf-muted, #60706a);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.pf-auth-input-icon .pf-auth-password-toggle:hover {
+  color: var(--pf-green, #0f7a4e);
+  background: rgba(15, 122, 78, 0.08);
+}
+
+.pf-auth-input-icon .pf-auth-password-toggle:focus-visible {
+  outline: 3px solid rgba(24, 166, 106, 0.28);
+  outline-offset: 2px;
+}
