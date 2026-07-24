@@ -15,8 +15,8 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-center gap-3 py-2 text-center">
                 <a class="pf-header-alert" href="{{ url('/contact') }}">
-                    <span>FBR Deadline:</span>
-                    <strong>{{ $daysLeft }} days left</strong>
+                    <span>FBR Deadline: {{ $daysLeft }}</span>
+                    <strong> days left</strong>
                     <span class="pf-header-separator">|</span>
                     <span>File before Sep 30, 2026 to stay active taxpayer.</span>
                 </a>

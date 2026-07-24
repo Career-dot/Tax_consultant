@@ -1,593 +1,336 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Personal Tax Filing | Tax Consultant')
+@section('meta_description', 'File your personal income tax return in Pakistan online with CA-reviewed support, transparent pricing, document upload, FBR submission, and post-filing guidance.')
 @section('body_class', 'pf-service-body')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/family-tax/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/family-tax/personal-tax.css') }}">
 @endpush
+
+@php
+    $heroBadges = [
+        ['icon' => 'fa-money', 'label' => 'From Rs 999'],
+        ['icon' => 'fa-clock-o', 'label' => '1-3 Working Days'],
+        ['icon' => 'fa-check-circle-o', 'label' => 'CA Reviewed'],
+        ['icon' => 'fa-lock', 'label' => '100% Online'],
+    ];
+
+    $audiences = [
+        ['icon' => 'fa-university', 'title' => 'Government Employees', 'text' => 'Federal, provincial, armed forces, education, health, and public-sector employees.'],
+        ['icon' => 'fa-briefcase', 'title' => 'Private Employees', 'text' => 'Corporate teams, bank staff, multinational employees, managers, and executives.'],
+        ['icon' => 'fa-graduation-cap', 'title' => 'Teachers & Researchers', 'text' => 'School, college, university, and research professionals with salary income.'],
+        ['icon' => 'fa-files-o', 'title' => 'Multiple Income Sources', 'text' => 'Salary plus rent, freelance income, commission, profit, capital gains, or investments.'],
+        ['icon' => 'fa-globe', 'title' => 'Overseas Pakistanis', 'text' => 'Non-resident Pakistanis with assets, property, bank accounts, or income in Pakistan.'],
+        ['icon' => 'fa-laptop', 'title' => 'Freelancers', 'text' => 'Independent contractors and digital professionals working locally or internationally.'],
+    ];
+
+    $includedItems = [
+        'Preparation and submission of your annual income tax return through FBR IRIS.',
+        'Income calculation across salary, rent, freelance, investment, and other sources.',
+        'Tax deducted, advance tax, and withholding tax reconciliation.',
+        'Eligible deductions, credits, Zakat, charitable contribution, and pension review.',
+        'Wealth statement preparation and asset/liability reconciliation where required.',
+        'FBR acknowledgment receipt and filing confirmation after submission.',
+        'Basic post-filing support for FBR questions within 30 days.',
+    ];
+
+    $documents = [
+        'CNIC front and back copy.',
+        'Latest salary slips or salary certificate from employer.',
+        'Bank statements for the relevant tax year.',
+        'Employment certificate or employer tax deduction certificate.',
+        'Rental income details, rent agreements, and receipts if applicable.',
+        'Foreign remittance or freelance income proof if applicable.',
+        'Zakat, donation, pension, or investment certificates.',
+        'Property ownership documents for owned property.',
+        'Vehicle registration documents for owned vehicles.',
+        'Any FBR notices or previous return acknowledgments.',
+    ];
+
+    $process = [
+        'Choose your filing method and place your order.',
+        'Submit your CNIC, income details, and required documents.',
+        'Our tax consultant reviews income, deductions, tax credits, and wealth details.',
+        'A CA reviewer checks the return for accuracy and compliance where selected.',
+        'Your return is submitted on the FBR IRIS portal.',
+        'You receive acknowledgment, filing record, and next-step guidance.',
+    ];
+
+    $faqs = [
+        ['question' => 'Who is required to file a personal income tax return in Pakistan?', 'answer' => 'Individuals earning taxable income, owning certain assets, running a business, receiving rent, freelancing, or needing Active Taxpayer List status should file. Even when tax is deducted by an employer, annual return filing is still a separate compliance step.'],
+        ['question' => 'Can I file if my employer already deducts salary tax?', 'answer' => 'Yes. Employer deduction is withholding tax. Filing the annual return reconciles your income, deductions, taxes paid, assets, and wealth statement with FBR records.'],
+        ['question' => 'What if I have salary from two employers in one year?', 'answer' => 'You can still file. We combine both income records, reconcile tax deductions from each employer, and calculate any additional tax or refund position.'],
+        ['question' => 'Do I need to visit your office or FBR?', 'answer' => 'No. The process is designed to be completed online. You can share documents digitally and our team handles preparation, review, and submission.'],
+        ['question' => 'How long does personal tax filing take?', 'answer' => 'Most straightforward cases are completed within 1-3 working days after documents are complete. Complex cases involving multiple income sources, assets, or notices may take longer.'],
+    ];
+@endphp
 
 @section('content')
-    <div class="family-tax-frontend personal-tax-page">
-        <!-- ===================== HERO SECTION ===================== -->
-          <section class="page-hero">
-            <div class="page-container hero-content">
-              <div class="breadcrumbs">
-                <a href="{{ route('home') }}">Home</a> &rsaquo; <span>Services</span> &rsaquo; <span>Personal Tax Filing</span>
-              </div>
-              <div class="hero-tagline">PERSONAL TAX FILING</div>
-              <h1>Personal Income Tax Filing: Fast, Accurate & CA-Certified</h1>
-              <p>File your annual FBR income tax return online without visiting any office. Our qualified Chartered Accountants
-                handle your personal tax filing accurately, ensuring you stay compliant and take advantage of all eligible
-                deductions.</p>
-        
-              <div class="hero-buttons">
-                <a href="{{ route('contact') }}" class="btn-primary">Start Personal Tax Filing</a>
-                <a href="{{ route('contact') }}" class="btn-primary outline">View Pricing</a>
-              </div>
-        
-              <div class="hero-stats">
-                <div class="stat-btn">Rs 999 Starting Price</div>
-                <div class="stat-btn">1-3 Working Days</div>
-                <div class="stat-btn">CA Reviewed</div>
-                <div class="stat-btn">100% Online</div>
-              </div>
+    <div class="pf-service-page personal-tax-page">
+        <section class="page-hero hero-green personal-hero" aria-labelledby="personal-hero-title">
+            <div class="container">
+                <!-- <nav class="breadcrumb-eyebrow" aria-label="Breadcrumb">
+                    <a href="{{ route('home') }}">Home</a>
+                    <span aria-hidden="true">/</span>
+                    <span>Services</span>
+                    <span aria-hidden="true">/</span>
+                    <span>Personal Tax Filing</span>
+                </nav> -->
+
+                <span class="hero-eyebrow">Personal Tax Filing</span>
+                <h1 id="personal-hero-title">Personal Income Tax Filing: Fast, Accurate &amp; CA-Reviewed</h1>
+                <p class="lead-text">
+                    File your annual FBR income tax return online without office visits. Our qualified tax consultants prepare,
+                    review, and submit your return accurately while helping you claim eligible deductions and stay active with FBR.
+                </p>
+
+                <div class="personal-hero-actions">
+                    <a href="{{ route('contact') }}" class="btn-hero-primary">Start Personal Tax Filing <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#personal-pricing" class="btn-hero-secondary">View Pricing</a>
+                </div>
+
+                <ul class="hero-badges" role="list">
+                    @foreach ($heroBadges as $badge)
+                        <li class="hero-badge"><i class="fa {{ $badge['icon'] }}" aria-hidden="true"></i>{{ $badge['label'] }}</li>
+                    @endforeach
+                </ul>
             </div>
-        
-          </section>
-          <div class="how-it-works">
-            <h1 class="section-title">See How It Works on Our Platform</h1>
-            <p class="section-subtitle">Two ways to file your personal tax return. Pick the method that suits you best.</p>
-        
-            <div class="panels">
-        
-              <!-- Panel 1: Online Filing Method -->
-              <div class="panel">
-                <h2 class="panel-label">Online Filing Method</h2>
-        
-                <div class="browser-window">
-                  <div class="browser-topbar">
-                    <div class="traffic-lights">
-                      <span class="dot red"></span>
-                      <span class="dot yellow"></span>
-                      <span class="dot green"></span>
+        </section>
+
+        <section class="section-padding-white personal-platform" aria-labelledby="platform-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <span class="section-eyebrow">Platform Preview</span>
+                    <h2 id="platform-title" class="section-heading">See How It Works on Our Platform</h2>
+                    <p class="section-intro">Choose guided online filing or fully managed document upload. Both paths keep the process simple, secure, and consultant-reviewed.</p>
+                </div>
+
+                <div class="personal-platform-grid">
+                    <article class="personal-browser-card">
+                        <h3>Online Filing Method</h3>
+                        <div class="personal-browser">
+                            <div class="personal-browser-bar">
+                                <span class="browser-dot dot-red"></span>
+                                <span class="browser-dot dot-yellow"></span>
+                                <span class="browser-dot dot-green"></span>
+                                <span class="personal-browser-title">Tax Consultant Dashboard</span>
+                            </div>
+                            <div class="personal-dashboard-head">
+                                <div>
+                                    <strong>Personal Tax Filing</strong>
+                                    <small>Guided return preparation</small>
+                                </div>
+                                <span class="personal-pill">Self Guided</span>
+                            </div>
+                            <div class="personal-progress" aria-hidden="true">
+                                <span class="active">Personal Info</span>
+                                <span>Income</span>
+                                <span>Tax Credits</span>
+                                <span>Wealth</span>
+                            </div>
+                            <div class="personal-form-preview">
+                                <h4>Basic Information</h4>
+                                <div class="personal-form-grid">
+                                    <span>Full Name</span>
+                                    <span>Email Address</span>
+                                    <span>CNIC Number</span>
+                                    <span>Mobile Number</span>
+                                    <span>Tax Year</span>
+                                    <span>Nationality</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="personal-browser-card">
+                        <h3>Document Upload Method</h3>
+                        <div class="personal-browser">
+                            <div class="personal-browser-bar">
+                                <span class="browser-dot dot-red"></span>
+                                <span class="browser-dot dot-yellow"></span>
+                                <span class="browser-dot dot-green"></span>
+                                <span class="personal-browser-title">Tax Consultant Dashboard</span>
+                            </div>
+                            <div class="personal-dashboard-head">
+                                <div>
+                                    <strong>Managed Filing</strong>
+                                    <small>Upload once, we handle the return</small>
+                                </div>
+                                <span class="personal-pill">Expert Managed</span>
+                            </div>
+                            <div class="personal-upload-preview">
+                                <div><i class="fa fa-cloud-upload" aria-hidden="true"></i><strong>Upload Documents</strong></div>
+                                <span>CNIC, salary certificate, bank statements, assets, and tax deduction records.</span>
+                            </div>
+                            <ul class="personal-upload-list">
+                                <li>Consultant checklist</li>
+                                <li>Return preparation</li>
+                                <li>FBR submission</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding-bg" aria-labelledby="who-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="who-title" class="section-heading">Who Should File a Personal Tax Return?</h2>
+                    <p class="section-intro">Filing keeps your FBR record compliant and can reduce withholding tax on banking, property, vehicle, and investment transactions.</p>
+                </div>
+
+                <div class="personal-card-grid">
+                    @foreach ($audiences as $audience)
+                        <article class="personal-info-card">
+                            <span class="personal-card-icon"><i class="fa {{ $audience['icon'] }}" aria-hidden="true"></i></span>
+                            <h3>{{ $audience['title'] }}</h3>
+                            <p>{{ $audience['text'] }}</p>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding-white" aria-labelledby="included-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="included-title" class="section-heading">What's Included in Your Personal Tax Filing</h2>
+                </div>
+
+                <ul class="personal-check-list personal-check-list-narrow" role="list">
+                    @foreach ($includedItems as $item)
+                        <li><i class="fa fa-check" aria-hidden="true"></i><span>{{ $item }}</span></li>
+                    @endforeach
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-padding-bg" aria-labelledby="method-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="method-title" class="section-heading">Choose the Filing Method That Works for You</h2>
+                </div>
+
+                <div class="personal-method-grid">
+                    <article class="personal-method-card is-featured">
+                        <span class="personal-tag">Popular</span>
+                        <h3>Online Filing with Expert Review</h3>
+                        <p>Enter your income details through a guided flow. Our system keeps each step organized, and a consultant reviews your return before submission.</p>
+                    </article>
+                    <article class="personal-method-card">
+                        <h3>Document Upload with Managed Filing</h3>
+                        <p>Upload documents and let our team prepare the return for you. Ideal for busy professionals, multiple income sources, or first-time filers.</p>
+                    </article>
+                </div>
+
+                <article class="personal-addon">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <div>
+                        <h3>CA Review Add-on</h3>
+                        <p>Add a deeper CA review for complex deductions, wealth reconciliation, refund checks, or tax-saving guidance for the next year.</p>
                     </div>
-                    <span class="browser-title">Tax Consultant Dashboard</span>
-                  </div>
-        
-                  <div class="app-header">
-                    <div class="app-header-left">
-                      <span class="user-icon">&#128100;</span>
-                      <span class="app-heading">Personal Tax Filing</span>
-                      <span class="badge">Self</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="personal-pricing" class="section-padding-white" aria-labelledby="pricing-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <span class="section-eyebrow">Transparent Fees</span>
+                    <h2 id="pricing-title" class="section-heading">Simple, Transparent Pricing</h2>
+                </div>
+
+                <div class="personal-pricing-grid">
+                    <article class="personal-price-card is-featured">
+                        <span class="personal-tag">Most Popular</span>
+                        <h3>Online Filing</h3>
+                        <div class="personal-price-row"><span>Base fee, one income source</span><strong>Rs 999</strong></div>
+                        <div class="personal-price-row"><span>More than one income source</span><strong>Rs 1,500</strong></div>
+                        <div class="personal-price-row"><span>CA review add-on</span><strong>+ Rs 1,000</strong></div>
+                    </article>
+
+                    <article class="personal-price-card">
+                        <h3>Document Upload</h3>
+                        <div class="personal-price-row"><span>Fully managed filing</span><strong>Rs 3,500</strong></div>
+                        <div class="personal-price-row"><span>CA review add-on</span><strong>+ Rs 1,000</strong></div>
+                        <div class="personal-price-row"><span>Complex case review</span><strong>Quote</strong></div>
+                    </article>
+                </div>
+
+                <p class="personal-note">Final fee may vary for notices, prior-year corrections, multiple properties, or incomplete FBR records. You will be informed before work begins.</p>
+            </div>
+        </section>
+
+        <section class="section-padding-bg" aria-labelledby="documents-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="documents-title" class="section-heading">Documents You Will Need</h2>
+                </div>
+
+                <ul class="personal-check-list personal-document-grid" role="list">
+                    @foreach ($documents as $document)
+                        <li><i class="fa fa-check" aria-hidden="true"></i><span>{{ $document }}</span></li>
+                    @endforeach
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-padding-white" aria-labelledby="process-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="process-title" class="section-heading">How the Filing Process Works</h2>
+                </div>
+
+                <ol class="process-wrapper personal-process-list" role="list">
+                    @foreach ($process as $step)
+                        <li class="process-step-row">
+                            <span class="process-step-circle">{{ $loop->iteration }}</span>
+                            <span class="process-step-text">{{ $step }}</span>
+                        </li>
+                    @endforeach
+                </ol>
+
+                <p class="personal-timeline">Typical timeline: 1-3 working days after complete document submission.</p>
+            </div>
+        </section>
+
+        <section class="section-padding-bg" aria-labelledby="faq-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="faq-title" class="section-heading">Frequently Asked Questions: Personal Tax Filing</h2>
+                </div>
+
+                <dl class="faq-list" id="personalFaq">
+                    @foreach ($faqs as $faq)
+                        <div class="faq-item {{ $loop->first ? 'active' : '' }}">
+                            <dt>
+                                <button class="faq-question" type="button" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="personal-faq-{{ $loop->iteration }}">
+                                    {{ $faq['question'] }}
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </button>
+                            </dt>
+                            <dd id="personal-faq-{{ $loop->iteration }}" class="faq-answer" role="definition">
+                                <p>{{ $faq['answer'] }}</p>
+                            </dd>
+                        </div>
+                    @endforeach
+                </dl>
+            </div>
+        </section>
+
+        <aside class="cta-banner-section" aria-labelledby="personal-cta-title">
+            <div class="container">
+                <div class="cta-content section-center">
+                    <h2 id="personal-cta-title" class="cta-banner-title">Ready to Become a Tax Filer Today?</h2>
+                    <p class="cta-banner-desc">Join Pakistanis who file their taxes online with a secure, consultant-reviewed, and affordable process.</p>
+                    <div class="cta-buttons">
+                        <a href="{{ route('contact') }}" class="btn-cta-light">Start Filing Now <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{{ route('contact') }}" class="btn-cta-outline"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to an Expert</a>
                     </div>
-                    <button class="dashboard-btn" type="button">&rarr; Go to Dashboard</button>
-                  </div>
-        
-                  <nav class="tab-row">
-                    <span class="tab active">PERSONAL INFO <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">INCOME CATEGORIES <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">INCOME FORMS <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">TAX CREDIT <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">TAX DEDUCTED <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">WEALTH STATEMENT <span class="chevron">&rsaquo;</span></span>
-                  </nav>
-                  <nav class="tab-row secondary">
-                    <span class="tab">EXPENSE <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">WRAP-UP <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">SUMMARY <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">FBR <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">OPTIONAL ADDON</span>
-                  </nav>
-        
-                  <div class="content">
-                    <h3 class="content-title">Personal Information</h3>
-                    <p class="content-sub">Filing Tax Return for 2024-2025 (Tax Year 2025)</p>
-        
-                    <div class="form-card">
-                      <h4 class="form-card-title">Basic Information</h4>
-        
-                      <div class="form-grid">
-                        <div class="form-field">
-                          <label>Full Name *</label>
-                          <input type="text" placeholder="Ahmad Ali" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Email Address *</label>
-                          <input type="text" placeholder="ahmad@email.com" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Date of Birth *</label>
-                          <input type="text" placeholder="mm/dd/yyyy" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Mobile Number *</label>
-                          <input type="text" placeholder="Enter mobile number" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>CNIC No. *</label>
-                          <input type="text" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Nationality *</label>
-                          <div class="radio-row">
-                            <label class="radio-option">
-                              <input type="radio" name="nationality-1" checked disabled>
-                              <span>Pakistani</span>
-                            </label>
-                            <label class="radio-option">
-                              <input type="radio" name="nationality-1" disabled>
-                              <span>Foreigner</span>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-        
-              <!-- Panel 2: Document Upload Method -->
-              <div class="panel">
-                <h2 class="panel-label">Document Upload Method</h2>
-        
-                <div class="browser-window">
-                  <div class="browser-topbar">
-                    <div class="traffic-lights">
-                      <span class="dot red"></span>
-                      <span class="dot yellow"></span>
-                      <span class="dot green"></span>
-                    </div>
-                    <span class="browser-title">Tax Consultant Dashboard</span>
-                  </div>
-        
-                  <div class="app-header">
-                    <div class="app-header-left">
-                      <span class="user-icon">&#128100;</span>
-                      <span class="app-heading">Personal Tax Filing</span>
-                      <span class="badge">Self</span>
-                    </div>
-                    <button class="dashboard-btn" type="button">&rarr; Go to Dashboard</button>
-                  </div>
-        
-                  <nav class="tab-row single">
-                    <span class="tab active">PERSONAL INFO <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">DOCUMENT UPLOAD <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">NTN LOGIN <span class="chevron">&rsaquo;</span></span>
-                    <span class="tab">PAYMENT</span>
-                  </nav>
-        
-                  <div class="content">
-                    <h3 class="content-title">Personal Information</h3>
-                    <p class="content-sub">Filing Tax Return for 2021-2022 (Tax Year 2022)</p>
-        
-                    <div class="form-card">
-                      <h4 class="form-card-title">Basic Information</h4>
-        
-                      <div class="form-grid">
-                        <div class="form-field">
-                          <label>Full Name *</label>
-                          <input type="text" placeholder="Ahmad Ali" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Email Address *</label>
-                          <input type="text" placeholder="ahmad@email.com" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Date of Birth *</label>
-                          <input type="text" placeholder="mm/dd/yyyy" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Mobile Number *</label>
-                          <input type="text" placeholder="Enter mobile number" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>CNIC No. *</label>
-                          <input type="text" disabled>
-                        </div>
-                        <div class="form-field">
-                          <label>Nationality *</label>
-                          <div class="radio-row">
-                            <label class="radio-option">
-                              <input type="radio" name="nationality-2" checked disabled>
-                              <span>Pakistani</span>
-                            </label>
-                            <label class="radio-option">
-                              <input type="radio" name="nationality-2" disabled>
-                              <span>Foreigner</span>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        
             </div>
-          </div>
-          <!-- third part -->
-          <div class="who-should-file">
-            <h1 class="wsf-title">Who Should File a Personal Tax Return?</h1>
-            <p class="wsf-subtitle">Pakistan's tax law requires every individual earning above Rs 600,000 annually to file a tax
-              return. Even if you're below this threshold, filing as an active tax filer offers significant financial benefits.
-            </p>
-        
-            <div class="wsf-grid">
-        
-              <div class="wsf-card">
-                <div class="wsf-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <rect x="4" y="2" width="16" height="20" rx="2" />
-                    <line x1="9" y1="6" x2="9" y2="6" />
-                    <line x1="15" y1="6" x2="15" y2="6" />
-                    <line x1="9" y1="10" x2="9" y2="10" />
-                    <line x1="15" y1="10" x2="15" y2="10" />
-                    <line x1="9" y1="14" x2="9" y2="14" />
-                    <line x1="15" y1="14" x2="15" y2="14" />
-                    <line x1="9" y1="18" x2="15" y2="18" />
-                  </svg>
-                </div>
-                <h3 class="wsf-card-title">Salaried Employees (Government Sector)</h3>
-                <p class="wsf-card-text">Federal &amp; provincial government servants, armed forces personnel, and civil
-                  servants</p>
-              </div>
-        
-              <div class="wsf-card">
-                <div class="wsf-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" />
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                    <path d="M2 13h20" />
-                  </svg>
-                </div>
-                <h3 class="wsf-card-title">Salaried Employees (Private Sector)</h3>
-                <p class="wsf-card-text">Corporate employees, multinational workers, bank employees, and professionals</p>
-              </div>
-        
-              <div class="wsf-card">
-                <div class="wsf-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M22 10 12 5 2 10l10 5 10-5Z" />
-                    <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
-                  </svg>
-                </div>
-                <h3 class="wsf-card-title">Teachers &amp; Researchers</h3>
-                <p class="wsf-card-text">School, college, and university teachers including those in government educational
-                  institutions</p>
-              </div>
-        
-              <div class="wsf-card">
-                <div class="wsf-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-                    <path d="M14 2v6h6" />
-                    <line x1="8" y1="13" x2="16" y2="13" />
-                    <line x1="8" y1="17" x2="16" y2="17" />
-                  </svg>
-                </div>
-                <h3 class="wsf-card-title">Multiple Income Sources</h3>
-                <p class="wsf-card-text">Individuals with salary plus rental income, freelance income, commission, or investment
-                  returns</p>
-              </div>
-        
-              <div class="wsf-card">
-                <div class="wsf-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z" />
-                  </svg>
-                </div>
-                <h3 class="wsf-card-title">Overseas Pakistanis</h3>
-                <p class="wsf-card-text">Pakistanis working abroad who have assets or income sources in Pakistan</p>
-              </div>
-        
-              <div class="wsf-card">
-                <div class="wsf-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="16 18 22 12 16 6" />
-                    <polyline points="8 6 2 12 8 18" />
-                  </svg>
-                </div>
-                <h3 class="wsf-card-title">Freelancers</h3>
-                <p class="wsf-card-text">Independent contractors and digital freelancers registered on platforms like Upwork,
-                  Fiverr, or Toptal</p>
-              </div>
-        
-            </div>
-          </div>
-          <!-- fouth part -->
-          <div class="whats-included">
-            <h1 class="wi-title">What's Included in Your Personal Tax Filing</h1>
-        
-            <div class="wi-list">
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Preparation and submission of your annual income tax return (ITR) on FBR IRIS portal</p>
-              </div>
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Calculation of your total taxable income from all sources</p>
-              </div>
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Application of all eligible deductions, allowances, and tax credits under Pakistan's Income Tax Ordinance
-                  2001</p>
-              </div>
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Zakat deductions, charitable contributions, and investment allowance claims where applicable</p>
-              </div>
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Pension contribution deductions for government and private sector employees</p>
-              </div>
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Filing confirmation and acknowledgment receipt from FBR</p>
-              </div>
-        
-              <div class="wi-item">
-                <span class="wi-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Basic post-filing support for any FBR queries within 30 days</p>
-              </div>
-        
-            </div>
-          </div>
-          <div class="filing-method">
-            <h1 class="fm-title">Choose the Filing Method That Works for You</h1>
-        
-            <div class="fm-cards">
-        
-              <div class="fm-card fm-card-popular">
-                <span class="fm-badge">POPULAR</span>
-                <h3 class="fm-card-title">Online Filing (Self-Guided with Expert Review)</h3>
-                <p class="fm-card-text">Fill in your income details directly on our secure platform. Our system guides you
-                  step-by-step. A Chartered Accountant reviews your data before submission to FBR. Best for individuals with
-                  straightforward income sources.</p>
-              </div>
-        
-              <div class="fm-card">
-                <h3 class="fm-card-title">Document Upload (Fully Managed Filing)</h3>
-                <p class="fm-card-text">Simply upload your documents: salary slips, bank statements, and any other income
-                  proofs. Our expert team handles the entire filing process on your behalf. Best for busy professionals or those
-                  with complex income structures.</p>
-              </div>
-        
-            </div>
-        
-            <div class="fm-addon">
-              <h4 class="fm-addon-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-                CA Review Add-on
-              </h4>
-              <p class="fm-addon-text">Add a detailed CA review session (Rs 1,000 extra) where a Chartered Accountant personally
-                audits your return, discusses your tax position, and advises on tax-saving opportunities for the coming year.
-              </p>
-            </div>
-        
-          </div>
-          <div class="pricing-section">
-            <h1 class="pricing-title">Simple, Transparent Pricing</h1>
-        
-            <div class="pricing-cards">
-        
-              <div class="pricing-card pricing-card-featured">
-                <span class="pricing-badge">MOST POPULAR</span>
-                <h3 class="pricing-card-title">Online Filing</h3>
-        
-                <div class="pricing-row">
-                  <span>Base Fee (1 income source)</span>
-                  <span class="pricing-amount">Rs 999</span>
-                </div>
-                <div class="pricing-row">
-                  <span>More than 1 income source</span>
-                  <span class="pricing-amount">Rs 1,500</span>
-                </div>
-                <div class="pricing-row">
-                  <span>CA Review Add-on</span>
-                  <span class="pricing-amount">+ Rs 1,000</span>
-                </div>
-              </div>
-        
-              <div class="pricing-card">
-                <h3 class="pricing-card-title pricing-card-title-dark">Document Upload</h3>
-        
-                <div class="pricing-row pricing-row-light">
-                  <span>Base Fee</span>
-                  <span class="pricing-amount pricing-amount-dark">Rs 3,500</span>
-                </div>
-                <div class="pricing-row pricing-row-light">
-                  <span>CA Review Add-on</span>
-                  <span class="pricing-amount pricing-amount-dark">+ Rs 1,000</span>
-                </div>
-              </div>
-        
-            </div>
-        
-            <p class="pricing-note">All prices are inclusive of FBR filing fees. No hidden charges. GST may apply.</p>
-          </div>
-          <div class="documents-needed">
-            <h1 class="dn-title">Documents You Will Need</h1>
-        
-            <div class="dn-grid">
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>CNIC (front and back)</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Latest salary slips (last 3-6 months) or salary certificate from employer</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Bank account statements for the entire tax year (July-June)</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Employment certificate or letter from your employer</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Rental income details (if applicable): rent agreements and rental receipts</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Foreign remittance details (if applicable)</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Zakat deduction certificate (if applicable)</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Investment or savings certificate details (mutual funds, National Savings, etc.)</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Property ownership documents (if any property owned)</p>
-              </div>
-        
-              <div class="dn-item">
-                <span class="dn-check">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21.8 10A10 10 0 1 1 17 3.3" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </span>
-                <p>Vehicle registration documents (if any vehicle owned)</p>
-              </div>
-        
-            </div>
-          </div>
-        
-          <!-- ===== FOOTER ===== -->
+        </aside>
     </div>
 @endsection
-
-@push('scripts')
-
-@endpush

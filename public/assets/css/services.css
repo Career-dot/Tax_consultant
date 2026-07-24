@@ -209,7 +209,7 @@
 
 .pf-service-page .hero h1,
 .pf-service-page .hero-green h1 {
-  max-width: 760px;
+  /* max-width: 760px; */
   margin: 0 0 20px;
   color: #fff;
   font-family: Plus Jakarta Sans, Inter, sans-serif;

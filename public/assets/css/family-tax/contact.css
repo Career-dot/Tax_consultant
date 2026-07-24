@@ -1,810 +1,415 @@
-
-.family-tax-contact-page, .family-tax-contact-page *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-.family-tax-contact-page{
-    scroll-behavior:smooth;
-}
-
-.family-tax-contact-page{
-    font-family:'Inter',sans-serif;
-    color:#111827;
-    background:#ffffff;
-}
-
-.family-tax-contact-page a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.family-tax-contact-page ul{
-    list-style:none;
-}
-
-.family-tax-contact-page img{
-    max-width:100%;
-}
-
-.family-tax-contact-page .container{
-    width:100%;
-    max-width:1250px;
-    margin:auto;
-}
-
-
-.family-tax-contact-page .top-bar{
-    background:#06663f;
-    padding:3px 0;
-    color:#fff;
-    font-size:15px;
-}
-
-.family-tax-contact-page .announcement{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:22px;
-    flex-wrap:wrap;
-}
-
-.family-tax-contact-page .deadline{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-weight:600;
-}
-
-.family-tax-contact-page .days-left{
-    background:#2f8f67;
-    padding:8px 16px;
-    border-radius:30px;
-    font-weight:600;
-}
-
-.family-tax-contact-page .announcement p{
-    opacity:.95;
-}
-
-.family-tax-contact-page .announcement a{
-    color:#c9ffd8;
-    font-weight:700;
-    transition:.3s;
-}
-
-.family-tax-contact-page .announcement a:hover{
-    color:#fff;
-}
-
-
-.family-tax-contact-page header{
-    background:#fff;
-    border-bottom:1px solid #ececec;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.family-tax-contact-page .navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    min-height:82px;
-}
-
-
-.family-tax-contact-page .logo{
-    font-size:20px;
-    font-weight:800;
-    display:flex;
-    gap:8px;
-    align-items:center;
-    margin-left:40px;
-}
-
-.family-tax-contact-page .logo span{
-    color:#111827;
-}
-
-.family-tax-contact-page .logo strong{
-    color:#128255;
-}
-
-.family-tax-contact-page .nav-links{
-    display:flex;
-    align-items:center;
-    gap:20px;
-    font-size:13px;
-}
-
-.family-tax-contact-page .nav-links a{
-    color:#374151;
-    font-weight:500;
-    transition:.3s;
-}
-
-.family-tax-contact-page .nav-links a:hover{
-    color:#128255;
-}
-
-.family-tax-contact-page .nav-links .active{
-    background:#f2f4f7;
-    padding:8px 16px;
-    border-radius:10px;
-    color:#111;
-}
-
-
-
-.family-tax-contact-page .nav-buttons{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.family-tax-contact-page .btn{
-    padding:10px 23px;
-    border-radius:12px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.family-tax-contact-page .btn-outline{
-    border:1px solid #d8d8d8;
-    color:#111;
-}
-
-.family-tax-contact-page .btn-outline:hover{
-    background:#f3f3f3;
-}
-
-.family-tax-contact-page .btn-register{
-    border:2px solid #128255;
-    color:#128255;
-}
-
-.family-tax-contact-page .btn-register:hover{
-    background:#128255;
-    color:#fff;
-}
-
-.family-tax-contact-page .btn-dark{
-    background:#111827;
-    color:#fff;
-}
-
-.family-tax-contact-page .btn-dark:hover{
-    background:#000;
-}
-
-
-
-.family-tax-contact-page .menu-btn{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-}
-
-
-
-.family-tax-contact-page .breadcrumb{
-    padding:14px 5;
-    border-bottom:1px solid #f2f2f2;
-    margin-left:60px;
-    margin-top:20px;
-}
-
-.family-tax-contact-page .breadcrumb .container{
-    display:flex;
-    gap:6px;
-    align-items:center;
-    color:#6b7280;
-     font-size: 13px
-}
-
-.family-tax-contact-page .breadcrumb strong{
-    color:#111827;
-}
-
-
-.family-tax-contact-page .hero{
-    padding:40px 0 40px;
-    margin-top:20px;
-   
-    background:linear-gradient(
-        90deg,
-        #eef9f4 0%,
-        #eef9f4 50%,
-        #f3fbf7 100%
-    );
-}
-
-.family-tax-contact-page .hero-content{
-    max-width:500px;
-}   
-
-.family-tax-contact-page .hero-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 10px;
-    background:#fff;
-    border:1px solid #d9e9e1;
-    border-radius:30px;
-    color:#0b7a52;
-    font-weight:600;
-    margin-bottom:30px;
-     margin-left:50px;
+.family-tax-contact-page {
+  color: var(--pf-ink, #10201a);
+  background: var(--pf-white, #ffffff);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.family-tax-contact-page .dot{
-    width:10px;
-    height:10px;
-    background:#0b7a52;
-    border-radius:50%;
+.family-tax-contact-page a {
+  text-decoration: none;
 }
 
-.family-tax-contact-page .hero h1{
-    font-size:43px;
-    line-height:1.1;
-    font-weight:800;
-    margin-bottom:12px;
-    letter-spacing:-2px;
-      margin-left:50px;
-      
+.family-tax-contact-page .contact-hero {
+  margin-top: 0;
+  padding: clamp(86px, 10vw, 132px) 0 !important;
 }
 
-.family-tax-contact-page .hero h1 span{
-    color:#128255;
+.family-tax-contact-page .contact-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 9px 15px;
+  color: var(--pf-white, #ffffff);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
-.family-tax-contact-page .hero p{
-    max-width:560px;
-    font-size:16px;
-    line-height:1.75;
-    color:#4b5563;
-      margin-left:50px;
+.family-tax-contact-page .contact-eyebrow span {
+  width: 9px;
+  height: 9px;
+  background: var(--pf-green-2, #18a66a);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(24, 166, 106, 0.18);
 }
-
 
-
-.family-tax-contact-page .contact-section{
-    padding:78px ;
-    background:#fff;
-    margin-left:0;
+.family-tax-contact-page .contact-hero-content {
+  max-width: 760px;
 }
 
-.family-tax-contact-page .contact-grid{
-    display:grid;
-    grid-template-columns:58% 42%;
-    gap:32px;
-    align-items:start;
+.family-tax-contact-page .contact-hero-content h1 {
+  margin: 0 0 18px;
 }
-
 
-.family-tax-contact-page .contact-form-card{
-    border:1px solid #e5e7eb;
-    border-radius:20px;
-    overflow:hidden;
-    background:#fff;
+.family-tax-contact-page .contact-hero-content h1 span {
+  color: #c9f7dd !important;
 }
 
-.family-tax-contact-page .form-header{
-    background:#f8f9fb;
-    padding:24px 30px;
-    border-bottom:1px solid #ececec;
+.family-tax-contact-page .contact-hero-content p {
+  max-width: 680px;
+  margin: 0;
 }
 
-.family-tax-contact-page .form-header h2{
-    font-size:20px;
-    font-weight:700;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:8px;
+.family-tax-contact-page .contact-section {
+  padding: clamp(68px, 7vw, 106px) 0 !important;
 }
 
-.family-tax-contact-page .form-header p{
-    color:#6b7280;
-    font-size:15px;
+.family-tax-contact-page .contact-form-card {
+  overflow: hidden;
+  height: 100%;
+  border-color: var(--pf-line, #dce7e1);
+  border-radius: var(--pf-radius-lg, 14px);
+  background: var(--pf-white, #ffffff);
+  box-shadow: var(--pf-shadow-sm, 0 8px 24px rgba(16, 32, 26, 0.06));
 }
 
-.family-tax-contact-page form{
-    padding:28px 30px;
+.family-tax-contact-page .contact-form-header {
+  padding: clamp(22px, 3vw, 30px);
+  background: linear-gradient(180deg, var(--pf-surface, #f6faf8), #ffffff);
+  border-bottom: 1px solid var(--pf-line, #dce7e1);
 }
 
-.family-tax-contact-page .row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+.family-tax-contact-page .contact-form-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 8px;
+  color: var(--pf-ink, #10201a);
+  font-size: clamp(22px, 3vw, 28px);
 }
 
-.family-tax-contact-page .input-group{
-    display:flex;
-    flex-direction:column;
-    margin-bottom:18px;
+.family-tax-contact-page .contact-form-header i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  color: var(--pf-green, #0f7a4e);
+  background: rgba(15, 122, 78, 0.1);
+  border-radius: var(--pf-radius, 8px);
+  font-size: 18px;
 }
 
-.family-tax-contact-page .input-group label{
-    margin-bottom:8px;
-    font-size:13px;
-    font-weight:700;
-    color:#374151;
-    letter-spacing:.3px;
+.family-tax-contact-page .contact-form-header p {
+  margin: 0;
+  color: var(--pf-muted, #60706a);
+  font-size: 15px;
+  line-height: 1.7;
 }
 
-.family-tax-contact-page .input-group input,
-.family-tax-contact-page .input-group select,
-.family-tax-contact-page .input-group textarea{
-
-    width:80%;
-    padding:10px 14px;
-    border:1px solid #d7dbe2;
-    border-radius:12px;
-    outline:none;
-    font-size:15px;
-    transition:.3s;
-    font-family:inherit;
-
+.family-tax-contact-page .contact-form {
+  padding: clamp(22px, 3vw, 30px);
 }
 
-.family-tax-contact-page textarea{
-    min-height:150px;
-    resize:none;
+.family-tax-contact-page .contact-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
 }
-
-.family-tax-contact-page .input-group input:focus,
-.family-tax-contact-page .input-group textarea:focus,
-.family-tax-contact-page .input-group select:focus{
-
-    border-color:#15803d;
-    box-shadow:0 0 0 3px rgba(16,185,129,.10);
 
+.family-tax-contact-page .contact-field label {
+  margin: 0;
+  color: var(--pf-ink, #10201a);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-.family-tax-contact-page .send-btn{
-
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:#0f8a4b;
-    color:#fff;
-    font-size:17px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
-
+.family-tax-contact-page .contact-field label span {
+  color: var(--pf-subtle, #7d8b86);
+  font-weight: 700;
 }
-
-.family-tax-contact-page .send-btn:hover{
-
-    background:#0b733d;
 
+.family-tax-contact-page .contact-field input,
+.family-tax-contact-page .contact-field select,
+.family-tax-contact-page .contact-field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 15px;
+  color: var(--pf-ink, #10201a);
+  background: var(--pf-white, #ffffff);
+  border: 1px solid var(--pf-line, #dce7e1);
+  border-radius: var(--pf-radius, 8px);
+  box-shadow: none;
+  font: inherit;
+  line-height: 1.45;
+  transition: border-color var(--pf-transition, 180ms ease), box-shadow var(--pf-transition, 180ms ease), background-color var(--pf-transition, 180ms ease);
 }
 
-
-.family-tax-contact-page .contact-info{
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    width: 88%;         
-    margin:0 auto;   
-}   
-
-
-.family-tax-contact-page .info-card{
-    width: 88%;
-    min-height: 100px;
-    padding: 10px;
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: #fff;
+.family-tax-contact-page .contact-field select {
+  cursor: pointer;
 }
-
-.family-tax-contact-page .info-card:hover{
 
-    transform:translateY(-3px);
-
-    box-shadow:0 8px 24px rgba(0,0,0,.05);
-
+.family-tax-contact-page .contact-field textarea {
+  min-height: 168px;
+  resize: vertical;
 }
-
-.family-tax-contact-page .icon{
-
-    width:56px;
-    height:56px;
-
-    flex-shrink:0;
-
-    background:#eef8f3;
-
-    border-radius:16px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:22px;
-
-    color:#0f8a4b;
-
+
+.family-tax-contact-page .contact-field input::placeholder,
+.family-tax-contact-page .contact-field textarea::placeholder {
+  color: #9aa79f;
 }
-
-.family-tax-contact-page .info-card h3{
 
-    font-size:15px;
-    font-weight:700;
-    margin-bottom:8px;
-    color:#111827;
-
+.family-tax-contact-page .contact-field input:focus,
+.family-tax-contact-page .contact-field select:focus,
+.family-tax-contact-page .contact-field textarea:focus {
+  background: #ffffff;
+  border-color: var(--pf-green, #0f7a4e);
+  box-shadow: 0 0 0 4px rgba(15, 122, 78, 0.12);
+  outline: 0;
 }
-
-.family-tax-contact-page .info-card h4{
 
-    font-size:13px;
-    font-weight:600;
-    color:#0f8a4b;
-    margin-bottom:8px;
-
+.family-tax-contact-page .send-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 22px;
+  color: var(--pf-white, #ffffff);
+  background: var(--pf-green, #0f7a4e);
+  border: 1px solid var(--pf-green, #0f7a4e);
+  border-radius: var(--pf-radius, 8px);
+  box-shadow: 0 14px 32px rgba(15, 122, 78, 0.2);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform var(--pf-transition, 180ms ease), box-shadow var(--pf-transition, 180ms ease), background-color var(--pf-transition, 180ms ease);
 }
-
-.family-tax-contact-page .info-card p{
 
-    font-size:14px;
-    color:#6b7280;
-    line-height:1.6;
-    margin:0;
-
+.family-tax-contact-page .send-btn:hover,
+.family-tax-contact-page .send-btn:focus {
+  color: var(--pf-white, #ffffff);
+  background: var(--pf-green-dark, #084b31);
+  box-shadow: 0 18px 44px rgba(15, 122, 78, 0.26);
+  transform: translateY(-2px);
 }
-
-.family-tax-contact-page .active-card{
 
-    border:1.5px solid #16a34a;
-
+.family-tax-contact-page .send-btn i {
+  transition: transform var(--pf-transition, 180ms ease);
 }
-
 
-.family-tax-contact-page .help-card{
-
-    background:#eefaf4;
-
-    border:1px solid #cfe9dc;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    text-align:center;
-
+.family-tax-contact-page .send-btn:hover i,
+.family-tax-contact-page .send-btn:focus i {
+  transform: translateX(3px);
 }
-
-.family-tax-contact-page .help-card h2{
-
-    font-size:15px;
 
-    font-weight:600;
-
-    margin-bottom:16px;
-
+.family-tax-contact-page .contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
 }
-
-.family-tax-contact-page .help-card p{
-
-    font-size:14px;
-
-    color:#6b7280;
-
-    line-height:1.7;
-
-    margin-bottom:24px;
 
+.family-tax-contact-page .contact-info-grid {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 18px;
 }
-
-.family-tax-contact-page .whatsapp-btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    background:#22c55e;
-
-    color:#fff;
-
-    padding:10px 24px;
 
-    border-radius:12px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    transition:.3s;
-
+.family-tax-contact-page .info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  min-height: 124px;
+  height: 100%;
+  padding: 22px;
+  color: var(--pf-ink, #10201a);
+  background: var(--pf-white, #ffffff);
+  border: 1px solid var(--pf-line, #dce7e1);
+  border-radius: var(--pf-radius-lg, 14px);
+  box-shadow: var(--pf-shadow-sm, 0 8px 24px rgba(16, 32, 26, 0.06));
+  transition: transform var(--pf-transition, 180ms ease), border-color var(--pf-transition, 180ms ease), box-shadow var(--pf-transition, 180ms ease);
 }
 
-.family-tax-contact-page .whatsapp-btn:hover{
-
-    background:#16a34a;
-
+.family-tax-contact-page .info-card:hover {
+  border-color: rgba(15, 122, 78, 0.28) !important;
+  box-shadow: var(--pf-shadow, 0 18px 48px rgba(16, 32, 26, 0.1)) !important;
+  transform: translateY(-5px);
+}
+
+.family-tax-contact-page .active-card {
+  border-color: rgba(15, 122, 78, 0.42);
+}
+
+.family-tax-contact-page .contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  color: var(--pf-green, #0f7a4e);
+  background: rgba(15, 122, 78, 0.1);
+  border-radius: var(--pf-radius, 8px);
+  font-size: 22px;
 }
-/* ==========================================
-   RESPONSIVE DESIGN
-========================================== */
-
-/* Large Tablets */
-@media (max-width: 1200px){
-
-    .family-tax-contact-page .container{
-        width:92%;
-    }
 
-    .family-tax-contact-page .contact-grid{
-        grid-template-columns:55% 45%;
-        gap:25px;
-    }
+.family-tax-contact-page .info-card-content {
+  min-width: 0;
+}
 
-    .family-tax-contact-page .hero h1{
-        font-size:38px;
-    }
-
+.family-tax-contact-page .info-card h3 {
+  margin: 0 0 7px;
+  color: var(--pf-ink, #10201a);
+  font-size: 17px;
+  line-height: 1.25;
 }
-
-/* Tablets */
-@media (max-width:992px){
-
-    .family-tax-contact-page .container{
-        width:94%;
-    }
-
-    /* Navbar */
-
-    .family-tax-contact-page .nav-links,
-    .family-tax-contact-page .nav-buttons{
-        display:none;
-    }
-
-    .family-tax-contact-page .menu-btn{
-        display:block;
-        margin-right:20px;
-    }
-
-    .family-tax-contact-page .logo{
-        margin-left:0;
-    }
-
-    /* Breadcrumb */
 
-    .family-tax-contact-page .breadcrumb{
-        margin-left:0;
-        padding:15px 0;
-    }
-
-    /* Hero */
-
-    .family-tax-contact-page .hero{
-        padding:40px 0;
-    }
-
-    .family-tax-contact-page .hero-content{
-        max-width:100%;
-    }
-
-    .family-tax-contact-page .hero-badge,
-    .family-tax-contact-page .hero h1,
-    .family-tax-contact-page .hero p{
-        margin-left:0;
-    }
-
-    .family-tax-contact-page .hero h1{
-        font-size:36px;
-    }
-
-    .family-tax-contact-page .hero p{
-        font-size:16px;
-    }
-
-    /* Contact */
-
-    .family-tax-contact-page .contact-section{
-        padding:50px 0;
-    }
-
-    .family-tax-contact-page .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .family-tax-contact-page .contact-info{
-        width:100%;
-    }
-
-    .family-tax-contact-page .info-card{
-        width:100%;
-    }
-
+.family-tax-contact-page .info-card a {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 8px;
+  color: var(--pf-green, #0f7a4e);
+  font-size: 14px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
 }
-
-
-/* Mobile */
-
-@media (max-width:768px){
-
-    .family-tax-contact-page .container{
-        width:92%;
-    }
-
-    .family-tax-contact-page .top-bar{
-
-        font-size:13px;
-
-    }
-
-    .family-tax-contact-page .announcement{
-
-        gap:10px;
-
-        text-align:center;
-
-    }
-
-    .family-tax-contact-page .announcement p{
-
-        display:none;
-
-    }
-
-    .family-tax-contact-page .navbar{
-
-        min-height:70px;
-
-    }
-
-    .family-tax-contact-page .logo{
-
-        font-size:18px;
-
-    }
 
-    .family-tax-contact-page .hero{
+.family-tax-contact-page .info-card a:hover {
+  color: var(--pf-green-dark, #084b31);
+}
 
-        padding:35px 0;
-
-    }
-
-    .family-tax-contact-page .hero h1{
-
-        font-size:30px;
-
-        line-height:1.2;
-
-    }
-
-    .family-tax-contact-page .hero p{
-
-        font-size:15px;
-
-    }
-
-    .family-tax-contact-page .hero-badge{
-
-        padding:8px 15px;
-
-        font-size:14px;
-
-    }
-
-    .family-tax-contact-page .row{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .family-tax-contact-page form{
-
-        padding:20px;
-
-    }
-
-    .family-tax-contact-page .input-group input,
-    .family-tax-contact-page .input-group select,
-    .family-tax-contact-page .input-group textarea{
-
-        width:100%;
-
-    }
-
-    .family-tax-contact-page .info-card{
-
-        width:100%;
-
-        padding:18px;
-
-        min-height:110px;
-
-    }
-
-    .family-tax-contact-page .icon{
-
-        width:50px;
-
-        height:50px;
-
-        font-size:20px;
-
-    }
-
+.family-tax-contact-page .info-card p {
+  margin: 0;
+  color: var(--pf-muted, #60706a);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.family-tax-contact-page .help-card {
+  padding: 26px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--pf-surface, #f6faf8), #ffffff);
+  border: 1px solid var(--pf-line, #dce7e1);
+  border-radius: var(--pf-radius-lg, 14px);
+  box-shadow: var(--pf-shadow-sm, 0 8px 24px rgba(16, 32, 26, 0.06));
 }
-
-
-/* Small Mobiles */
-
-@media (max-width:480px){
-
-    .family-tax-contact-page .hero h1{
-
-        font-size:26px;
-
-    }
-
-    .family-tax-contact-page .hero p{
-
-        font-size:14px;
-
-    }
-
-    .family-tax-contact-page .form-header{
-
-        padding:18px;
-
-    }
-
-    .family-tax-contact-page .form-header h2{
-
-        font-size:18px;
-
-    }
-
-    .family-tax-contact-page form{
-
-        padding:18px;
-
-    }
-
-    .family-tax-contact-page .contact-section{
-
-        padding:35px 0;
-
-    }
-
-    .family-tax-contact-page .send-btn{
-
-        font-size:15px;
-
-        padding:14px;
-
-    }
-
-    .family-tax-contact-page .help-card{
-
-        padding:20px;
-
-    }
-
-    .family-tax-contact-page .whatsapp-btn{
-
-        width:100%;
-
-        justify-content:center;
-
-    }
 
+.family-tax-contact-page .help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+  color: var(--pf-green, #0f7a4e);
+  background: rgba(15, 122, 78, 0.1);
+  border-radius: 50%;
+}
+
+.family-tax-contact-page .help-card h2 {
+  margin: 0 0 10px;
+  color: var(--pf-ink, #10201a);
+  font-size: 20px;
+}
+
+.family-tax-contact-page .help-card p {
+  margin: 0 0 22px;
+  color: var(--pf-muted, #60706a);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.family-tax-contact-page .whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 12px 22px;
+  color: var(--pf-white, #ffffff);
+  background: var(--pf-green, #0f7a4e);
+  border: 1px solid var(--pf-green, #0f7a4e);
+  border-radius: var(--pf-radius, 8px);
+  box-shadow: 0 12px 26px rgba(15, 122, 78, 0.18);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform var(--pf-transition, 180ms ease), box-shadow var(--pf-transition, 180ms ease), background-color var(--pf-transition, 180ms ease);
+}
+
+.family-tax-contact-page .whatsapp-btn:hover,
+.family-tax-contact-page .whatsapp-btn:focus {
+  color: var(--pf-white, #ffffff);
+  background: var(--pf-green-dark, #084b31);
+  box-shadow: 0 16px 36px rgba(15, 122, 78, 0.24);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1199.98px) {
+  .family-tax-contact-page .info-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .family-tax-contact-page .contact-hero {
+    padding: 72px 0 !important;
+  }
+
+  .family-tax-contact-page .contact-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .family-tax-contact-page .contact-hero {
+    padding: 58px 0 !important;
+  }
+
+  .family-tax-contact-page .contact-section {
+    padding: 54px 0 !important;
+  }
+
+  .family-tax-contact-page .contact-form-header,
+  .family-tax-contact-page .contact-form,
+  .family-tax-contact-page .info-card,
+  .family-tax-contact-page .help-card {
+    padding: 20px;
+  }
+
+  .family-tax-contact-page .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-tax-contact-page .info-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .family-tax-contact-page .contact-eyebrow {
+    padding: 8px 13px;
+    font-size: 11px;
+  }
+
+  .family-tax-contact-page .contact-form-header h2 {
+    align-items: flex-start;
+    font-size: 20px;
+  }
+
+  .family-tax-contact-page .contact-form-header i,
+  .family-tax-contact-page .contact-icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .family-tax-contact-page .info-card {
+    gap: 14px;
+  }
+
+  .family-tax-contact-page .whatsapp-btn {
+    width: 100%;
+  }
 }
