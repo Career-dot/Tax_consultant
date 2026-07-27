@@ -574,11 +574,11 @@
 }
 
 .family-tax-frontend.business-tax-page .check-list {
-    max-width: 760px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
 }
 
 .family-tax-frontend.business-tax-page .documents .check-list {
@@ -703,6 +703,7 @@
     color: var(--green-700);
     font-size: 0.7rem;
     font-weight: 800;
+    border: 1px solid var(--green-700);
     letter-spacing: 0.06em;
     padding: 5px 12px;
     border-radius: 999px;

@@ -252,7 +252,7 @@
                 <section class="included">
                     <div class="container">
                         <h2 class="section-title">What's Included in Business Tax Return Filing</h2>
-                        <ul class="check-list">
+                        <ul class="check-list ">
                             <li><span class="check-icon">✓</span> Preparation and filing of annual business income tax return on
                                 FBR IRIS</li>
                             <li><span class="check-icon">✓</span> Calculation of taxable business income after allowable

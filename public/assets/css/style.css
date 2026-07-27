@@ -5011,6 +5011,7 @@ Funfact Area
 .funfact h5 {
   margin-bottom: 0;
   font-weight: 700;
+  color: white;
   text-transform: uppercase;
 }
 .funfact:hover:before {
@@ -8005,14 +8006,15 @@ body {
 .pf-steps {
   position: relative;
 }
-.pf-steps:before {
+/* .pf-steps:before {
   content: "";
   position: absolute;
   top: 45px;
   left: 18%;
   right: 18%;
+  z-index: 2;
   border-top: 2px dashed #00588B;
-}
+} */
 .pf-step-card {
   position: relative;
   z-index: 1;
@@ -8025,6 +8027,7 @@ body {
   justify-content: center;
   width: 44px;
   height: 44px;
+  margin-top: 5px;
   margin-bottom: 18px;
   color: #fff;
   background: #2fa66a;
@@ -8032,7 +8035,7 @@ body {
   border-radius: 50%;
   font-size: 14px;
   font-weight: 700;
-  box-shadow: 0 8px 20px rgba(47, 166, 106, 0.24);
+  /* box-shadow: 0 8px 20px rgba(47, 166, 106, 0.24); */
 }
 .pf-step-card h3,
 .pf-trust-card h3,
@@ -9008,7 +9011,7 @@ img {
 }
 
 .color--theme {
-  color: var(--pf-green) !important;
+  color: #00AC1F;
 }
 
 .pf-header {

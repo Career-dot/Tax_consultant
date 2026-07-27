@@ -54,7 +54,7 @@
   margin:0 auto;
   padding:0 24px;
 }
-.family-tax-frontend.ntn-registration-page .container.narrow{max-width:920px;}
+.family-tax-frontend.ntn-registration-page .container.narrow{background-color: white;}
 
 .family-tax-frontend.ntn-registration-page ::selection{background:var(--green);color:#fff;}
 
@@ -204,7 +204,7 @@
   box-shadow:var(--shadow-lg);
   border:1px solid var(--border);
   overflow:hidden;
-  max-width:840px;
+  /* max-width:840px; */
   margin:0 auto;
 }
 .family-tax-frontend.ntn-registration-page .dashboard-mock-topbar{

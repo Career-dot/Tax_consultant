@@ -193,19 +193,6 @@
             </div>
         </section>
 
-        <section class="section-padding-white" aria-labelledby="included-title">
-            <div class="container">
-                <div class="section-header-center">
-                    <h2 id="included-title" class="section-heading">What's Included in Your Personal Tax Filing</h2>
-                </div>
-
-                <ul class="personal-check-list personal-check-list-narrow" role="list">
-                    @foreach ($includedItems as $item)
-                        <li><i class="fa fa-check" aria-hidden="true"></i><span>{{ $item }}</span></li>
-                    @endforeach
-                </ul>
-            </div>
-        </section>
 
         <section class="section-padding-bg" aria-labelledby="method-title">
             <div class="container">
@@ -223,15 +210,15 @@
                         <h3>Document Upload with Managed Filing</h3>
                         <p>Upload documents and let our team prepare the return for you. Ideal for busy professionals, multiple income sources, or first-time filers.</p>
                     </article>
+                    <article class="personal-addon">
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <div>
+                            <h3>CA Review Add-on</h3>
+                            <p>Add a deeper CA review for complex deductions, wealth reconciliation, refund checks, or tax-saving guidance for the next year.</p>
+                        </div>
+                    </article>
                 </div>
 
-                <article class="personal-addon">
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                    <div>
-                        <h3>CA Review Add-on</h3>
-                        <p>Add a deeper CA review for complex deductions, wealth reconciliation, refund checks, or tax-saving guidance for the next year.</p>
-                    </div>
-                </article>
             </div>
         </section>
 
@@ -277,13 +264,26 @@
             </div>
         </section>
 
+        <section class="section-padding-white" aria-labelledby="included-title">
+            <div class="container">
+                <div class="section-header-center">
+                    <h2 id="included-title" class="section-heading">What's Included in Your Personal Tax Filing</h2>
+                </div>
+
+                <ul class="personal-check-list personal-check-list-narrow personal-document-grid" role="list">
+                    @foreach ($includedItems as $item)
+                        <li><i class="fa fa-check" aria-hidden="true"></i><span>{{ $item }}</span></li>
+                    @endforeach
+                </ul>
+            </div>
+        </section>
         <section class="section-padding-white" aria-labelledby="process-title">
             <div class="container">
                 <div class="section-header-center">
                     <h2 id="process-title" class="section-heading">How the Filing Process Works</h2>
                 </div>
 
-                <ol class="process-wrapper personal-process-list" role="list">
+                <ol class="process-wrapper personal-process-list personal-document-grid" role="list">
                     @foreach ($process as $step)
                         <li class="process-step-row">
                             <span class="process-step-circle">{{ $loop->iteration }}</span>
