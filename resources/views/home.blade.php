@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tax Consultant')
+@section('title', 'FINANIC Business Consultants - Income Tax, Sales Tax, Withholding Tax & Litigation | Faisalabad')
 
 @section('content')
     <!-- Top Banner -->
@@ -10,24 +10,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12">
-                            <!-- <div class="banner__single__content">
-                                <h1>WORRIED
-                                    <span class="color--theme">ABOUT TAX?</span> WE ARE EXPERT IN
-                                    <span class="color--theme">TAX</span> SOLUTIONS</h1>
-                                <a href="{{ url('/contact') }}" class="cr-btn">
-                                    <span>Contact Now</span>
-                                </a>
-                            </div> -->
                              <div class="banner__single bg-image--2" data-black-overlay="6">
                 <div class="container">
                     <div class="row justify-content-left">
                         <div class="col-lg-9">
                             <div class="banner__single__content">
-                                <h1 class="mt-">Your
-                                    <span class="color--theme">Taxes,</span>filed in
-                                    <span class="color--theme">6</span> minutes.</h1>
-                                    <p class="pr-5">CA/ACCA consultants handle everything: income tax, NTN, GST, business registration, and USA LLC support, fully online. You answer a few questions; we do the rest.</p>
-                                
+                                <h1 class="mt-">FINANIC Business Consultants
+                                    <span class="color--theme">Your Outsource Office.</span></h1>
+                                    <p class="pr-5">Income tax, sales tax, withholding tax, and litigation support for traders, salaried persons, shopkeepers, SMEs and growing businesses across Faisalabad.</p>
+                                <div class="d-flex flex-wrap gap-3 mt-3">
+                                    <a href="{{ url('/contact') }}" class="cr-btn"><span>Talk to a Consultant</span></a>
+                                    <a href="{{ url('/pricing') }}" class="cr-btn cr-btn--transparent"><span>Tax Compliance Planner</span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,53 +31,30 @@
                     </div>
                 </div>
             </div>
-
-           
-
-            <!-- <div class="banner__single bg-image--3" data-black-overlay="6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-8">
-                            <div class="banner__single__content">
-                                <h1>WORRIED
-                                    <span class="color--theme">ABOUT TAX?</span> WE ARE EXPERT IN
-                                    <span class="color--theme">TAX</span> SOLUTIONS</h1>
-                                <a href="{{ url('/contact') }}" class="cr-btn">
-                                    <span>Contact Now</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
     <div class="logos-band">
         <div class="logos-label">
-            Trusted by professionals at
+            Serving clients across
         </div>
         <div class="marquee-track">
-            <div class="logo-chip">Engro</div>
-            <div class="logo-chip">UBL</div>
-            <div class="logo-chip">HBL</div>
-            <div class="logo-chip">Meezan Bank</div>
-            <div class="logo-chip">Allied Bank</div>
-            <div class="logo-chip">Telenor</div>
-            <div class="logo-chip">SECP</div>
-            <div class="logo-chip">ACCA</div>
-            <div class="logo-chip">PSEB</div>
-            <div class="logo-chip">AWS</div>
-            <div class="logo-chip">Engro</div>
-            <div class="logo-chip">UBL</div>
-            <div class="logo-chip">HBL</div>
-            <div class="logo-chip">Meezan Bank</div>
-            <div class="logo-chip">Allied Bank</div>
-            <div class="logo-chip">Telenor</div>
-            <div class="logo-chip">SECP</div>
-            <div class="logo-chip">ACCA</div>
-            <div class="logo-chip">PSEB</div>
-            <div class="logo-chip">AWS</div>
+            <div class="logo-chip">Distribution</div>
+            <div class="logo-chip">Transport</div>
+            <div class="logo-chip">Pharmaceuticals</div>
+            <div class="logo-chip">Services</div>
+            <div class="logo-chip">FMCG</div>
+            <div class="logo-chip">Cement</div>
+            <div class="logo-chip">Traders &amp; Shopkeepers</div>
+            <div class="logo-chip">Salaried Individuals</div>
+            <div class="logo-chip">Distribution</div>
+            <div class="logo-chip">Transport</div>
+            <div class="logo-chip">Pharmaceuticals</div>
+            <div class="logo-chip">Services</div>
+            <div class="logo-chip">FMCG</div>
+            <div class="logo-chip">Cement</div>
+            <div class="logo-chip">Traders &amp; Shopkeepers</div>
+            <div class="logo-chip">Salaried Individuals</div>
         </div>
     </div>
     <!-- //Top Banner -->
@@ -95,17 +66,16 @@
             <div class="container">
                 <div class="about-area__inside">
                     <div class="row">
-                        
                         <div class="col-lg-7">
                             <div class="about-area__content">
                                 <div class="sec-tag">Services</div>
                                 <h3 class="cd-headline cx-heading slide">Everything tax, in one place.</h3>
-                                <p>From a first NTN to full corporate compliance — our certified professionals handle it all, fully online. </p>
+                                <p>From FBR registration to tax litigation — our consultants handle income tax, sales tax, withholding tax and representation, fully managed for individuals, SMEs and corporate groups.</p>
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="about-area__image">
-                                <img class="wow slideInLeft" data-wow-delay="0" src="{{ asset('assets/images/about/about-thumbnail.webp') }}" alt="about area thumb">
+                                <img class="wow slideInLeft" data-wow-delay="0" src="{{ asset('assets/images/about/about-thumbnail.webp') }}" alt="FINANIC tax consultants at work">
                             </div>
                         </div>
                     </div>
@@ -116,43 +86,28 @@
 
         @php
             $serviceCards = [
-                ['icon' => 'fa-user-o', 'title' => 'File Your Tax', 'text' => 'Salary, business, freelancer and property tax returns prepared online by tax consultants.', 'url' => route('services.personal')],
-                ['icon' => 'fa-id-card-o', 'title' => 'NTN Registration', 'text' => 'Get registered with FBR and receive your NTN without visiting an office.', 'url' => route('services.ntn')],
-                ['icon' => 'fa-building-o', 'title' => 'Business Setup', 'text' => 'Register sole proprietorships, partnerships, companies and keep compliance on track.', 'url' => route('services.business')],
-                ['icon' => 'fa-bars', 'title' => 'GST Registration', 'text' => 'Sales tax registration, monthly returns and notices handled by specialists.', 'url' => route('services.gst')],
-                ['icon' => 'fa-check-circle-o', 'title' => 'Active Tax Status', 'text' => 'Move onto the ATL and keep your active taxpayer profile updated each year.', 'url' => route('services.iris')],
-                ['icon' => 'fa-calculator', 'title' => 'Tax Calculator', 'text' => 'Estimate salary, business and withholding tax before you file.', 'url' => route('services.salary')],
-                ['icon' => 'fa-home', 'title' => 'Property Taxes', 'text' => 'Capital gains, rent income and property purchase documentation made simple.', 'url' => route('services.personal')],
-                ['icon' => 'fa-globe', 'title' => 'USA LLC Support', 'text' => 'Formation, EIN guidance and bookkeeping support for founders working globally.', 'url' => url('/contact')],
-            ];
+                ['icon' => 'fa-user-o', 'title' => 'Income Tax Services', 'text' => 'Registration, annual return filing, and FBR notice/audit response for individuals, AOPs and companies.', 'url' => route('services.personal')],
+                ['icon' => 'fa-file-text-o', 'title' => 'Sales Tax Services', 'text' => 'Sales tax registration, monthly return filing, audits and refunds kept current and defensible.', 'url' => route('services.gst')],
+                ['icon' => 'fa-balance-scale', 'title' => 'Withholding Tax Services', 'text' => 'Withhold correctly, file statements on time, and respond effectively to default notices.', 'url' => route('services.family')],
+                ['icon' => 'fa-gavel', 'title' => 'Tax Litigation & Representation', 'text' => 'Representation from the assessing officer through the Appellate Tribunal and the High Court.', 'url' => route('services.business')],
+                ['icon' => 'fa-building-o', 'title' => 'Corporate / Retainer Services', 'text' => 'Consolidated monthly compliance across income tax, sales tax and withholding tax for multi-entity groups.', 'url' => route('services.business-tax')],
+                            ];
 
             $trustCards = [
-                ['icon' => 'fa-shield', 'title' => 'CA Certified Expertise', 'text' => 'Your case is reviewed by qualified tax professionals before submission.'],
-                ['icon' => 'fa-lock', 'title' => 'Bank-Grade Security', 'text' => 'Documents and personal details are handled through a secure online process.'],
-                ['icon' => 'fa-clock-o', 'title' => 'Fast Turnaround Times', 'text' => 'Most salaried returns are prepared quickly after the required details are complete.'],
-                ['icon' => 'fa-folder', 'title' => 'Affordable Pricing', 'text' => 'Transparent, flat-fee pricing with no hidden charges. Personal tax filing starts from just Rs 999, the most competitive rate in Pakistan.'],
-                ['icon' => 'fa-headphones', 'title' => 'Dedicated Support', 'text' => 'Get real-time support via WhatsApp, email, or phone. Our tax experts are available Monday to Saturday, 9 AM to 6 PM PKT.'],
-                ['icon' => 'fa-mobile', 'title' => '100% Online Process', 'text' => 'File from anywhere in Pakistan or abroad. No physical documents needed. Everything is handled digitally through our secure platform.'],
-            ];
-
-            $pricingPlans = [
-                ['title' => 'Salary Tax Filing', 'price' => 'Starting from Rs 999', 'featured' => true],
-                ['title' => 'Business Tax Return', 'price' => 'Starting from Rs 4,000', 'featured' => false],
-                ['title' => 'NTN Registration', 'price' => 'Starting from Rs 500', 'featured' => false],
-            ];
-
-            $testimonials = [
-                ['name' => 'Ayesha Khan', 'role' => 'Salaried Professional', 'image' => 'testimonial-author-1.webp', 'text' => 'The process was clean, quick and easy to understand. My filer status was handled without repeated office visits.'],
-                ['name' => 'Hamza Ali', 'role' => 'Business Owner', 'image' => 'testimonial-author-2.webp', 'text' => 'Their consultant explained each document and filed the return on time. The pricing was transparent from the start.'],
-                ['name' => 'Sara Niazi', 'role' => 'Freelancer', 'image' => 'testimonial-author-3.webp', 'text' => 'I had foreign income and several questions. The team guided me patiently and kept everything organized online.'],
+                ['icon' => 'fa-university', 'title' => 'FBR & Appellate Forum Practice', 'text' => 'Over 10 years of practice before the FBR and appellate forums, from first notice through to the High Court.'],
+                ['icon' => 'fa-industry', 'title' => 'Trusted Across Key Sectors', 'text' => 'Trusted by businesses across cement, transport, pharmaceutical, and FMCG sectors, alongside individual traders and shopkeepers.'],
+                ['icon' => 'fa-comments-o', 'title' => 'Clear, Practical Advice', 'text' => 'We explain your tax position in the language you\'re comfortable in — not buried in jargon.'],
+                ['icon' => 'fa-lock', 'title' => 'Client Confidentiality', 'text' => 'All client information, financial records, and case details are kept strictly confidential.'],
+                ['icon' => 'fa-refresh', 'title' => 'One-off or Ongoing Support', 'text' => 'From a single year\'s return filing to an ongoing monthly retainer that combines compliance with representation.'],
+                ['icon' => 'fa-map-marker', 'title' => 'Faisalabad-Based, FBR-Focused', 'text' => 'A Faisalabad-based practice built around income tax, sales tax, withholding tax and litigation work.'],
             ];
 
             $faqs = [
-                ['question' => 'What documents do I need to file my income tax return?', 'answer' => 'For most individuals, you need CNIC, salary certificate or income details, bank statements, tax deduction certificates, property or vehicle details and any expense records relevant to your return.'],
-                ['question' => 'Can I become a filer without visiting an FBR office?', 'answer' => 'Yes. Our consultants can help you register your NTN and prepare your return online after collecting the required information.'],
-                ['question' => 'How long does it take to file a tax return?', 'answer' => 'Simple salary cases can often be completed quickly once documents are ready. Business, property or notice cases may need more review.'],
-                ['question' => 'Do you also handle GST and business registration?', 'answer' => 'Yes. We support GST registration, monthly sales tax returns, company registration and ongoing compliance.'],
-                ['question' => 'Is my personal and financial information secure?', 'answer' => 'Yes. We use a controlled process, limit access to your case details and only request information required for filing or registration.'],
+                ['question' => 'What services does FINANIC Business Consultants offer?', 'answer' => 'We provide end-to-end tax support across four areas: income tax, sales tax, withholding tax compliance, and tax litigation/representation. We work with individual traders and shopkeepers on one-off filing needs, and with SMEs and multi-entity corporate groups on ongoing monthly retainer arrangements.'],
+                ['question' => 'Do you work with individuals as well as businesses?', 'answer' => 'Yes. We handle salaried individuals, business individuals, associations of persons (AOPs), and companies — from a single trader filing an annual return to a multi-entity group needing consolidated monthly compliance.'],
+                ['question' => 'What documents do I need to get started?', 'answer' => 'This depends on the service, but generally includes your CNIC, prior tax returns (if any), bank statements, and relevant business records. Once you get in touch, we provide a checklist specific to your situation.'],
+                ['question' => 'Is my information kept confidential?', 'answer' => 'Yes. All client information, financial records, and case details are kept strictly confidential and are never shared or published without your consent.'],
+                ['question' => 'Do you offer one-off services, or only ongoing retainers?', 'answer' => 'Both. We handle one-time needs like registration or a single year\'s return filing, as well as ongoing monthly retainer relationships that combine compliance work with representation if a dispute arises.'],
             ];
         @endphp
 
@@ -180,30 +135,30 @@
             <div class="container">
                 <div class="pf-section-heading text-center mx-auto">
                     <span class="pf-eyebrow">How it works</span>
-                    <h2>File Your Taxes in 3 Simple Steps</h2>
-                    <p>You answer a few simple questions. Our consultants review your documents, prepare the return and file it with FBR.</p>
+                    <h2>Your Outsource Tax Office, in 3 Steps</h2>
+                    <p>Share your details, our consultants review your case, and we handle filing or representation with the FBR on your behalf.</p>
                 </div>
 
                 <div class="pf-steps row g-4 justify-content-center">
                     <div class="col-lg-4 col-md-6">
                         <div class="pf-step-card">
                             <span class="pf-step-number">1</span>
-                            <h3>Share Your Details</h3>
-                            <p>Choose your tax service and upload the required documents through our online process.</p>
+                            <h3>Get in Touch</h3>
+                            <p>Tell us about your tax position — income tax, sales tax, withholding, or a dispute you're facing.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="pf-step-card">
                             <span class="pf-step-number">2</span>
-                            <h3>Review With Consultant</h3>
-                            <p>A tax expert reviews your case, confirms deductions and prepares an accurate return.</p>
+                            <h3>Consultant Review</h3>
+                            <p>Our team reviews your documents, confirms your obligations, and explains the next steps clearly.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="pf-step-card">
                             <span class="pf-step-number">3</span>
-                            <h3>Get Filed With FBR</h3>
-                            <p>We submit your return, share acknowledgement and help you track active taxpayer status.</p>
+                            <h3>Filed &amp; Represented</h3>
+                            <p>We handle filing with FBR or represent you at the relevant forum, keeping you informed throughout.</p>
                         </div>
                     </div>
                 </div>
@@ -216,8 +171,8 @@
             <div class="container">
                 <div class="pf-section-heading text-center mx-auto">
                     <span class="pf-eyebrow">Why choose us</span>
-                    <h2>Tax Filing Made Simple, Secure & Certified</h2>
-                    <p>From first-time filers to growing businesses, we combine tax expertise with a smooth online experience.</p>
+                    <h2>A Practical Tax Partner, Not Just a Filer</h2>
+                    <p>From individual traders to multi-entity corporate groups, we combine FBR compliance expertise with clear, practical advice.</p>
                 </div>
 
                 <div class="row g-4 justify-content-center">
@@ -235,62 +190,20 @@
         </section>
         <!--// Trust Area -->
 
-        <!-- Pricing Area -->
-        <section id="pricing-area" class="pf-home-section pf-pricing-section">
+        <!-- Planner Teaser Area -->
+        <section id="planner-teaser-area" class="pf-home-section pf-pricing-section">
             <div class="container">
-                <div class="pf-section-heading text-center mx-auto">
-                    <span class="pf-eyebrow">Affordable pricing</span>
-                    <h2>Honest, Affordable Tax Filing Fees</h2>
-                    <p>No surprise costs. Choose the service you need and speak with a consultant before filing.</p>
-                </div>
-
-                <div class="row g-4 justify-content-center align-items-stretch">
-                    @foreach ($pricingPlans as $plan)
-                        <div class="col-lg-3 col-md-4 col-sm-8">
-                            <a href="{{ url('/contact') }}" class="pf-price-card {{ $plan['featured'] ? 'is-featured' : '' }}">
-                                <span>{{ $plan['title'] }}</span>
-                                <strong>{{ $plan['price'] }}</strong>
-                                <small>Click to get started</small>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="text-center mt-4">
-                    <a href="{{ route('home') }}#features-area" class="pf-link-button">See all services <i class="fa fa-angle-right"></i></a>
+                <div class="pf-cta-panel text-center">
+                    <span class="pf-eyebrow">Never miss a deadline</span>
+                    <h2>Tax Compliance Planner</h2>
+                    <p>Get a personalized filing-deadline calendar built around your taxpayer type, registrations and sector — plus reminders ahead of each due date.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-3">
+                        <a href="{{ url('/pricing') }}" class="btn pf-cta-primary">Start Planner</a>
+                    </div>
                 </div>
             </div>
         </section>
-        <!--// Pricing Area -->
-
-        <!-- Testimonial Area -->
-        <section id="testimonial-area" class="pf-home-section pf-testimonial-section bg-white">
-            <div class="container">
-                <div class="pf-section-heading text-center mx-auto">
-                    <span class="pf-eyebrow">Client stories</span>
-                    <h2>Trusted by Thousands of Pakistanis</h2>
-                    <p>People across Pakistan trust our consultants for income tax, NTN and business compliance.</p>
-                </div>
-
-                <div class="row g-4">
-                    @foreach ($testimonials as $testimonial)
-                        <div class="col-lg-4 col-md-6">
-                            <article class="pf-testimonial-card">
-                                <p>{{ $testimonial['text'] }}</p>
-                                <div class="pf-testimonial-author">
-                                    <img src="{{ asset('assets/images/testimonial/' . $testimonial['image']) }}" alt="{{ $testimonial['name'] }}">
-                                    <div>
-                                        <h3>{{ $testimonial['name'] }}</h3>
-                                        <span>{{ $testimonial['role'] }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-        <!--// Testimonial Area -->
+        <!--// Planner Teaser Area -->
 
         <!-- FAQ Area -->
         <section id="faq-area" class="pf-home-section pf-faq-section">
@@ -312,7 +225,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="{{ url('/contact') }}" class="pf-link-button">Need help? Talk to a consultant <i class="fa fa-angle-right"></i></a>
+                    <a href="{{ route('faq') }}" class="pf-link-button">See all FAQs <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </section>
@@ -322,11 +235,11 @@
         <section id="cta-area" class="pf-cta-section">
             <div class="container">
                 <div class="pf-cta-panel text-center">
-                    <h2>Ready to Become a Tax Filer Today?</h2>
-                    <p>Join thousands of Pakistanis who file their taxes online, accurately and on time.</p>
+                    <h2>Ready to Simplify Your Tax Compliance?</h2>
+                    <p>Whether it's a single return, ongoing retainer, or a dispute with the FBR — talk to a FINANIC consultant today.</p>
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="{{ url('/contact') }}" class="btn pf-cta-primary">Start Filing Now</a>
-                        <a href="{{ url('/contact') }}" class="btn pf-cta-secondary"><i class="fa fa-whatsapp"></i> Talk to a Consultant</a>
+                        <a href="{{ url('/contact') }}" class="btn pf-cta-primary">Talk to a Consultant</a>
+                        <a href="https://wa.me/923XXXXXXXXX" class="btn pf-cta-secondary" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> Message on WhatsApp</a>
                     </div>
                 </div>
             </div>

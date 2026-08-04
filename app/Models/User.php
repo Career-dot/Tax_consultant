@@ -22,6 +22,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'cnic',
+        'city',
+        'address',
+        'avatar_path',
+        'notification_preferences',
     ];
 
     /**
@@ -44,6 +50,20 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'notification_preferences' => 'array',
         ];
+    }
+
+    public function initials(): string
+    {
+        $words = preg_split('/\s+/', trim($this->name));
+        $initials = array_map(fn ($word) => mb_strtoupper(mb_substr($word, 0, 1)), array_slice($words, 0, 2));
+
+        return implode('', $initials) ?: 'U';
+    }
+
+    public function avatarUrl(): ?string
+    {
+        return $this->avatar_path ? asset('storage/'.$this->avatar_path) : null;
     }
 }

@@ -229,12 +229,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  const authFormEndpoints = {
+    'sign-in': true,
+    'sign-up': true,
+  };
+
+  function clearFormErrors(form) {
+    form.querySelectorAll('[data-auth-error-for]').forEach((el) => {
+      el.textContent = '';
+      el.hidden = true;
+    });
+    form.querySelectorAll('.is-invalid').forEach((el) => el.classList.remove('is-invalid'));
+
+    const summary = form.querySelector('[data-auth-error-summary]');
+    if (summary) {
+      summary.textContent = '';
+      summary.hidden = true;
+    }
+  }
+
+  function showFormErrors(form, errors, fallbackMessage) {
+    let firstMessage = fallbackMessage || '';
+
+    Object.entries(errors || {}).forEach(([field, messages]) => {
+      const message = Array.isArray(messages) ? messages[0] : messages;
+      if (!firstMessage) firstMessage = message;
+
+      const input = form.querySelector(`[name="${field}"]`);
+      if (input) input.classList.add('is-invalid');
+
+      const errorEl = form.querySelector(`[data-auth-error-for="${field}"]`);
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.hidden = false;
+      }
+    });
+
+    const summary = form.querySelector('[data-auth-error-summary]');
+    if (summary && firstMessage) {
+      summary.textContent = firstMessage;
+      summary.hidden = false;
+    }
+  }
+
+  function setFormLoading(form, isLoading) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton) return;
+    submitButton.disabled = isLoading;
+    submitButton.classList.toggle('is-loading', isLoading);
+  }
+
   modal.querySelectorAll('[data-auth-form]').forEach((form) => {
+    const viewName = form.dataset.authForm;
+
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+
       if (!form.checkValidity()) {
         form.reportValidity();
+        return;
       }
+
+      if (!authFormEndpoints[viewName]) return;
+
+      clearFormErrors(form);
+      setFormLoading(form, true);
+
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'X-CSRF-TOKEN': csrfToken || '',
+          'X-Requested-With': 'XMLHttpRequest',
+          Accept: 'application/json',
+        },
+        body: new FormData(form),
+      })
+        .then(async (response) => {
+          const payload = await response.json().catch(() => ({}));
+
+          if (response.status === 422) {
+            showFormErrors(form, payload.errors);
+            return;
+          }
+
+          if (!response.ok) {
+            showFormErrors(form, null, payload.message || 'Something went wrong. Please try again.');
+            return;
+          }
+
+          if (payload.redirect) {
+            window.location.href = payload.redirect;
+          }
+        })
+        .catch(() => {
+          showFormErrors(form, null, 'Network error. Please check your connection and try again.');
+        })
+        .finally(() => setFormLoading(form, false));
     });
   });
 
@@ -295,4 +387,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderOnboardingStep(0);
+
+  if (modal.dataset.openOnLoad) {
+    openModal(modal.dataset.openOnLoad);
+  }
 });

@@ -1,53 +1,35 @@
 @php
     $serviceMenuItems = [
         [
-            'title' => 'Personal Tax Filing',
-            'description' => 'File your FBR income tax return as an individual or salaried employee.',
+            'title' => 'Income Tax Services',
+            'description' => 'Registration, annual return filing, and FBR notice/audit response for individuals, AOPs and companies.',
             'route' => 'services.personal',
             'icon' => 'fa-user-o',
         ],
         [
-            'title' => 'Family Tax Filing',
-            'description' => 'Manage and file tax returns for multiple family members.',
-            'route' => 'services.family',
-            'icon' => 'fa-users',
-        ],
-        [
-            'title' => 'Business Tax Return',
-            'description' => 'CA-reviewed tax return filing for businesses and entities.',
-            'route' => 'services.business-tax',
-            'icon' => 'fa-building-o',
-        ],
-        [
-            'title' => 'NTN Registration',
-            'description' => 'Get your National Tax Number registered with FBR.',
-            'route' => 'services.ntn',
-            'icon' => 'fa-id-card-o',
-        ],
-        [
-            'title' => 'IRIS Profile Update',
-            'description' => 'Update your FBR IRIS profile for salary or business changes.',
-            'route' => 'services.iris',
-            'icon' => 'fa-user',
-        ],
-        [
-            'title' => 'GST Registration',
-            'description' => 'Register your business for General Sales Tax with FBR.',
+            'title' => 'Sales Tax Services',
+            'description' => 'Sales tax registration, monthly return filing, audits and refunds.',
             'route' => 'services.gst',
             'icon' => 'fa-file-text-o',
         ],
         [
-            'title' => 'Business Incorporation',
-            'description' => 'Company registration, NPO setup, PSEB and more.',
-            'route' => 'services.business',
-            'icon' => 'fa-briefcase',
+            'title' => 'Withholding Tax Services',
+            'description' => 'Correct withholding at source, statement filing, and default notice defense.',
+            'route' => 'services.family',
+            'icon' => 'fa-balance-scale',
         ],
         [
-            'title' => 'Salary Tax Calculator',
-            'description' => 'Free calculator to estimate your income tax.',
-            'route' => 'services.salary',
-            'icon' => 'fa-calculator',
+            'title' => 'Tax Litigation & Representation',
+            'description' => 'Representation from the assessing officer through the Appellate Tribunal and High Court.',
+            'route' => 'services.business',
+            'icon' => 'fa-gavel',
         ],
+        [
+            'title' => 'Corporate / Retainer Services',
+            'description' => 'Consolidated monthly compliance across income tax, sales tax and withholding tax for multi-entity groups.',
+            'route' => 'services.business-tax',
+            'icon' => 'fa-building-o',
+        ]
     ];
 @endphp
 

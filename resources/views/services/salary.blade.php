@@ -1,6 +1,7 @@
 ﻿@extends('layouts.app')
 
-@section('title', 'Salary Tax Calculator | Tax Consultant')
+@section('title', 'Salary Withholding Tax Calculator | FINANIC Business Consultants')
+@section('meta_description', 'Free calculator to estimate salary withholding tax under current FBR tax slabs, from FINANIC Business Consultants.')
 @section('body_class', 'pf-service-body')
 
 
@@ -16,11 +17,11 @@
           <span aria-hidden="true">/</span>
           <span>Salary Tax Calculator</span>
         </nav> -->
-        <span class="eyebrow">Free Salary Tax Calculator</span>
-        <h1 id="hero-title">Pakistan Salary Tax Calculator: Know Your Tax Before You File</h1>
+        <span class="eyebrow">Free Salary Withholding Calculator</span>
+        <h1 id="hero-title">Salary Withholding Tax Calculator: Know Your Tax Before You File</h1>
         <p class="lead">
-          Use our free, up-to-date salary tax calculator to instantly estimate your annual
-          income tax liability under Pakistan's FBR tax slabs for Tax Year 2024&ndash;25.
+          Use our free salary withholding tax calculator to instantly estimate your annual
+          income tax liability under Pakistan's current FBR tax slabs.
           No signup required.
         </p>
         <ul class="hero-chips" role="list">
@@ -76,11 +77,11 @@
         </div>
 
         <div class="calc-below">
-          <a href="{{ route('contact') }}" class="calc-link">Ready to File? Start Your Tax Return from Rs 999 <i
+          <a href="{{ route('services.personal') }}" class="calc-link">Ready to File? Talk to a Consultant <i
               class="fa fa-arrow-right" aria-hidden="true"></i></a>
         </div>
         <p class="calc-disclaimer">This calculator provides an estimate only. Actual tax liability may vary based on
-          specific deductions, credits, and FBR rules. Consult a CA for precise calculations.</p>
+          specific deductions, credits, and FBR rules. Consult FINANIC for precise calculations.</p>
       </div>
     </section>
 
@@ -190,13 +191,13 @@
     <aside class="cta-banner" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-content">
-          <h2 id="cta-title">Ready to Become a Tax Filer Today?</h2>
-          <p>Join thousands of Pakistanis who file their taxes online, quickly, securely, and affordably.</p>
+          <h2 id="cta-title">Ready to File Your Income Tax Return?</h2>
+          <p>Talk to a FINANIC consultant about your income tax filing and withholding position.</p>
           <div class="cta-btn-row">
-            <a href="{{ route('contact') }}" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
+            <a href="{{ route('services.personal') }}" class="btn-cta-primary">Start Filing Now <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
             <a href="{{ route('contact') }}" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to
-              an Expert</a>
+              a Consultant</a>
           </div>
         </div>
       </div>

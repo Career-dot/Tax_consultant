@@ -1,69 +1,64 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Tax Consultant')
+@section('title', 'About Us - FINANIC Business Consultants')
+@section('meta_description', 'FINANIC Business Consultants is a Faisalabad-based tax consultancy serving individual traders, shopkeepers, and multi-entity business groups since 2015.')
 
 @section('content')
     @php
-        $whyChooseUs = [
-            ['icon' => 'fa-graduation-cap', 'title' => 'Integrity', 'text' => 'We never compromise on accuracy or compliance. Every filing we submit is legally correct and in full compliance with FBR regulations.'],
-            ['icon' => 'fa-check-square-o', 'title' => 'Transparency', 'text' => 'What you see in our pricing is what you pay. We communicate all fees, timelines, and service details clearly and upfront. No hidden charges, ever.'],
-            ['icon' => 'fa-clock-o', 'title' => 'Accessibility', 'text' => 'We believe every Pakistani deserves access to professional tax services at a fair price.'],
-            ['icon' => 'fa-lock', 'title' => 'Excellence', 'text' => 'We hold ourselves to the highest professional standards. Our CA team reviews every filing, our processes are continuously improved.'],
-           
+        $values = [
+            ['icon' => 'fa-check-square-o', 'title' => 'Integrity', 'text' => 'We never compromise on accuracy or compliance. Every filing we submit is legally correct and in full compliance with FBR regulations.'],
+            ['icon' => 'fa-eye', 'title' => 'Transparency', 'text' => 'We communicate all fees, timelines, and service details clearly and upfront, with no hidden charges.'],
+            ['icon' => 'fa-clock-o', 'title' => 'Accessibility', 'text' => 'We believe every client deserves access to professional tax services, explained in the language they are comfortable in.'],
+            ['icon' => 'fa-graduation-cap', 'title' => 'Excellence', 'text' => 'We hold ourselves to the highest professional standards, and our processes are continuously improved.'],
         ];
 
         $services = [
-            ['icon' => 'fa-user-o', 'title' => 'Personal Tax Filing', 'text' => 'Income tax returns for salaried individuals, freelancers, property owners and overseas Pakistanis.', 'url' => route('pricing')],
-            ['icon' => 'fa-briefcase', 'title' => 'Business Tax Filing', 'text' => 'Tax return preparation for sole proprietors, partnerships, AOPs and registered companies.', 'url' => route('pricing')],
-            ['icon' => 'fa-id-card-o', 'title' => 'NTN Registration', 'text' => 'FBR registration support for individuals, proprietors, partnerships and companies.', 'url' => route('pricing')],
-            ['icon' => 'fa-file-text-o', 'title' => 'GST Registration', 'text' => 'Sales tax registration, monthly filing guidance and compliance support.', 'url' => route('pricing')],
-            ['icon' => 'fa-building-o', 'title' => 'Company Registration', 'text' => 'Business registration assistance for entrepreneurs, SMEs and corporate clients.', 'url' => url('/contact')],
-            ['icon' => 'fa-comments-o', 'title' => 'Tax Consultancy', 'text' => 'Professional advice for notices, planning, withholding taxes and annual compliance.', 'url' => url('/contact')],
+            ['icon' => 'fa-user-o', 'title' => 'Income Tax Services', 'text' => 'Registration and annual return filing to responding to FBR notices and audit proceedings, for individuals, AOPs, and companies.', 'url' => route('services.personal')],
+            ['icon' => 'fa-file-text-o', 'title' => 'Sales Tax Services', 'text' => 'Sales tax registration to monthly return filing, audits, and refunds — kept current and defensible.', 'url' => route('services.gst')],
+            ['icon' => 'fa-balance-scale', 'title' => 'Withholding Tax Services', 'text' => 'Withhold correctly, file statements on time, and respond effectively to withholding default notices.', 'url' => route('services.family')],
+            ['icon' => 'fa-gavel', 'title' => 'Tax Litigation & Representation', 'text' => 'Representation at every forum, from the assessing officer through to the Appellate Tribunal and the High Court.', 'url' => route('services.business')],
+            ['icon' => 'fa-building-o', 'title' => 'Corporate / Retainer Services', 'text' => 'Consolidated monthly compliance for multi-entity groups across income tax, sales tax and withholding tax.', 'url' => route('services.business-tax')],
+            ['icon' => 'fa-comments-o', 'title' => 'Tax Consultancy', 'text' => 'Professional advice on notices, planning, and annual compliance, explained in plain terms.', 'url' => url('/contact')],
         ];
 
-        $stats = [
-            ['number' => '5000+', 'label' => 'Tax Returns Filed'],
-            ['number' => '15+', 'label' => 'NTNs Registered'],
-            ['number' => '98%', 'label' => 'Client Satisfaction'],
-            ['number' => '100%', 'label' => 'Secure & Encrypted'],
+        $facts = [
+            ['number' => '2015', 'label' => 'Established in Faisalabad'],
+            ['number' => '4', 'label' => 'Practice Areas'],
+            ['number' => '4', 'label' => 'Forums of Representation'],
+            ['number' => '6+', 'label' => 'Sectors Served'],
         ];
 
-        $team = [
-            ['image' => 'advisor-1.webp', 'name' => 'Adeel Khan', 'role' => 'Senior Tax Consultant'],
-            ['image' => 'advisor-2.webp', 'name' => 'Sara Ahmed', 'role' => 'Corporate Compliance Lead'],
-            ['image' => 'advisor-3.webp', 'name' => 'Bilal Sheikh', 'role' => 'NTN & GST Specialist'],
-            ['image' => 'advisor-4.webp', 'name' => 'Mariam Raza', 'role' => 'Client Success Manager'],
+        $forums = [
+            'Regional Tax Office',
+            'Commissioner Inland Revenue (Appeals)',
+            'Appellate Tribunal Inland Revenue',
+            'High Court',
+        ];
+
+        $industries = [
+            ['icon' => 'fa-cube', 'title' => 'Cement & Distribution'],
+            ['icon' => 'fa-truck', 'title' => 'Transport'],
+            ['icon' => 'fa-medkit', 'title' => 'Pharmaceuticals'],
+            ['icon' => 'fa-cogs', 'title' => 'Services'],
+            ['icon' => 'fa-shopping-basket', 'title' => 'FMCG'],
+            ['icon' => 'fa-shopping-bag', 'title' => 'Individual Traders & Shopkeepers'],
         ];
 
         $process = [
             ['icon' => 'fa-comments-o', 'title' => 'Consultation', 'text' => 'We understand your income profile, business structure and filing requirements.'],
             ['icon' => 'fa-folder-open-o', 'title' => 'Document Collection', 'text' => 'Our team shares a clear checklist and organizes the required records.'],
-            ['icon' => 'fa-calculator', 'title' => 'Tax Preparation', 'text' => 'Your return is prepared with tax credits, assets and deductions reviewed.'],
-            ['icon' => 'fa-search', 'title' => 'Review', 'text' => 'A consultant checks the return and confirms the details before submission.'],
-            ['icon' => 'fa-paper-plane-o', 'title' => 'Submission', 'text' => 'We file with FBR and share acknowledgement for your records.'],
-            ['icon' => 'fa-life-ring', 'title' => 'Support', 'text' => 'Post-filing support is available for ATL tracking, notices and future compliance.'],
-        ];
-
-        $testimonials = [
-            ['image' => 'testimonial-author-1.webp', 'name' => 'Ayesha Khan', 'role' => 'Salaried Professional', 'text' => 'The team made my first tax filing simple. Every step was explained clearly and submitted on time.'],
-            ['image' => 'testimonial-author-2.webp', 'name' => 'Hamza Ali', 'role' => 'Business Owner', 'text' => 'Their business filing support was organized, professional and transparent from the first call.'],
-            ['image' => 'testimonial-author-3.webp', 'name' => 'Sara Niazi', 'role' => 'Freelancer', 'text' => 'I had foreign income questions and they handled the whole process with patience and accuracy.'],
-        ];
-
-        $faqs = [
-            ['question' => 'Who can use your tax filing services?', 'answer' => 'We support salaried individuals, freelancers, business owners, companies, property owners and overseas Pakistanis who need reliable tax compliance in Pakistan.'],
-            ['question' => 'Do I need to visit your office?', 'answer' => 'Most services can be completed online. Our consultants collect information digitally, prepare the case and guide you through approval or filing steps.'],
-            ['question' => 'Is my financial information secure?', 'answer' => 'Yes. We only request the information required for your case and handle documents through a controlled, confidential workflow.'],
-            ['question' => 'Can you help with FBR notices?', 'answer' => 'Yes. Our consultants can review FBR notices, explain the response required and help prepare supporting documentation.'],
+            ['icon' => 'fa-calculator', 'title' => 'Preparation & Review', 'text' => 'Your return or response is prepared and reviewed for accuracy and compliance.'],
+            ['icon' => 'fa-paper-plane-o', 'title' => 'Submission', 'text' => 'We file with FBR or the relevant forum, and share acknowledgement for your records.'],
+            ['icon' => 'fa-life-ring', 'title' => 'Ongoing Support', 'text' => 'Post-filing support is available for ATL tracking, notices, and future compliance.'],
+            ['icon' => 'fa-gavel', 'title' => 'Representation', 'text' => 'If a dispute arises, we represent you at every stage of the appellate process.'],
         ];
     @endphp
 
     <div class="cr-breadcrumb-area section-padding--md">
         <div class="container">
             <div class="cr-breadcrumb ">
-                <h1>Pakistan's Most Trusted Online <span> Tax Consultant</span> Platform</h1>
-                <p>We started Tax Consultant with a simple mission: to make Pakistan's complex tax system accessible, understandable, and manageable for every citizen, from first-time filers to established businesses.</p>
-                
+                <h1>Faisalabad's Trusted <span>FINANIC Business Consultants</span> — Your Outsource Office</h1>
+                <p>Income tax, sales tax, withholding tax compliance and advisory, and tax litigation/representation under the FBR framework — explained in the language you're comfortable in.</p>
             </div>
         </div>
     </div>
@@ -74,28 +69,28 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="about-image-frame wow slideInLeft">
-                            <img src="{{ asset('assets/images/about/about-thumbnail.webp') }}" alt="Tax consultants working with clients">
+                            <img src="{{ asset('assets/images/about/about-thumbnail.webp') }}" alt="FINANIC Business Consultants team at work">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="section-title no-padding">
-                            <h4>ABOUT COMPANY</h4>
-                            <h2>Pakistan's Trusted <span class="color--theme">Tax Partner</span></h2>
-                            <p>We help individuals, freelancers and businesses file taxes, register with FBR and stay compliant without confusing paperwork or repeated office visits.</p>
+                            <h4>ABOUT THE PRACTICE</h4>
+                            <h2>Your <span class="color--theme">Outsource</span> Tax Office</h2>
+                            <p>FINANIC Business Consultants is a Faisalabad-based tax consultancy serving individual traders, shopkeepers, and multi-entity business groups. Our practice covers income tax, sales tax, and withholding tax compliance, along with representation in tax litigation.</p>
                         </div>
                         <div class="about-mission-grid">
                             <article>
                                 <span><i class="fa fa-bullseye"></i></span>
-                                <h3>Our Mission</h3>
-                                <p>Make professional tax compliance simple, affordable and accessible through expert online support.</p>
+                                <h3>Who We Serve</h3>
+                                <p>Individual traders and shopkeepers, salaried individuals, SMEs, and multi-entity corporate groups across sectors such as distribution, transport, pharmaceuticals, services, and FMCG.</p>
                             </article>
                             <article>
                                 <span><i class="fa fa-eye"></i></span>
-                                <h3>Our Vision</h3>
-                                <p>Become the most reliable digital tax partner for Pakistanis at home and abroad.</p>
+                                <h3>Where We Represent You</h3>
+                                <p>{{ implode(', ', $forums) }}.</p>
                             </article>
                         </div>
-                        <a href="{{ url('/contact') }}" class="cr-btn"><span>Read More</span></a>
+                        <a href="{{ url('/contact') }}" class="cr-btn"><span>Talk to a Consultant</span></a>
                     </div>
                 </div>
             </div>
@@ -104,14 +99,8 @@
         <section class="about-feature-area section-padding--xlg bg--grey--light">
             <div class="container">
                 <div class="section-title text-center">
-                    
-                    <h2>Why We Built <span class="color--theme">Tax Consultant</span></h2>
-                    <p>Pakistan has millions of taxpayers who are either unaware of their filing obligations, unable to navigate FBR's complex systems, or forced to pay excessive CA fees for straightforward filings. We saw this gap and decided to fill it.By combining professional CA expertise with technology, we created a platform that makes tax filing as simple as ordering food online. You submit your information, we handle the complexity, and you receive your filing confirmation, without ever leaving your home.Since launch, we have helped thousands of Pakistanis become active tax filers, registered hundreds of businesses, and saved our clients significant time and money. And we're just getting started.</p>
-                </div>
-
-                <div class="row g-4 bg-wheet">
-                    
-                    
+                    <h2>Our <span class="color--theme">Firm History</span></h2>
+                    <p>FINANIC Business Consultants was established in 2015 in Faisalabad with a clear purpose: to give clients straightforward, practical tax advice explained in the language they're comfortable in. Since then, the firm has grown from serving individual traders and shopkeepers in Faisalabad's local markets into a full-service tax practice trusted by SMEs and corporate clients alike — handling income tax, sales tax, and withholding tax compliance, along with representation before the Regional Tax Office, the Commissioner Inland Revenue (Appeals), the Appellate Tribunal Inland Revenue, and the High Court. Today, FINANIC Business Consultants works with a wide client base spanning individual traders, growing SMEs, and multi-entity corporate groups across sectors including cement distribution, transport, pharmaceuticals, and FMCG. Whatever the size of the client, the same principle from 2015 still holds: tax advice should be clear, practical, and explained in plain terms — not buried in jargon.</p>
                 </div>
             </div>
         </section>
@@ -119,14 +108,49 @@
         <section class="about-services-area section-padding--xlg bg--white">
             <div class="container">
                 <div class="section-title text-center">
-                     <h2>The Values That Drive Us</h2>
-                       <p>Pakistan has millions of taxpayers who are either unaware of their filing obligations, unable to navigate FBR's complex systems, or forced to pay excessive CA fees for straightforward filings. We saw this gap and decided to fill it.
-                    </p>
+                     <h2>What We <span class="color--theme">Do</span></h2>
+                       <p>Our practice covers four core areas of FBR compliance and representation, plus consolidated retainer support for multi-entity groups.</p>
                 </div>
 
                 <div class="row g-4">
-                   @foreach ($whyChooseUs as $item)
-                        <div class=" col-md-6">
+                    @foreach ($services as $service)
+                        <div class="col-lg-4 col-md-6">
+                            <a href="{{ $service['url'] }}" class="about-feature-card wow fadeInUp d-block">
+                                <span><i class="fa {{ $service['icon'] }}"></i></span>
+                                <h3>{{ $service['title'] }}</h3>
+                                <p>{{ $service['text'] }}</p>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <section class="funfact-area bg--grey--light section-padding--lg">
+            <div class="container">
+                <div class="row funfacts">
+                    @foreach ($facts as $fact)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="funfact text-center about-stat-box">
+                                <h2><span class="counter">{{ $fact['number'] }}</span></h2>
+                                <h5>{{ $fact['label'] }}</h5>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        <section class="about-values-area section-padding--xlg bg--white">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h4>OUR PRINCIPLES</h4>
+                    <h2>The Values That <span class="color--theme">Drive Us</span></h2>
+                </div>
+
+                <div class="row g-4">
+                   @foreach ($values as $item)
+                        <div class="col-md-6">
                             <article class="about-feature-card wow fadeInUp">
                                 <span><i class="fa {{ $item['icon'] }}"></i></span>
                                 <h3>{{ $item['title'] }}</h3>
@@ -138,64 +162,42 @@
             </div>
         </section>
 
-        <section class="funfact-area bg--grey--light section-padding--lg">
-            <div class="container">
-                <div class="row funfacts">
-                    @foreach ($stats as $stat)
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="funfact text-center about-stat-box">
-                                <h2><span class="counter">{{ $stat['number'] }}</span></h2>
-                                <h5>{{ $stat['label'] }}</h5>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-
-        <section class="advisor-area bg--white section-padding--xlg">
+        <section class="about-industries-area section-padding--xlg bg--grey--light">
             <div class="container">
                 <div class="section-title text-center">
-                    <h4>MEET OUR TEAM</h4>
-                    <h2>Professional <span class="color--theme">Tax Advisors</span></h2>
-                    <p>Our consultants bring tax knowledge, documentation discipline and client-first communication to every case.</p>
-                </div>
-
-                <div class="row advisors">
-                    @foreach ($team as $member)
-                        <div class="col-lg-3 col-sm-6">
-                            <figure class="advisor about-advisor-card">
-                                <div class="advisor__image">
-                                    <img src="{{ asset('assets/images/advisors/' . $member['image']) }}" alt="{{ $member['name'] }}">
-                                    <div class="about-team-social">
-                                        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="https://twitter.com/" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                                <figcaption class="advisor__content">
-                                    <h6>{{ $member['name'] }}</h6>
-                                    <p>{{ $member['role'] }}</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-
-        <section class="about-process-area section-padding--xlg bg--grey--light">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h4>OUR PROCESS</h4>
-                    <h2>From Consultation To <span class="color--theme">Submission</span></h2>
+                    <h4>INDUSTRIES WE SERVE</h4>
+                    <h2>Client Sectors We <span class="color--theme">Work With</span></h2>
+                    <p>From individual traders and shopkeepers to multi-entity corporate groups, across a range of sectors.</p>
                 </div>
 
                 <div class="row g-4">
-                    @foreach ($process as $index => $step)
+                    @foreach ($industries as $industry)
+                        <div class="col-lg-4 col-md-6">
+                            <a href="{{ route('industries') }}" class="about-feature-card wow fadeInUp text-center d-block">
+                                <span><i class="fa {{ $industry['icon'] }}"></i></span>
+                                <h3>{{ $industry['title'] }}</h3>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{{ route('industries') }}" class="cr-btn"><span>Explore Industries We Serve</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-process-area section-padding--xlg bg--white">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h4>OUR PROCESS</h4>
+                    <h2>From Consultation To <span class="color--theme">Representation</span></h2>
+                </div>
+
+                <div class="row g-4">
+                    @foreach ($process as $step)
                         <div class="col-lg-4 col-md-6">
                             <article class="about-process-card wow fadeInUp">
-                                <!-- <div class="about-process-number">{{ $index + 1 }}</div> -->
                                 <span><i class="fa {{ $step['icon'] }}"></i></span>
                                 <h3>{{ $step['title'] }}</h3>
                                 <p>{{ $step['text'] }}</p>
@@ -206,63 +208,13 @@
             </div>
         </section>
 
-        <section class="testimonial-area section-padding--xlg bg--white">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h4>CLIENT FEEDBACK</h4>
-                    <h2>Trusted By <span class="color--theme">Tax Filers</span></h2>
-                </div>
-
-                <div class="row g-4">
-                    @foreach ($testimonials as $testimonial)
-                        <div class="col-lg-4 col-md-6">
-                            <article class="pf-testimonial-card about-testimonial-card">
-                                <p>{{ $testimonial['text'] }}</p>
-                                <div class="pf-testimonial-author">
-                                    <img src="{{ asset('assets/images/testimonial/' . $testimonial['image']) }}" alt="{{ $testimonial['name'] }}">
-                                    <div>
-                                        <h3>{{ $testimonial['name'] }}</h3>
-                                        <span>{{ $testimonial['role'] }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-<!-- 
-        <section class="about-faq-area section-padding--xlg bg--grey--light">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h4>FAQ</h4>
-                    <h2>Frequently Asked <span class="color--theme">Questions</span></h2>
-                </div>
-
-                <div class="accordion korde-faq mx-auto" id="aboutFaq">
-                    @foreach ($faqs as $index => $faq)
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="aboutFaqHeading{{ $index }}">
-                                <button class="accordion-button {{ $index === 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#aboutFaqCollapse{{ $index }}" aria-expanded="{{ $index === 0 ? 'true' : 'false' }}" aria-controls="aboutFaqCollapse{{ $index }}">
-                                    {{ $faq['question'] }}
-                                </button>
-                            </h3>
-                            <div id="aboutFaqCollapse{{ $index }}" class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}" aria-labelledby="aboutFaqHeading{{ $index }}" data-bs-parent="#aboutFaq">
-                                <div class="accordion-body">{{ $faq['answer'] }}</div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section> -->
-
         <section class="cta-area section-padding--sm pf-cta-section">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="calltoaction text-center">
-                            <h3>Ready To Simplify Your <span class="color--theme">Tax Journey?</span></h3>
-                            <p>Start with a consultant-led process that keeps tax filing simple, secure and professionally handled.</p>
+                            <h3>Ready To Simplify Your <span class="color--theme">Tax Compliance?</span></h3>
+                            <p>Start with a consultant-led process that keeps your income tax, sales tax and withholding tax compliance simple, secure and professionally handled.</p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                                 <a href="{{ url('/contact') }}" class="cr-btn"><span>Get Started</span></a>
                                 <a href="{{ url('/contact') }}" class="cr-btn cr-btn--transparent"><span>Contact Us</span></a>

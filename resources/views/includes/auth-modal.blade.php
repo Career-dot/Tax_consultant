@@ -1,4 +1,4 @@
-<div class="pf-auth-modal" id="pfAuthModal" hidden aria-hidden="true">
+<div class="pf-auth-modal" id="pfAuthModal" hidden aria-hidden="true" @if (session('open_auth_modal')) data-open-on-load="{{ session('open_auth_modal') }}" @endif>
     <div class="pf-auth-modal-backdrop" data-auth-close></div>
 
     <section class="pf-auth-modal-dialog" role="dialog" aria-modal="true" aria-label="Authentication and onboarding" tabindex="-1">
@@ -12,17 +12,20 @@
                     <!-- <span class="pf-auth-modal-mark" aria-hidden="true">CI</span> -->
                     <!-- <p class="pf-auth-modal-kicker">Secure account access</p> -->
                     <h2 id="pfAuthModalTitle">Welcome back!</h2>
-                    <p>Sign in to continue your tax filing, NTN, GST, or business registration case.</p>
+                    <p>Sign in to continue your income tax, sales tax, withholding tax, or litigation case with FINANIC.</p>
                 </div>
 
-                <form class="pf-auth-modal-form" data-auth-form="sign-in" action="#" method="post">
+                <form class="pf-auth-modal-form" data-auth-form="sign-in" action="{{ route('login') }}" method="post">
                     @csrf
+                    <p class="pf-auth-error-summary" data-auth-error-summary hidden></p>
+
                     <div class="pf-auth-field">
                         <label for="modalSigninEmail">Email address</label>
                         <div class="pf-auth-input-icon">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             <input id="modalSigninEmail" name="signin_email" type="email" autocomplete="email" placeholder="you@example.com" required>
                         </div>
+                        <span class="pf-auth-field-error" data-auth-error-for="signin_email" hidden></span>
                     </div>
 
                     <div class="pf-auth-field">
@@ -36,6 +39,7 @@
                                     </button>
                                 </div>
                         </div>
+                        <span class="pf-auth-field-error" data-auth-error-for="signin_password" hidden></span>
                     </div>
 
                     <div class="pf-auth-meta-row">
@@ -64,11 +68,13 @@
                     <!-- <span class="pf-auth-modal-mark" aria-hidden="true">CI</span> -->
                     <!-- <p class="pf-auth-modal-kicker">Free to start</p> -->
                     <h2>Create your account</h2>
-                    <p>Join a guided online filing workflow built for taxpayers and businesses.</p>
+                    <p>Join a guided online workflow built for taxpayers, SMEs and corporate groups.</p>
                 </div>
 
-                <form class="pf-auth-modal-form" data-auth-form="sign-up" action="#" method="post">
+                <form class="pf-auth-modal-form" data-auth-form="sign-up" action="{{ route('register') }}" method="post">
                     @csrf
+                    <p class="pf-auth-error-summary" data-auth-error-summary hidden></p>
+
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="pf-auth-field">
@@ -77,6 +83,7 @@
                                     <i class="fa fa-user-o" aria-hidden="true"></i>
                                     <input id="modalSignupName" name="signup_name" type="text" autocomplete="name" placeholder="Your full name" required>
                                 </div>
+                                <span class="pf-auth-field-error" data-auth-error-for="signup_name" hidden></span>
                             </div>
                         </div>
 
@@ -87,11 +94,12 @@
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     <input id="modalSignupPhone" name="signup_phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="03xx xxx xxxx" required>
                                 </div>
+                                <span class="pf-auth-field-error" data-auth-error-for="signup_phone" hidden></span>
                             </div>
                         </div>
                     </div>
 
-                    
+
 
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -106,6 +114,7 @@
                                         </button>
                                     </div>
                                 </div>
+                                <span class="pf-auth-field-error" data-auth-error-for="signup_password" hidden></span>
                             </div>
                         </div>
 
@@ -130,6 +139,7 @@
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             <input id="modalSignupEmail" name="signup_email" type="email" autocomplete="email" placeholder="you@example.com" required>
                         </div>
+                        <span class="pf-auth-field-error" data-auth-error-for="signup_email" hidden></span>
                     </div>
                     <div class="form-check pf-auth-check pf-auth-terms-check">
                         <input class="form-check-input" type="checkbox" id="modalTerms" name="terms" required>
@@ -221,29 +231,29 @@
                         <input type="hidden" id="selectedService" name="selected_service" data-selected-service required>
 
                         <div class="pf-service-choice-grid">
-                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Individual Tax Filing">
+                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Income Tax Services">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="pf-service-check"><i class="fa fa-check" aria-hidden="true"></i>  </span>
-                              <strong>Individual Tax Filing</strong>
-                                <small>Salary, freelancer, property, or mixed income return support.</small>
+                              <strong>Income Tax Services</strong>
+                                <small>Registration, return filing, and FBR notice response for individuals and companies.</small>
                             </button>
-                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Business Registration">
-                                <i class="fa fa-briefcase" aria-hidden="true"></i>
-                                <span class="pf-service-check"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                <strong>Business Registration</strong>
-                                <small>Sole proprietor, partnership, or company setup guidance.</small>
-                            </button>
-                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Sales Tax Registration">
+                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Sales Tax Services">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
                                 <span class="pf-service-check"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                <strong>Sales Tax Registration</strong>
-                                <small>GST registration and compliance onboarding for businesses.</small>
+                                <strong>Sales Tax Services</strong>
+                                <small>Registration, monthly return filing, audits and refunds.</small>
                             </button>
-                            <button class="pf-service-choice" type="button" data-service-card data-service-title="NTN Registration">
-                                <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Withholding Tax Services">
+                                <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                 <span class="pf-service-check"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                <strong>NTN Registration</strong>
-                                <small>Get registered with FBR and start your active filer journey.</small>
+                                <strong>Withholding Tax Services</strong>
+                                <small>Correct withholding at source and default notice defense.</small>
+                            </button>
+                            <button class="pf-service-choice" type="button" data-service-card data-service-title="Tax Litigation & Representation">
+                                <i class="fa fa-gavel" aria-hidden="true"></i>
+                                <span class="pf-service-check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                <strong>Tax Litigation & Representation</strong>
+                                <small>Representation from first notice through the appellate forums.</small>
                             </button>
                         </div>
                     </section>

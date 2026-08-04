@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us | Tax Consultant')
+@section('title', 'Contact Us | FINANIC Business Consultants')
+@section('meta_description', 'Get in touch with FINANIC Business Consultants in Faisalabad for income tax, sales tax, withholding tax, and tax litigation & representation support.')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/family-tax/contact.css') }}">
@@ -16,8 +17,8 @@
                 </span>
 
                 <div class="cr-breadcrumb contact-hero-content">
-                    <h1 id="contact-hero-title">Talk to a <span>tax consultant</span></h1>
-                    <p>Have a question about filing, registration, or compliance? Our team of certified CA/ACCA consultants is here to help.</p>
+                    <h1 id="contact-hero-title">Talk to a <span>FINANIC tax consultant</span></h1>
+                    <p>Have a question about income tax, sales tax, withholding tax, or a dispute with the FBR? Our Faisalabad-based team is here to help.</p>
                 </div>
             </div>
         </section>
@@ -32,7 +33,7 @@
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                     Send us a message
                                 </h2>
-                                <p>We'll get back to you within 24 hours.</p>
+                                <p>We'll get back to you as soon as possible.</p>
                             </div>
 
                             <form class="contact-form" action="{{ route('contact') }}" method="GET">
@@ -63,10 +64,12 @@
                                             <label for="contact-service">Service Interested In</label>
                                             <select id="contact-service" name="service">
                                                 <option value="">Select a service...</option>
-                                                <option value="income-tax-return">Income Tax Return</option>
+                                                <option value="income-tax">Income Tax Services</option>
+                                                <option value="sales-tax">Sales Tax Services</option>
+                                                <option value="withholding-tax">Withholding Tax Services</option>
+                                                <option value="litigation">Tax Litigation & Representation</option>
+                                                <option value="corporate-retainer">Corporate / Retainer Services</option>
                                                 <option value="ntn-registration">NTN Registration</option>
-                                                <option value="gst-registration">GST Registration</option>
-                                                <option value="business-registration">Business Registration</option>
                                             </select>
                                         </div>
                                     </div>
@@ -105,8 +108,8 @@
                                     </span>
                                     <div class="info-card-content">
                                         <h3>WhatsApp</h3>
-                                        <a href="https://wa.me/923001234567">+92 300 123 4567</a>
-                                        <p>Mon-Sat, 9am-7pm PKT. Fastest response.</p>
+                                        <a href="https://wa.me/923XXXXXXXXX">+92 3XX XXXXXXX</a>
+                                        <p>Mon-Sat, business hours. Fastest response.</p>
                                     </div>
                                 </article>
 
@@ -116,8 +119,8 @@
                                     </span>
                                     <div class="info-card-content">
                                         <h3>Email</h3>
-                                        <a href="mailto:support@taxconsultant.com">support@taxconsultant.com</a>
-                                        <p>Response within 24 hours.</p>
+                                        <a href="mailto:info@finanic.pk">info@finanic.pk</a>
+                                        <p>We aim to respond promptly.</p>
                                     </div>
                                 </article>
 
@@ -127,7 +130,7 @@
                                     </span>
                                     <div class="info-card-content">
                                         <h3>Office</h3>
-                                        <p>Blue Area, Islamabad<br>Pakistan</p>
+                                        <p>Faisalabad<br>Punjab, Pakistan</p>
                                     </div>
                                 </article>
 
@@ -137,7 +140,7 @@
                                     </span>
                                     <div class="info-card-content">
                                         <h3>Working Hours</h3>
-                                        <p>Monday-Saturday<br>9:00 AM-7:00 PM PKT</p>
+                                        <p>Monday-Saturday<br>Business Hours PKT</p>
                                     </div>
                                 </article>
                             </div>
@@ -147,8 +150,8 @@
                                     <i class="fa fa-bolt"></i>
                                 </span>
                                 <h2>Need help urgently?</h2>
-                                <p>Message us on WhatsApp for the fastest response. Our team typically replies within minutes during business hours.</p>
-                                <a href="https://wa.me/923001234567" class="whatsapp-btn">
+                                <p>Message us on WhatsApp for the fastest response during business hours.</p>
+                                <a href="https://wa.me/923XXXXXXXXX" class="whatsapp-btn">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     Chat on WhatsApp
                                 </a>

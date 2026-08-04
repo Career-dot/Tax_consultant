@@ -801,3 +801,62 @@ body.pf-auth-modal-lock {
   outline: 3px solid rgba(24, 166, 106, 0.28);
   outline-offset: 2px;
 }
+
+.pf-auth-error-summary {
+  margin: 0 0 4px;
+  padding: 12px 14px;
+  color: var(--pf-danger, #b33a3a);
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(179, 58, 58, 0.08);
+  border: 1px solid rgba(179, 58, 58, 0.22);
+  border-radius: var(--pf-radius, 8px);
+}
+
+.pf-auth-error-summary[hidden] {
+  display: none;
+}
+
+.pf-auth-field-error {
+  display: block;
+  margin-top: 6px;
+  color: var(--pf-danger, #b33a3a);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pf-auth-field-error[hidden] {
+  display: none;
+}
+
+.pf-auth-input-icon input.is-invalid,
+.pf-auth-field select.is-invalid,
+.pf-auth-field textarea.is-invalid {
+  border-color: var(--pf-danger, #b33a3a) !important;
+}
+
+.pf-auth-primary-button.is-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.pf-auth-primary-button.is-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: pf-auth-spin 0.7s linear infinite;
+}
+
+@keyframes pf-auth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,52 +1,37 @@
 @extends('layouts.app')
 
-@section('title', 'Pricing - Tax Consultant')
+@section('title', 'Tax Compliance Planner | FINANIC Business Consultants')
+@section('meta_description', 'Get a personalized FBR filing-deadline calendar and reminders for income tax, sales tax, and withholding tax compliance, from FINANIC Business Consultants.')
 
 @section('content')
     @php
-        $personalPlans = [
-            ['name' => 'Salary Return', 'price' => 'Rs 999', 'features' => ['Income reconciliation', 'Tax deduction review', 'FBR return submission'], 'featured' => true],
-            ['name' => 'Freelancer Return', 'price' => 'Rs 2,499', 'features' => ['Foreign income guidance', 'Bank statement review', 'Tax credit support'], 'featured' => false],
-            ['name' => 'Property Return', 'price' => 'Rs 3,999', 'features' => ['Rental income return', 'Asset statement', 'Consultant review'], 'featured' => false],
+        $steps = [
+            ['title' => 'Select Your Taxpayer Type', 'text' => 'Salaried individual, business individual, association of persons (AOP), or company.'],
+            ['title' => 'Select Your Registrations', 'text' => 'Income tax only, income tax plus sales tax, and whether you are also a withholding agent.'],
+            ['title' => 'Add Your Sector (Optional)', 'text' => 'For sector-specific deadlines, such as Section 236G/236H obligations for distributors.'],
+            ['title' => 'Get Your Deadline List', 'text' => 'A personalized list of upcoming filing deadlines with due dates.'],
+            ['title' => 'Save, Export, or Get Reminders', 'text' => 'Download your calendar, add it to Google/Outlook, or opt in to email and SMS reminders.'],
         ];
 
-        $businessPlans = [
-            ['name' => 'Sole Proprietor', 'price' => 'Rs 5,000', 'icon' => 'fa-briefcase', 'features' => ['Annual income tax return', 'Balance sheet guidance', 'ATL follow-up']],
-            ['name' => 'Partnership / AOP', 'price' => 'Rs 8,000', 'icon' => 'fa-users', 'features' => ['AOP return filing', 'Partner income review', 'FBR acknowledgement']],
-            ['name' => 'Company Return', 'price' => 'Rs 15,000', 'icon' => 'fa-building', 'features' => ['Corporate return', 'Financial statement review', 'Compliance checklist']],
+        $reminders = [
+            ['title' => 'First Reminder', 'timing' => '7 days before the deadline', 'channel' => 'Email'],
+            ['title' => 'Second Reminder', 'timing' => '2 days before the deadline', 'channel' => 'Email + SMS'],
+            ['title' => 'Final Reminder', 'timing' => 'On the deadline day', 'channel' => 'SMS'],
         ];
 
-        $ntnRows = [
-            ['category' => 'Salaried Individual', 'fee' => 'Rs 500', 'timeline' => '1-2 Days'],
-            ['category' => 'Sole Proprietor', 'fee' => 'Rs 1,500', 'timeline' => '2-3 Days'],
-            ['category' => 'Partnership / AOP', 'fee' => 'Rs 3,500', 'timeline' => '3-5 Days'],
-            ['category' => 'Company', 'fee' => 'Rs 7,500', 'timeline' => '5-7 Days'],
-            ['category' => 'Non-Profit Organization', 'fee' => 'Rs 8,500', 'timeline' => '7-10 Days'],
-        ];
-
-        $otherServices = [
-            ['name' => 'GST Registration', 'price' => 'Rs 15,000 fixed fee', 'icon' => 'fa-file-text-o'],
-            ['name' => 'FBR Profile Update - Salary', 'price' => 'Rs 500', 'icon' => 'fa-id-card-o'],
-            ['name' => 'FBR Profile Update - Business', 'price' => 'Rs 1,000', 'icon' => 'fa-refresh'],
-            ['name' => 'Family Tax Filing', 'price' => 'Discounted consolidated quote', 'icon' => 'fa-users'],
-            ['name' => 'Salary Tax Calculator', 'price' => 'Free', 'icon' => 'fa-calculator'],
-        ];
-
-        $faqs = [
-            ['question' => 'Are there any hidden fees?', 'answer' => 'No. Our listed fees cover standard filing or registration work. If your case needs extra documentation, notice handling, or accounting cleanup, we confirm the cost before starting.'],
-            ['question' => 'What is the CA review add-on?', 'answer' => 'It is a senior consultant review for complex returns, business cases, foreign income, property income, or high-value filings.'],
-            ['question' => 'Do you offer refunds?', 'answer' => 'If work has not started, refunds can be reviewed. Once filing, registration, or consultant review begins, service charges may apply.'],
-            ['question' => 'Can I pay in installments?', 'answer' => 'For larger business and corporate engagements, installment options can be discussed before onboarding.'],
+        $deadlineTypes = [
+            ['icon' => 'fa-user-o', 'title' => 'Annual Income Tax Return', 'text' => 'Filing deadlines for individuals, AOPs, and companies.'],
+            ['icon' => 'fa-file-text-o', 'title' => 'Monthly Sales Tax Return', 'text' => 'Monthly filing deadlines for registered businesses.'],
+            ['icon' => 'fa-balance-scale', 'title' => 'Quarterly Withholding Statement', 'text' => 'Deadlines for filing withholding tax statements as a withholding agent.'],
+            ['icon' => 'fa-check-circle-o', 'title' => 'Active Taxpayer List (ATL) Deadline', 'text' => 'The annual deadline to stay on the ATL and avoid higher withholding rates.'],
         ];
     @endphp
 
     <div class="cr-breadcrumb-area section-padding--md">
         <div class="container">
-            <!-- <h6 class="cr-breadcrumb ms-4">Pricing</h6> -->
             <div class="cr-breadcrumb ">
-                <h2>Simple, Transparent <span> Pricing </span>  for Every <span>   Tax Service</span></h2>
-                <p>No hidden fees. No surprise charges. Just honest, competitive pricing for professional CA-certified tax services in Pakistan.</p>
-                <P>All prices are all-inclusive. What you see is what you pay.</P>
+                <h1>Tax Compliance <span>Planner</span></h1>
+                <p>A personalized FBR filing-deadline calendar for income tax, sales tax, and withholding tax — with reminders so you never miss a due date.</p>
             </div>
         </div>
     </div>
@@ -55,27 +40,25 @@
         <section class="pricing-section section-padding--xlg bg--white">
             <div class="container">
                 <div class="section-title text-center">
-                    <h4>PERSONAL TAX FILING</h4>
-                    <h2>Simple Plans For <span class="color--theme">Individuals</span></h2>
-                    <p>Choose the filing support that matches your income profile. Every plan includes consultant guidance and FBR submission.</p>
+                    <h4>HOW IT WORKS</h4>
+                    <h2>Build Your Personalized <span class="color--theme">Deadline Calendar</span></h2>
+                    <p>Answer a few quick questions and get a deadline list built around your taxpayer type, registrations, and sector.</p>
                 </div>
 
                 <div class="row g-4 justify-content-center">
-                    @foreach ($personalPlans as $plan)
+                    @foreach ($steps as $index => $step)
                         <div class="col-lg-4 col-md-6">
-                            <article class="korde-price-card {{ $plan['featured'] ? 'is-featured' : '' }} wow fadeInUp">
-                                <span class="korde-price-badge">{{ $plan['featured'] ? 'Popular' : 'Online Filing' }}</span>
-                                <h3>{{ $plan['name'] }}</h3>
-                                <div class="korde-price">{{ $plan['price'] }}</div>
-                                <ul>
-                                    @foreach ($plan['features'] as $feature)
-                                        <li><i class="fa fa-check"></i>{{ $feature }}</li>
-                                    @endforeach
-                                </ul>
-                                <a href="{{ url('/contact') }}" class="cr-btn cr-btn--sm"><span>Start Filing</span></a>
+                            <article class="korde-business-card wow fadeInUp">
+                                <div class="korde-business-icon">{{ $index + 1 }}</div>
+                                <h3>{{ $step['title'] }}</h3>
+                                <p>{{ $step['text'] }}</p>
                             </article>
                         </div>
                     @endforeach
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="{{ url('/contact') }}" class="cr-btn"><span>Start Planner</span></a>
                 </div>
             </div>
         </section>
@@ -83,23 +66,17 @@
         <section class="pricing-section section-padding--xlg bg--grey--light">
             <div class="container">
                 <div class="section-title text-center">
-                    <h4>BUSINESS TAX RETURN FILING</h4>
-                    <h2>Built For <span class="color--theme">Businesses</span></h2>
-                    <p>Structured filing support for proprietors, partnerships and companies with documentation review included.</p>
+                    <h4>WHAT IT COVERS</h4>
+                    <h2>Deadlines Tracked By The <span class="color--theme">Planner</span></h2>
                 </div>
 
                 <div class="row g-4">
-                    @foreach ($businessPlans as $plan)
-                        <div class="col-lg-4 col-md-6">
+                    @foreach ($deadlineTypes as $item)
+                        <div class="col-lg-3 col-md-6">
                             <article class="korde-business-card wow fadeInUp">
-                                <div class="korde-business-icon"><i class="fa {{ $plan['icon'] }}"></i></div>
-                                <h3>{{ $plan['name'] }}</h3>
-                                <strong>{{ $plan['price'] }}</strong>
-                                <ul>
-                                    @foreach ($plan['features'] as $feature)
-                                        <li>{{ $feature }}</li>
-                                    @endforeach
-                                </ul>
+                                <div class="korde-business-icon"><i class="fa {{ $item['icon'] }}"></i></div>
+                                <h3>{{ $item['title'] }}</h3>
+                                <p>{{ $item['text'] }}</p>
                             </article>
                         </div>
                     @endforeach
@@ -110,25 +87,26 @@
         <section class="pricing-section section-padding--xlg bg--white">
             <div class="container">
                 <div class="section-title text-center">
-                    <h4>NTN REGISTRATION</h4>
-                    <h2>Registration Fees & <span class="color--theme">Timelines</span></h2>
+                    <h4>REMINDERS</h4>
+                    <h2>Never Miss A <span class="color--theme">Filing Deadline</span></h2>
+                    <p>Once you opt in with your name, phone, and email, we send reminders ahead of each deadline.</p>
                 </div>
 
                 <div class="korde-table-wrap">
                     <table class="table korde-pricing-table mb-0">
                         <thead>
                             <tr>
-                                <th>Category</th>
-                                <th>Fee</th>
-                                <th>Timeline</th>
+                                <th>Reminder</th>
+                                <th>Timing</th>
+                                <th>Channel</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($ntnRows as $row)
+                            @foreach ($reminders as $reminder)
                                 <tr>
-                                    <td>{{ $row['category'] }}</td>
-                                    <td>{{ $row['fee'] }}</td>
-                                    <td>{{ $row['timeline'] }}</td>
+                                    <td>{{ $reminder['title'] }}</td>
+                                    <td>{{ $reminder['timing'] }}</td>
+                                    <td>{{ $reminder['channel'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -140,17 +118,9 @@
         <section class="pricing-section section-padding--xlg bg--grey--light">
             <div class="container">
                 <div class="section-title text-center">
-                    <h4>OTHER SERVICES</h4>
-                    <h2>Additional <span class="color--theme">Tax Support</span></h2>
-                </div>
-
-                <div class="korde-service-list mx-auto">
-                    @foreach ($otherServices as $service)
-                        <div class="korde-service-row">
-                            <span><i class="fa {{ $service['icon'] }}"></i>{{ $service['name'] }}</span>
-                            <strong>{{ $service['price'] }}</strong>
-                        </div>
-                    @endforeach
+                    <h4>FOR RETAINER CLIENTS</h4>
+                    <h2>Your Deadlines, <span class="color--theme">Saved</span></h2>
+                    <p>Retainer clients can save their profile so it doesn't need to be re-entered on every visit, and their FINANIC consultant keeps the calendar current on their behalf.</p>
                 </div>
             </div>
         </section>
@@ -159,22 +129,40 @@
             <div class="container">
                 <div class="section-title text-center">
                     <h4>FAQ</h4>
-                    <h2>Pricing Questions <span class="color--theme">Answered</span></h2>
+                    <h2>Planner Questions <span class="color--theme">Answered</span></h2>
                 </div>
 
                 <div class="accordion korde-faq mx-auto" id="pricingFaq">
-                    @foreach ($faqs as $index => $faq)
-                        <div class="accordion-item">
-                            <h3 class="accordion-header" id="pricingFaqHeading{{ $index }}">
-                                <button class="accordion-button {{ $index === 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#pricingFaqCollapse{{ $index }}" aria-expanded="{{ $index === 0 ? 'true' : 'false' }}" aria-controls="pricingFaqCollapse{{ $index }}">
-                                    {{ $faq['question'] }}
-                                </button>
-                            </h3>
-                            <div id="pricingFaqCollapse{{ $index }}" class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}" aria-labelledby="pricingFaqHeading{{ $index }}" data-bs-parent="#pricingFaq">
-                                <div class="accordion-body">{{ $faq['answer'] }}</div>
-                            </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="pricingFaqHeading0">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#pricingFaqCollapse0" aria-expanded="true" aria-controls="pricingFaqCollapse0">
+                                Is the Tax Compliance Planner free to use?
+                            </button>
+                        </h3>
+                        <div id="pricingFaqCollapse0" class="accordion-collapse collapse show" aria-labelledby="pricingFaqHeading0" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">Yes. Building your deadline calendar and opting in to reminders is free. If you'd like FINANIC to handle the actual filing or representation, that's arranged separately.</div>
                         </div>
-                    @endforeach
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="pricingFaqHeading1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pricingFaqCollapse1" aria-expanded="false" aria-controls="pricingFaqCollapse1">
+                                Do statutory deadlines ever change?
+                            </button>
+                        </h3>
+                        <div id="pricingFaqCollapse1" class="accordion-collapse collapse" aria-labelledby="pricingFaqHeading1" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">Yes. Exact statutory dates can change year to year via FBR notifications. We keep the deadlines behind the planner up to date, including one-off manual reminders for things like an FBR deadline extension notice.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="pricingFaqHeading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pricingFaqCollapse2" aria-expanded="false" aria-controls="pricingFaqCollapse2">
+                                Can I export the calendar to my phone?
+                            </button>
+                        </h3>
+                        <div id="pricingFaqCollapse2" class="accordion-collapse collapse" aria-labelledby="pricingFaqHeading2" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">Yes. Your deadline calendar can be downloaded as a PDF or added to Google or Outlook calendar via .ics export.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -184,9 +172,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="calltoaction text-center">
-                            <h3>Ready To Start Your <span class="color--theme">Tax Filing?</span></h3>
-                            <p>Speak with a consultant, confirm your service fee and complete your filing online with Korde-style professional support.</p>
-                            <a href="{{ url('/contact') }}" class="cr-btn"><span>Contact Now</span></a>
+                            <h3>Start Building Your <span class="color--theme">Tax Calendar</span></h3>
+                            <p>Get in touch to build your personalized filing-deadline calendar and opt in to reminders.</p>
+                            <a href="{{ url('/contact') }}" class="cr-btn"><span>Start Planner</span></a>
                         </div>
                     </div>
                 </div>

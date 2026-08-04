@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Tax Consultant - Online Tax Filing & Business Compliance')</title>
-    <meta name="description" content="@yield('meta_description', 'Online tax filing, NTN registration, GST, IRIS profile updates, salary tax calculation, and business compliance support for Pakistan.')">
+    <title>@yield('title', 'FINANIC Business Consultants - Income Tax, Sales Tax, Withholding Tax & Litigation | Faisalabad')</title>
+    <meta name="description" content="@yield('meta_description', 'FINANIC Business Consultants is a Faisalabad-based tax consultancy providing income tax, sales tax, withholding tax compliance, and tax litigation representation before the FBR and appellate forums.')">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.webp') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,15 @@
     </div>
 
     @include('includes.auth-modal')
+
+    <div class="pf-floating-contact" role="complementary" aria-label="Quick contact">
+        <a href="https://wa.me/923XXXXXXXXX" class="pf-floating-btn pf-floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="tel:+923XXXXXXXXX" class="pf-floating-btn pf-floating-call" aria-label="Call FINANIC Business Consultants">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+        </a>
+    </div>
 
     <button id="backBTn" class="backbtn" type="button" aria-label="Back to top">
         <i class="fa fa-angle-up" aria-hidden="true"></i>

@@ -1,17 +1,19 @@
 @php
     $footerServices = [
-        ['label' => 'Tax Filing', 'url' => route('services.personal')],
-        ['label' => 'NTN Registration', 'url' => route('services.ntn')],
-        ['label' => 'GST Registration', 'url' => route('services.gst')],
-        ['label' => 'Business Registration', 'url' => route('services.business')],
-        ['label' => 'USA LLC Support', 'url' => url('/contact')],
+        ['label' => 'Income Tax Services', 'url' => route('services.personal')],
+        ['label' => 'Sales Tax Services', 'url' => route('services.gst')],
+        ['label' => 'Withholding Tax Services', 'url' => route('services.family')],
+        ['label' => 'Tax Litigation & Representation', 'url' => route('services.business')],
+        ['label' => 'Corporate / Retainer Services', 'url' => route('services.business-tax')],
     ];
 
     $footerCompany = [
         ['label' => 'About Us', 'url' => url('/about')],
+        ['label' => 'Industries We Serve', 'url' => route('industries')],
         ['label' => 'Services', 'url' => route('home') . '#features-area'],
-        ['label' => 'Pricing', 'url' => url('/pricing')],
-        ['label' => 'FAQ', 'url' => route('faq')],
+        ['label' => 'Tax Compliance Planner', 'url' => url('/pricing')],
+        ['label' => 'Resources', 'url' => route('resources')],
+        ['label' => 'FAQs', 'url' => route('faq')],
         ['label' => 'Contact Us', 'url' => url('/contact')],
     ];
 @endphp
@@ -21,10 +23,10 @@
         <div class="row g-4 g-lg-5">
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="pf-footer-brand">
-                    <a href="{{ url('/') }}" aria-label="Career Institute home">
-                        <img src="{{ asset('assets/images/logo/logo.jpeg') }}" alt="Career Institute">
+                    <a href="{{ url('/') }}" aria-label="FINANIC Business Consultants home">
+                        <img src="{{ asset('assets/images/logo/logo.jpeg') }}" alt="FINANIC Business Consultants">
                     </a>
-                    <p>Online tax filing, NTN, GST and business compliance handled by qualified consultants across Pakistan.</p>
+                    <p>Income tax, sales tax, withholding tax compliance and tax litigation representation for individuals, SMEs and corporate groups in Faisalabad.</p>
                     <form class="pf-footer-newsletter" action="{{ url('/contact') }}" method="GET">
                         <label class="visually-hidden" for="footer-newsletter-email">Email address</label>
                         <input id="footer-newsletter-email" type="email" name="email" placeholder="Email address" aria-label="Email address">
@@ -65,17 +67,17 @@
                 <section class="pf-footer-widget pf-footer-contact">
                     <h2>Contact</h2>
                     <ul>
-                        <li><i class="fa fa-map-marker"></i><span>Blue Area, Islamabad, Pakistan</span></li>
-                        <li><i class="fa fa-phone"></i><a href="tel:+923222244000">+92 322 2244000</a></li>
-                        <li><i class="fa fa-envelope-o"></i><a href="mailto:support@taxconsultant.com">support@taxconsultant.com</a></li>
-                        <li><i class="fa fa-globe"></i><a href="{{ url('/') }}">taxconsultant.com</a></li>
+                        <li><i class="fa fa-map-marker"></i><span>Faisalabad, Punjab, Pakistan</span></li>
+                        <li><i class="fa fa-phone"></i><a href="tel:+923XXXXXXXXX">+92 3XX XXXXXXX</a></li>
+                        <li><i class="fa fa-envelope-o"></i><a href="mailto:info@finanic.pk">info@finanic.pk</a></li>
+                        <li><i class="fa fa-globe"></i><a href="{{ url('/') }}">finanic.pk</a></li>
                     </ul>
                 </section>
             </div>
         </div>
 
         <div class="pf-footer-bottom">
-            <p>&copy; {{ date('Y') }} <span>Career Institute</span>. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} <span>FINANIC Business Consultants</span>. All rights reserved.</p>
             <div>
                 <a href="{{ url('/contact') }}">Privacy Policy</a>
                 <a href="{{ url('/contact') }}">Terms of Service</a>
