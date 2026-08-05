@@ -68,10 +68,15 @@
                     <h2>Contact</h2>
                     <ul>
                         <li><i class="fa fa-map-marker"></i><span>Faisalabad, Punjab, Pakistan</span></li>
-                        <li><i class="fa fa-phone"></i><a href="tel:+923XXXXXXXXX">+92 3XX XXXXXXX</a></li>
+                        <li><i class="fa fa-phone"></i><a href="tel:+923222244000">+92 322 2244000</a></li>
                         <li><i class="fa fa-envelope-o"></i><a href="mailto:info@finanic.pk">info@finanic.pk</a></li>
+                        <li><i class="fa fa-clock-o"></i><span>Mon-Sat, 9:00 AM-6:00 PM PKT</span></li>
                         <li><i class="fa fa-globe"></i><a href="{{ url('/') }}">finanic.pk</a></li>
                     </ul>
+                    <div class="pf-footer-map">
+                        <i class="fa fa-map-o" aria-hidden="true"></i>
+                        <span>Map view available soon &mdash; office located in Faisalabad, Punjab, Pakistan.</span>
+                    </div>
                 </section>
             </div>
         </div>

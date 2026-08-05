@@ -49,10 +49,10 @@
     @include('includes.auth-modal')
 
     <div class="pf-floating-contact" role="complementary" aria-label="Quick contact">
-        <a href="https://wa.me/923XXXXXXXXX" class="pf-floating-btn pf-floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+        <a href="https://wa.me/923222244000" class="pf-floating-btn pf-floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
             <i class="fa fa-whatsapp" aria-hidden="true"></i>
         </a>
-        <a href="tel:+923XXXXXXXXX" class="pf-floating-btn pf-floating-call" aria-label="Call FINANIC Business Consultants">
+        <a href="tel:+923222244000" class="pf-floating-btn pf-floating-call" aria-label="Call FINANIC Business Consultants">
             <i class="fa fa-phone" aria-hidden="true"></i>
         </a>
     </div>

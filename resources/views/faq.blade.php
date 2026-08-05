@@ -65,7 +65,7 @@
         ];
     @endphp
 
-    <div class="cr-breadcrumb-area faq-hero section-padding--md">
+    <div class="banner-area faq-hero section-padding--md">
         <div class="container">
             <div class="cr-breadcrumb faq-hero-content">
                 <h1>Your Tax Questions, Answered</h1>
@@ -126,7 +126,7 @@
                             <p>Talk to a FINANIC consultant about your income tax, sales tax, withholding tax, or litigation matter.</p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                                 <a href="{{ url('/contact') }}" class="cr-btn"><span>Contact Us</span></a>
-                                <a href="https://wa.me/923XXXXXXXXX" class="cr-btn cr-btn--transparent" target="_blank" rel="noopener"><span>Message on WhatsApp</span></a>
+                                <a href="https://wa.me/923222244000" class="cr-btn cr-btn--transparent" target="_blank" rel="noopener"><span>Message on WhatsApp</span></a>
                             </div>
                         </div>
                     </div>

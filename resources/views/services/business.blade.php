@@ -183,7 +183,7 @@
           <div class="cta-btn-row">
             <a href="{{ route('contact') }}" class="btn-cta-primary">Talk to a Consultant <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
-            <a href="https://wa.me/923XXXXXXXXX" class="btn-cta-secondary" target="_blank" rel="noopener"><i class="fa fa-whatsapp" aria-hidden="true"></i> Message on WhatsApp</a>
+            <a href="https://wa.me/923222244000" class="btn-cta-secondary" target="_blank" rel="noopener"><i class="fa fa-whatsapp" aria-hidden="true"></i> Message on WhatsApp</a>
           </div>
         </div>
       </div>

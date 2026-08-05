@@ -9,7 +9,7 @@
         ['label' => 'Contact Us', 'url' => url('/contact')],
     ];
     $deadline = \Carbon\Carbon::create(2026, 9, 30)->endOfDay();
-    $daysLeft = max(0, now()->diffInDays($deadline, false));
+    $daysLeft = max(0, (int) floor(now()->diffInDays($deadline, false)));
 @endphp
 
 <header id="header" class="pf-header sticky-top">
@@ -28,7 +28,7 @@
     </div>
 
     <nav class="navbar navbar-expand-xl pf-navbar bg-white" aria-label="Primary navigation">
-        <div class="container">
+        <div class="d-flex gap-5 mx-auto">
             <a class="navbar-brand pf-navbar-brand" href="{{ url('/') }}" aria-label="FINANIC Business Consultants home">
                 <img src="{{ asset('assets/images/logo/logo.jpeg') }}" alt="FINANIC Business Consultants">
             </a>

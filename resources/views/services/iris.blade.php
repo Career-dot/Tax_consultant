@@ -221,7 +221,7 @@
               Talk to a Consultant
               <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="https://wa.me/923XXXXXXXXX" class="btn-cta-outline" target="_blank" rel="noopener">
+            <a href="https://wa.me/923222244000" class="btn-cta-outline" target="_blank" rel="noopener">
               <i class="fa fa-whatsapp" aria-hidden="true"></i>
               Message on WhatsApp
             </a>

@@ -3,248 +3,219 @@
 @section('title', 'FINANIC Business Consultants - Income Tax, Sales Tax, Withholding Tax & Litigation | Faisalabad')
 
 @section('content')
-    <!-- Top Banner -->
+    @php
+        $plannerDeadline = \Carbon\Carbon::create(2026, 9, 30)->endOfDay();
+        $plannerDaysLeft = max(0, (int) floor(now()->diffInDays($plannerDeadline, false)));
+
+        $serviceCards = [
+            ['icon' => 'fa-user-o', 'title' => 'Income Tax', 'text' => 'Registration, annual return filing, and FBR notice/audit response for individuals, AOPs and companies.', 'url' => route('services.personal')],
+            ['icon' => 'fa-file-text-o', 'title' => 'Sales Tax', 'text' => 'Sales tax registration, monthly return filing, audits and refunds kept current and defensible.', 'url' => route('services.gst')],
+            ['icon' => 'fa-balance-scale', 'title' => 'Withholding Tax', 'text' => 'Withhold correctly, file statements on time, and respond effectively to default notices.', 'url' => route('services.family')],
+            ['icon' => 'fa-gavel', 'title' => 'Litigation & Representation', 'text' => 'Representation from the assessing officer through the Appellate Tribunal and the High Court.', 'url' => route('services.business')],
+            ['icon' => 'fa-building-o', 'title' => 'Corporate Retainer', 'text' => 'Consolidated monthly compliance across income tax, sales tax and withholding tax for multi-entity groups.', 'url' => route('services.business-tax')],
+        ];
+
+        $trustStats = [
+            ['icon' => 'fa-university', 'number' => '10+', 'label' => 'Years of Professional Experience'],
+            ['icon' => 'fa-users', 'number' => '986+', 'label' => 'Clients Served'],
+            ['icon' => 'fa-industry', 'number' => '9+', 'label' => 'Business Sectors Served'],
+        ];
+
+        $homeIndustries = [
+            ['icon' => 'fa-cube', 'name' => 'Cement Distribution'],
+            ['icon' => 'fa-truck', 'name' => 'Transport'],
+            ['icon' => 'fa-medkit', 'name' => 'Pharmaceuticals'],
+            ['icon' => 'fa-shopping-basket', 'name' => 'FMCG'],
+        ];
+
+        $testimonials = [
+            ['name' => 'Ayesha Khan', 'role' => 'Salaried Professional', 'image' => 'testimonial-author-1.webp', 'text' => 'FINANIC handled my income tax return and explained everything in plain terms. No confusing jargon, just a clear filing process from start to finish.'],
+            ['name' => 'Hamza Ali', 'role' => 'Distribution Business Owner', 'image' => 'testimonial-author-2.webp', 'text' => 'Our sales tax compliance and withholding statements are finally on a predictable monthly schedule. Their team stays ahead of every notice.'],
+            ['name' => 'Sara Niazi', 'role' => 'AOP Partner', 'image' => 'testimonial-author-3.webp', 'text' => 'When we received an FBR notice, FINANIC prepared a well-documented response and represented us at the hearing. Professional from day one.'],
+        ];
+
+        $homeUpdates = [
+            ['icon' => 'fa-calendar-check-o', 'badge' => 'General', 'title' => 'FBR Deadline Reminder', 'text' => 'Keep income tax, sales tax and withholding tax deadlines on your radar before they become penalties.', 'url' => url('/pricing')],
+            ['icon' => 'fa-file-text-o', 'badge' => 'Income Tax', 'title' => 'Annual Tax Return Filing Guide', 'text' => 'What goes into an annual return, from income reconciliation to your wealth statement.', 'url' => route('services.personal')],
+            ['icon' => 'fa-refresh', 'badge' => 'Sales Tax', 'title' => 'Sales Tax Compliance Reminder', 'text' => 'A quick reminder of what a compliant monthly filing routine looks like for registered businesses.', 'url' => route('services.gst')],
+        ];
+    @endphp
+
+    <!-- Hero -->
     <div class="banner-area">
         <div class="banner banner-slider-active banner--animated-content">
-            <div class="banner__single bg-image--1" data-black-overlay="6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12">
-                             <div class="banner__single bg-image--2" data-black-overlay="6">
+            <div class="banner__single bg-image--2" data-black-overlay="6">
                 <div class="container">
                     <div class="row justify-content-left">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <div class="banner__single__content">
                                 <h1 class="mt-">FINANIC Business Consultants
                                     <span class="color--theme">Your Outsource Office.</span></h1>
-                                    <p class="pr-5">Income tax, sales tax, withholding tax, and litigation support for traders, salaried persons, shopkeepers, SMEs and growing businesses across Faisalabad.</p>
+                                <p class="pr-5">Income tax, sales tax, withholding tax, tax litigation, and corporate tax consultancy for traders, salaried individuals, shopkeepers, SMEs and growing businesses across Faisalabad.</p>
                                 <div class="d-flex flex-wrap gap-3 mt-3">
-                                    <a href="{{ url('/contact') }}" class="cr-btn"><span>Talk to a Consultant</span></a>
-                                    <a href="{{ url('/pricing') }}" class="cr-btn cr-btn--transparent"><span>Tax Compliance Planner</span></a>
+                                    <a href="https://wa.me/923222244000" class="cr-btn" target="_blank" rel="noopener"><span><i class="fa fa-whatsapp"></i> WhatsApp Us</span></a>
+                                    <a href="tel:+923222244000" class="cr-btn cr-btn--transparent"><span><i class="fa fa-phone"></i> Call Now</span></a>
+                                    <a href="{{ url('/contact') }}" class="cr-btn cr-btn--transparent"><span>Book a Consultation</span></a>
+                                    <a href="{{ url('/pricing') }}" class="cr-btn cr-btn--transparent"><span>Check Your Filing Deadlines</span></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-
-    <div class="logos-band">
-        <div class="logos-label">
-            Serving clients across
-        </div>
-        <div class="marquee-track">
-            <div class="logo-chip">Distribution</div>
-            <div class="logo-chip">Transport</div>
-            <div class="logo-chip">Pharmaceuticals</div>
-            <div class="logo-chip">Services</div>
-            <div class="logo-chip">FMCG</div>
-            <div class="logo-chip">Cement</div>
-            <div class="logo-chip">Traders &amp; Shopkeepers</div>
-            <div class="logo-chip">Salaried Individuals</div>
-            <div class="logo-chip">Distribution</div>
-            <div class="logo-chip">Transport</div>
-            <div class="logo-chip">Pharmaceuticals</div>
-            <div class="logo-chip">Services</div>
-            <div class="logo-chip">FMCG</div>
-            <div class="logo-chip">Cement</div>
-            <div class="logo-chip">Traders &amp; Shopkeepers</div>
-            <div class="logo-chip">Salaried Individuals</div>
-        </div>
-    </div>
-    <!-- //Top Banner -->
+    <!-- //Hero -->
 
     <!-- Page Content -->
     <div class="page-content">
-        <!-- About Area -->
-        <section id="about-area" class="cr-section about-area bg--white">
-            <div class="container">
-                <div class="about-area__inside">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="about-area__content">
-                                <div class="sec-tag">Services</div>
-                                <h3 class="cd-headline cx-heading slide">Everything tax, in one place.</h3>
-                                <p>From FBR registration to tax litigation — our consultants handle income tax, sales tax, withholding tax and representation, fully managed for individuals, SMEs and corporate groups.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="about-area__image">
-                                <img class="wow slideInLeft" data-wow-delay="0" src="{{ asset('assets/images/about/about-thumbnail.webp') }}" alt="FINANIC tax consultants at work">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- //About Area -->
-
-        @php
-            $serviceCards = [
-                ['icon' => 'fa-user-o', 'title' => 'Income Tax Services', 'text' => 'Registration, annual return filing, and FBR notice/audit response for individuals, AOPs and companies.', 'url' => route('services.personal')],
-                ['icon' => 'fa-file-text-o', 'title' => 'Sales Tax Services', 'text' => 'Sales tax registration, monthly return filing, audits and refunds kept current and defensible.', 'url' => route('services.gst')],
-                ['icon' => 'fa-balance-scale', 'title' => 'Withholding Tax Services', 'text' => 'Withhold correctly, file statements on time, and respond effectively to default notices.', 'url' => route('services.family')],
-                ['icon' => 'fa-gavel', 'title' => 'Tax Litigation & Representation', 'text' => 'Representation from the assessing officer through the Appellate Tribunal and the High Court.', 'url' => route('services.business')],
-                ['icon' => 'fa-building-o', 'title' => 'Corporate / Retainer Services', 'text' => 'Consolidated monthly compliance across income tax, sales tax and withholding tax for multi-entity groups.', 'url' => route('services.business-tax')],
-                            ];
-
-            $trustCards = [
-                ['icon' => 'fa-university', 'title' => 'FBR & Appellate Forum Practice', 'text' => 'Over 10 years of practice before the FBR and appellate forums, from first notice through to the High Court.'],
-                ['icon' => 'fa-industry', 'title' => 'Trusted Across Key Sectors', 'text' => 'Trusted by businesses across cement, transport, pharmaceutical, and FMCG sectors, alongside individual traders and shopkeepers.'],
-                ['icon' => 'fa-comments-o', 'title' => 'Clear, Practical Advice', 'text' => 'We explain your tax position in the language you\'re comfortable in — not buried in jargon.'],
-                ['icon' => 'fa-lock', 'title' => 'Client Confidentiality', 'text' => 'All client information, financial records, and case details are kept strictly confidential.'],
-                ['icon' => 'fa-refresh', 'title' => 'One-off or Ongoing Support', 'text' => 'From a single year\'s return filing to an ongoing monthly retainer that combines compliance with representation.'],
-                ['icon' => 'fa-map-marker', 'title' => 'Faisalabad-Based, FBR-Focused', 'text' => 'A Faisalabad-based practice built around income tax, sales tax, withholding tax and litigation work.'],
-            ];
-
-            $faqs = [
-                ['question' => 'What services does FINANIC Business Consultants offer?', 'answer' => 'We provide end-to-end tax support across four areas: income tax, sales tax, withholding tax compliance, and tax litigation/representation. We work with individual traders and shopkeepers on one-off filing needs, and with SMEs and multi-entity corporate groups on ongoing monthly retainer arrangements.'],
-                ['question' => 'Do you work with individuals as well as businesses?', 'answer' => 'Yes. We handle salaried individuals, business individuals, associations of persons (AOPs), and companies — from a single trader filing an annual return to a multi-entity group needing consolidated monthly compliance.'],
-                ['question' => 'What documents do I need to get started?', 'answer' => 'This depends on the service, but generally includes your CNIC, prior tax returns (if any), bank statements, and relevant business records. Once you get in touch, we provide a checklist specific to your situation.'],
-                ['question' => 'Is my information kept confidential?', 'answer' => 'Yes. All client information, financial records, and case details are kept strictly confidential and are never shared or published without your consent.'],
-                ['question' => 'Do you offer one-off services, or only ongoing retainers?', 'answer' => 'Both. We handle one-time needs like registration or a single year\'s return filing, as well as ongoing monthly retainer relationships that combine compliance work with representation if a dispute arises.'],
-            ];
-        @endphp
-
-        <!-- Features Area -->
+        <!-- Services Overview -->
         <section id="features-area" class="cr-section features-area pf-home-section pf-services-section bg-white">
             <div class="container">
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">What we do</span>
+                    <h2>Services Overview</h2>
+                </div>
+
                 <div class="row g-4">
                     @foreach ($serviceCards as $service)
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <a class="pf-service-card wow fadeInUp" href="{{ $service['url'] }}">
                                 <span class="pf-card-icon"><i class="fa {{ $service['icon'] }}"></i></span>
                                 <span class="pf-card-title">{{ $service['title'] }}</span>
                                 <span class="pf-card-text">{{ $service['text'] }}</span>
-                                <span class="pf-card-link">Learn more <i class="fa fa-angle-right"></i></span>
+                                <span class="pf-card-link">Learn More <i class="fa fa-angle-right"></i></span>
                             </a>
                         </div>
                     @endforeach
                 </div>
             </div>
         </section>
-        <!--// Features Area -->
+        <!--// Services Overview -->
 
-        <!-- Filing Steps Area -->
-        <section id="filing-steps-area" class="pf-home-section pf-steps-section">
-            <div class="container">
-                <div class="pf-section-heading text-center mx-auto">
-                    <span class="pf-eyebrow">How it works</span>
-                    <h2>Your Outsource Tax Office, in 3 Steps</h2>
-                    <p>Share your details, our consultants review your case, and we handle filing or representation with the FBR on your behalf.</p>
-                </div>
-
-                <div class="pf-steps row g-4 justify-content-center">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="pf-step-card">
-                            <span class="pf-step-number">1</span>
-                            <h3>Get in Touch</h3>
-                            <p>Tell us about your tax position — income tax, sales tax, withholding, or a dispute you're facing.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="pf-step-card">
-                            <span class="pf-step-number">2</span>
-                            <h3>Consultant Review</h3>
-                            <p>Our team reviews your documents, confirms your obligations, and explains the next steps clearly.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="pf-step-card">
-                            <span class="pf-step-number">3</span>
-                            <h3>Filed &amp; Represented</h3>
-                            <p>We handle filing with FBR or represent you at the relevant forum, keeping you informed throughout.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--// Filing Steps Area -->
-
-        <!-- Trust Area -->
+        <!-- Why Choose Us -->
         <section id="trust-area" class="pf-home-section pf-trust-section bg-white">
             <div class="container">
                 <div class="pf-section-heading text-center mx-auto">
                     <span class="pf-eyebrow">Why choose us</span>
-                    <h2>A Practical Tax Partner, Not Just a Filer</h2>
-                    <p>From individual traders to multi-entity corporate groups, we combine FBR compliance expertise with clear, practical advice.</p>
+                    <h2>Why Choose FINANIC Business Consultants</h2>
                 </div>
 
-                <div class="row g-4 justify-content-center">
-                    @foreach ($trustCards as $card)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="pf-trust-card wow fadeInUp">
-                                <span class="pf-card-icon"><i class="fa {{ $card['icon'] }}"></i></span>
-                                <h3>{{ $card['title'] }}</h3>
-                                <p>{{ $card['text'] }}</p>
+                <div class="row funfacts g-4 justify-content-center">
+                    @foreach ($trustStats as $stat)
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="funfact text-center about-stat-box">
+                                <span class="pf-card-icon"><i class="fa {{ $stat['icon'] }}"></i></span>
+                                <h2><span class="counter">{{ $stat['number'] }}</span></h2>
+                                <h6 class="text-white">{{ $stat['label'] }}</h6>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
         </section>
-        <!--// Trust Area -->
+        <!--// Why Choose Us -->
 
-        <!-- Planner Teaser Area -->
-        <section id="planner-teaser-area" class="pf-home-section pf-pricing-section">
-            <div class="container">
-                <div class="pf-cta-panel text-center">
-                    <span class="pf-eyebrow">Never miss a deadline</span>
-                    <h2>Tax Compliance Planner</h2>
-                    <p>Get a personalized filing-deadline calendar built around your taxpayer type, registrations and sector — plus reminders ahead of each due date.</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-3">
-                        <a href="{{ url('/pricing') }}" class="btn pf-cta-primary">Start Planner</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--// Planner Teaser Area -->
-
-        <!-- FAQ Area -->
-        <section id="faq-area" class="pf-home-section pf-faq-section">
+        <!-- Industries We Serve -->
+        <section id="industries-strip-area" class="pf-home-section pf-industries-strip-section bg--grey--light">
             <div class="container">
                 <div class="pf-section-heading text-center mx-auto">
-                    <span class="pf-eyebrow">Have questions?</span>
-                    <h2>Answers to Your Most Asked Tax Questions</h2>
+                    <span class="pf-eyebrow">Who we work with</span>
+                    <h2>Industries We Serve</h2>
                 </div>
 
-                <div class="pf-faq mx-auto" id="homepageFaq">
-                    @foreach ($faqs as $index => $faq)
-                        <details class="pf-faq-item" {{ $index === 0 ? 'open' : '' }}>
-                            <summary>{{ $faq['question'] }}</summary>
-                            <div class="pf-faq-answer">
-                                {{ $faq['answer'] }}
-                            </div>
-                        </details>
+                <div class="row g-4 justify-content-center text-center">
+                    @foreach ($homeIndustries as $industry)
+                        <div class="col-6 col-md-3">
+                            <a href="{{ route('industries') }}" class="pf-service-card wow fadeInUp d-block text-center">
+                                <span class="pf-card-icon mx-auto"><i class="fa {{ $industry['icon'] }}"></i></span>
+                                <span class="pf-card-title">{{ $industry['name'] }}</span>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="{{ route('faq') }}" class="pf-link-button">See all FAQs <i class="fa fa-angle-right"></i></a>
+                    <a href="{{ route('industries') }}" class="pf-link-button">See all industries we serve <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </section>
-        <!--// FAQ Area -->
+        <!--// Industries We Serve -->
 
-        <!-- Call To Action Area -->
-        <section id="cta-area" class="pf-cta-section">
+        <!-- Tax Compliance Planner Teaser -->
+        <section id="planner-teaser-area" class="pf-home-section pf-pricing-section">
             <div class="container">
                 <div class="pf-cta-panel text-center">
-                    <h2>Ready to Simplify Your Tax Compliance?</h2>
-                    <p>Whether it's a single return, ongoing retainer, or a dispute with the FBR — talk to a FINANIC consultant today.</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="{{ url('/contact') }}" class="btn pf-cta-primary">Talk to a Consultant</a>
-                        <a href="https://wa.me/923XXXXXXXXX" class="btn pf-cta-secondary" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> Message on WhatsApp</a>
+                    <span class="pf-eyebrow">Never miss a deadline</span>
+                    <h2>Your Next Filing Deadline</h2>
+                    <p>Your next filing deadline is in <strong>{{ $plannerDaysLeft }} days</strong>. Get a personalized filing-deadline calendar built around your taxpayer type, registrations and sector.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-3">
+                        <a href="{{ url('/pricing') }}" class="btn pf-cta-primary">Open Planner</a>
                     </div>
                 </div>
             </div>
         </section>
-        <!--// Call To Action Area -->
+        <!--// Tax Compliance Planner Teaser -->
+
+        <!-- Client Testimonials -->
+        <section id="testimonial-area" class="pf-home-section pf-testimonial-section bg-white">
+            <div class="container">
+                <div class="pf-section-heading text-center mx-auto">
+                    <span class="pf-eyebrow">Client stories</span>
+                    <h2>Client Testimonials</h2>
+                    <p>Placeholder testimonials shown until official client feedback is provided.</p>
+                </div>
+
+                <div class="row g-4">
+                    @foreach ($testimonials as $testimonial)
+                        <div class="col-lg-4 col-md-6">
+                            <article class="pf-testimonial-card">
+                                <p>{{ $testimonial['text'] }}</p>
+                                <div class="pf-testimonial-author">
+                                    <img src="{{ asset('assets/images/testimonial/' . $testimonial['image']) }}" alt="{{ $testimonial['name'] }}">
+                                    <div>
+                                        <h3>{{ $testimonial['name'] }}</h3>
+                                        <span>{{ $testimonial['role'] }}</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <!--// Client Testimonials -->
+
+        <!-- Latest Tax Updates -->
+        <div class="pf-service-page">
+            <section id="updates-area" class="pf-home-section section-light" aria-labelledby="updates-title">
+                <div class="container">
+                    <div class="pf-section-heading text-center mx-auto">
+                        <span class="pf-eyebrow">Stay informed</span>
+                        <h2 id="updates-title">Latest Tax Updates</h2>
+                    </div>
+
+                    <div class="resource-article-grid">
+                        @foreach ($homeUpdates as $update)
+                            <article class="resource-article-card">
+                                <div class="resource-thumb"><i class="fa {{ $update['icon'] }}" aria-hidden="true"></i></div>
+                                <div class="resource-article-body">
+                                    <span class="resource-badge">{{ $update['badge'] }}</span>
+                                    <h3>{{ $update['title'] }}</h3>
+                                    <p>{{ $update['text'] }}</p>
+                                    <a href="{{ $update['url'] }}" class="resource-read-more">Read More <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ route('resources') }}" class="pf-link-button">View all tax updates <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!--// Latest Tax Updates -->
     </div>
     <!-- //Page Content -->
 @endsection

@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="family-tax-contact-page">
-        <section class="contact-hero cr-breadcrumb-area section-padding--md" aria-labelledby="contact-hero-title">
+        <section class="contact-hero banner-area section-padding--md" aria-labelledby="contact-hero-title">
             <div class="container">
                 <span class="contact-eyebrow">
                     <span aria-hidden="true"></span>
@@ -69,7 +69,7 @@
                                                 <option value="withholding-tax">Withholding Tax Services</option>
                                                 <option value="litigation">Tax Litigation & Representation</option>
                                                 <option value="corporate-retainer">Corporate / Retainer Services</option>
-                                                <option value="ntn-registration">NTN Registration</option>
+                                                <!-- <option value="ntn-registration">NTN Registration</option> -->
                                             </select>
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@
                                     </span>
                                     <div class="info-card-content">
                                         <h3>WhatsApp</h3>
-                                        <a href="https://wa.me/923XXXXXXXXX">+92 3XX XXXXXXX</a>
+                                        <a href="https://wa.me/923222244000">+92 322 2244000</a>
                                         <p>Mon-Sat, business hours. Fastest response.</p>
                                     </div>
                                 </article>
@@ -140,7 +140,7 @@
                                     </span>
                                     <div class="info-card-content">
                                         <h3>Working Hours</h3>
-                                        <p>Monday-Saturday<br>Business Hours PKT</p>
+                                        <p>Monday-Saturday<br>9:00 AM-6:00 PM PKT</p>
                                     </div>
                                 </article>
                             </div>
@@ -151,7 +151,7 @@
                                 </span>
                                 <h2>Need help urgently?</h2>
                                 <p>Message us on WhatsApp for the fastest response during business hours.</p>
-                                <a href="https://wa.me/923XXXXXXXXX" class="whatsapp-btn">
+                                <a href="https://wa.me/923222244000" class="whatsapp-btn">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     Chat on WhatsApp
                                 </a>

@@ -214,7 +214,7 @@
                 <p>Talk to a FINANIC consultant to confirm your category and get registered with FBR.</p>
                 <div class="cta-buttons">
                   <a href="{{ route('contact') }}" class="btn btn-white">Talk to a Consultant <span class="arrow">-></span></a>
-                  <a href="https://wa.me/923XXXXXXXXX" class="btn btn-outline-white" target="_blank" rel="noopener">Message on WhatsApp</a>
+                  <a href="https://wa.me/923222244000" class="btn btn-outline-white" target="_blank" rel="noopener">Message on WhatsApp</a>
                 </div>
               </div>
             </section>

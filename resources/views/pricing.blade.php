@@ -27,7 +27,7 @@
         ];
     @endphp
 
-    <div class="cr-breadcrumb-area section-padding--md">
+    <div class="banner-area section-padding--md">
         <div class="container">
             <div class="cr-breadcrumb ">
                 <h1>Tax Compliance <span>Planner</span></h1>

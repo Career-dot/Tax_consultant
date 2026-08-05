@@ -121,7 +121,7 @@
                     <div class="row g-5 align-items-center {{ $index % 2 === 1 ? 'flex-lg-row-reverse' : '' }}">
                         <div class="col-lg-5">
                             <div class="pf-industry-visual">
-                                <span class="pf-industry-number">{{ $industry['number'] }}</span>
+                                <!-- <span class="pf-industry-number">{{ $industry['number'] }}</span> -->
                                 <span class="pf-industry-visual-icon"><i class="fa {{ $industry['icon'] }}" aria-hidden="true"></i></span>
                                 <span class="pf-industry-visual-label">{{ $industry['name'] }}</span>
                             </div>

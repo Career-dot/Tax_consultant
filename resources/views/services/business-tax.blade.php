@@ -132,7 +132,7 @@
                         <p>Talk to a FINANIC consultant about a retainer scoped to your entities and sectors.</p>
                         <div class="cta-actions">
                             <a href="{{ route('contact') }}" class="btn btn-white">Talk to a Consultant <span class="arrow">-></span></a>
-                            <a href="https://wa.me/923XXXXXXXXX" class="btn btn-outline-light" target="_blank" rel="noopener">Message on WhatsApp</a>
+                            <a href="https://wa.me/923222244000" class="btn btn-outline-light" target="_blank" rel="noopener">Message on WhatsApp</a>
                         </div>
                     </div>
                 </section>
