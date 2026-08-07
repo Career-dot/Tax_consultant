@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class TaxUpdate extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'category',
+        'tags',
+        'featured_image',
+        'is_published',
+        'published_at',
+        'author_id',
+    ];
+
+    protected $casts = [
+        'is_published' => 'boolean',
+        'published_at' => 'datetime',
+    ];
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true)->whereNotNull('published_at');
+    }
+}

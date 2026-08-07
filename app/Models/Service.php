@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Service extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'short_description',
+        'icon',
+        'price',
+        'sort_order',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('notes', 'status', 'assigned_at')->withTimestamps();
+    }
+
+    public function activeUsersCount()
+    {
+        return $this->users()->wherePivot('status', 'active')->count();
+    }
+
+    public function requiredDocuments()
+    {
+        return $this->hasMany(RequiredDocument::class)->orderBy('sort_order');
+    }
+}
