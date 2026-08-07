@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'About Us - FINANIC Business Consultants')
-@section('meta_description', 'FINANIC Business Consultants is a Faisalabad-based tax consultancy serving individual traders, shopkeepers, and multi-entity business groups since 2015.')
+@section('meta_description', 'FINANIC Business Consultants (operating as M/S RS Associates) is a Faisalabad-based tax consultancy serving individual traders, shopkeepers, and multi-entity business groups. Our practice covers income tax, sales tax, and withholding tax compliance, along with representation in tax litigation before the Regional Tax Office, Commissioner Inland Revenue (Appeals), the Appellate Tribunal Inland Revenue, and the High Court. We work across sectors including cement & other distribution, transport, pharmaceuticals, and FMCG, combining hands-on compliance support with clear, practical advice.')
 
 @section('content')
     @php
@@ -118,7 +118,7 @@
                     <div class="col-lg-10">
                         <div class="calltoaction text-center">
                             <h3>Our <span class="color--theme">Mission</span></h3>
-                            <p>To make professional tax compliance simple, practical, and accessible — helping every client, from an individual trader to a multi-entity corporate group, meet their obligations with confidence and clarity.</p>
+                            <p>FINANIC Business Consultants (operating as M/S RS Associates) is a Faisalabad-based tax consultancy serving individual traders, shopkeepers, and multi-entity business groups. Our practice covers income tax, sales tax, and withholding tax compliance, along with representation in tax litigation before the Regional Tax Office, Commissioner Inland Revenue (Appeals), the Appellate Tribunal Inland Revenue, and the High Court. We work across sectors including cement & other distribution, transport, pharmaceuticals, and FMCG, combining hands-on compliance support with clear, practical advice.”</p>
                         </div>
 
                         <div class="row g-3 justify-content-center mt-4">

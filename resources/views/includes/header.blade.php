@@ -2,8 +2,8 @@
     $mainNavigation = [
         ['label' => 'Home', 'url' => route('home')],
         ['label' => 'About Us', 'url' => url('/about')],
-        ['label' => 'Industries', 'url' => route('industries')],
-        ['label' => 'Tax Compliance Planner', 'url' => url('/pricing')],
+        ['label' => 'Industries We Serve', 'url' => route('industries')],
+       
         ['label' => 'Resources', 'url' => route('resources')],
         ['label' => 'FAQs', 'url' => route('faq')],
         ['label' => 'Contact Us', 'url' => url('/contact')],
