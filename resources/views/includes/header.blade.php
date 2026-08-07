@@ -14,7 +14,7 @@
 
 <header id="header" class="pf-header sticky-top">
     <div class="pf-header-top d-none d-xl-block">
-        <div class="container">
+        <div class="container-fluid px-4 px-xl-5">
             <div class="d-flex align-items-center justify-content-center gap-3 py-2 text-center">
                 <a class="pf-header-alert" href="{{ url('/contact') }}">
                     <span>FBR Deadline: {{ $daysLeft }}</span>
@@ -28,18 +28,18 @@
     </div>
 
     <nav class="navbar navbar-expand-xl pf-navbar bg-white" aria-label="Primary navigation">
-        <div class="d-flex gap-5 mx-auto">
-            <a class="navbar-brand pf-navbar-brand" href="{{ url('/') }}" aria-label="FINANIC Business Consultants home">
+        <div class="container-fluid px-4 px-xl-5 d-flex align-items-center justify-content-between">
+            <a class="navbar-brand pf-navbar-brand me-3" href="{{ url('/') }}" aria-label="FINANIC Business Consultants home">
                 <img src="{{ asset('assets/images/logo/logo.jpeg') }}" alt="FINANIC Business Consultants">
             </a>
 
-            <button class="navbar-toggler pf-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbar" aria-controls="primaryNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler pf-navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbar" aria-controls="primaryNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <div class="collapse navbar-collapse pf-navbar-collapse" id="primaryNavbar">
+            <div class="collapse navbar-collapse pf-navbar-collapse w-100" id="primaryNavbar">
                 <ul class="navbar-nav pf-navbar-nav mx-xl-auto">
                     @foreach ($mainNavigation as $item)
                         <li class="nav-item">

@@ -65,7 +65,7 @@
 
                 <div class="pf-services-megamenu-col pf-services-view-all-col">
                     <a href="{{ route('home') }}#features-area" class="pf-services-view-all">
-                        VIEW ALL<br>SERVICES
+                        VIEW ALL SERVICES
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
