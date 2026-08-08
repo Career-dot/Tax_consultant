@@ -21,7 +21,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->dropColumn(['status', 'rejection_reason']);
+            $columns = array_filter(
+                ['status', 'rejection_reason'],
+                fn ($column) => Schema::hasColumn('documents', $column)
+            );
+
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };

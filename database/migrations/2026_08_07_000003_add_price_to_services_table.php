@@ -9,14 +9,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->decimal('price', 10, 2)->nullable()->after('icon');
+            if (!Schema::hasColumn('services', 'price')) {
+                $table->decimal('price', 10, 2)->nullable()->after('icon');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->dropColumn('price');
+            if (Schema::hasColumn('services', 'price')) {
+                $table->dropColumn('price');
+            }
         });
     }
 };

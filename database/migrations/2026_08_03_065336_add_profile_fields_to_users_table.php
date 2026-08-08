@@ -27,7 +27,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['phone', 'cnic', 'city', 'address', 'avatar_path', 'notification_preferences']);
+            $columns = array_filter(
+                ['phone', 'cnic', 'city', 'address', 'avatar_path', 'notification_preferences'],
+                fn ($column) => Schema::hasColumn('users', $column)
+            );
+
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };

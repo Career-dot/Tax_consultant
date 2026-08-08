@@ -9,15 +9,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('client')->after('email');
-            $table->string('phone')->nullable()->after('role');
+            if (!Schema::hasColumn('users', 'role')) {
+                $table->string('role')->default('client')->after('email');
+            }
+            if (!Schema::hasColumn('users', 'phone')) {
+                $table->string('phone')->nullable()->after('role');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['role', 'phone']);
+            $columns = array_filter(
+                ['role', 'phone'],
+                fn ($column) => Schema::hasColumn('users', $column)
+            );
+
+            if (!empty($columns)) {
+                $table->dropColumn($columns);
+            }
         });
     }
 };

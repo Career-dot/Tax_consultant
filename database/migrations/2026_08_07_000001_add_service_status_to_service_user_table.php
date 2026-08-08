@@ -18,7 +18,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('service_user', function (Blueprint $table) {
-            $table->dropColumn('service_status');
+            if (Schema::hasColumn('service_user', 'service_status')) {
+                $table->dropColumn('service_status');
+            }
         });
     }
 };

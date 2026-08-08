@@ -9,15 +9,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->foreignId('service_id')->nullable()->after('user_id')->constrained()->onDelete('set null');
+            if (!Schema::hasColumn('documents', 'service_id')) {
+                $table->foreignId('service_id')->nullable()->after('user_id')->constrained()->onDelete('set null');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->dropForeign(['service_id']);
-            $table->dropColumn('service_id');
+            if (Schema::hasColumn('documents', 'service_id')) {
+                $table->dropForeign(['service_id']);
+                $table->dropColumn('service_id');
+            }
         });
     }
 };
