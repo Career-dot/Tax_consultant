@@ -53,7 +53,7 @@
                 <li>Log in to your portal and re-upload the document</li>
             </ol>
 
-            <p>You can re-upload your document from your <a href="{{ route('portal.dashboard') }}">portal dashboard</a>.</p>
+            <p>You can re-upload your document from your <a href="{{ route('dashboard.index') }}">portal dashboard</a>.</p>
             
             <p>If you have questions, please contact us at <a href="mailto:info@finanic.com">info@finanic.com</a>.</p>
             

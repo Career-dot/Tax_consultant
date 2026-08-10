@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'role',
         'cnic',
         'city',
         'address',
@@ -65,5 +66,15 @@ class User extends Authenticatable
     public function avatarUrl(): ?string
     {
         return $this->avatar_path ? asset('storage/'.$this->avatar_path) : null;
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class)->withPivot('notes', 'status', 'assigned_at', 'service_status')->withTimestamps();
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 }

@@ -35,7 +35,7 @@
             </div>
 
             <p style="text-align: center; margin: 30px 0;">
-                <a href="{{ route('portal.dashboard') }}" class="btn">Go to Dashboard</a>
+                <a href="{{ route('dashboard.index') }}" class="btn">Go to Dashboard</a>
             </p>
 
             <div class="warning">

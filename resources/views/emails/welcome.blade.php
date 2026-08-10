@@ -35,7 +35,7 @@
             </div>
 
             <p style="text-align: center; margin: 30px 0;">
-                <a href="{{ route('portal.dashboard') }}" class="btn">Get Started Now</a>
+                <a href="{{ route('dashboard.index') }}" class="btn">Get Started Now</a>
             </p>
 
             <p>If you have any questions, feel free to reach out to us at <a href="mailto:info@finanic.com">info@finanic.com</a>.</p>

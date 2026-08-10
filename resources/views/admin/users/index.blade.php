@@ -132,7 +132,7 @@
                                 <a href="{{ route('admin.users.edit', $user->id) }}" class="adm-btn adm-btn-outline adm-btn-sm adm-btn-icon" title="Edit">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this user? This will remove all service assignments.')">
+                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this user? This will remove all service assignments.')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="adm-btn adm-btn-danger adm-btn-sm adm-btn-icon" title="Delete">

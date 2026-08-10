@@ -34,10 +34,10 @@
 <!-- CTA Section -->
 <section class="py-5" style="background-color:#f8f9fa;">
     <div class="container text-center">
-        <h2>Need Help Choosing a Service?</h2>
-        <p class="text-muted mb-4">Contact us for a free consultation. We'll help you determine which services are right for your business.</p>
-        <a href="{{ route('contact') }}" class="btn btn-primary btn-lg me-3">Contact Us</a>
-        <a href="{{ route('planner.index') }}" class="btn btn-outline-primary btn-lg">Check Filing Deadlines</a>
+        <h2>Ready to Start?</h2>
+        <p class="text-muted mb-4">Register an account to select your services and make payments.</p>
+        <a href="{{ route('register') }}" class="btn btn-primary btn-lg me-3">Register Now</a>
+        <a href="{{ route('register') }}" class="btn btn-outline-primary btn-lg">View Services Pricing</a>
     </div>
 </section>
 @endsection

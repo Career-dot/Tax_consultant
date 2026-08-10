@@ -13,36 +13,43 @@ use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function create()
+    {
+        return view('auth.register');
+    }
+
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validate([
-            'signup_name' => ['required', 'string', 'max:255'],
-            'signup_phone' => ['required', 'string', 'max:30'],
-            'signup_email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class, 'email')],
-            'signup_password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:30'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class, 'email')],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'terms' => ['accepted'],
-        ], [], [
-            'signup_name' => 'full name',
-            'signup_phone' => 'phone number',
-            'signup_email' => 'email address',
-            'signup_password' => 'password',
         ]);
 
         $user = User::create([
-            'name' => $validated['signup_name'],
-            'phone' => $validated['signup_phone'],
-            'email' => $validated['signup_email'],
-            'password' => Hash::make($validated['signup_password']),
+            'name' => $validated['name'],
+            'phone' => $validated['phone'] ?? null,
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
         $request->session()->regenerate();
+        
+        try {
+            \Illuminate\Support\Facades\Mail::to($user->email)->send(new \App\Mail\WelcomeEmail($user));
+        } catch (\Exception $e) {
+            \Log::error('Welcome email failed: ' . $e->getMessage());
+        }
 
-        return response()->json([
-            'message' => 'Account created successfully.',
-            'redirect' => route('dashboard.index'),
-        ]);
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->route('dashboard.index');
     }
 }

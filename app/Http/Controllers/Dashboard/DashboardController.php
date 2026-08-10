@@ -10,16 +10,39 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $store = new DemoDataStore($request->user());
+        $user = $request->user();
+        
+        // Active services
+        $activeServices = $user->services()->wherePivot('status', 'active')->get();
+        $latestApplication = $activeServices->first(); // Just use the first active service as 'latest application'
+        
+        // Profile completion
+        $fields = [$user->name, $user->email, $user->phone, $user->cnic, $user->address, $user->city, $user->avatar_path];
+        $filled = collect($fields)->filter(fn ($value) => filled($value))->count();
+        $profileCompletion = (int) round(($filled / count($fields)) * 100);
+
+        // Stats
+        $pendingPaymentsCount = \App\Models\Payment::where('user_id', $user->id)->where('status', 'pending')->count();
+        $pendingPaymentsTotal = \App\Models\Payment::where('user_id', $user->id)->where('status', 'pending')->sum('amount');
+        
+        $stats = [
+            'active_applications' => $activeServices->count(),
+            'pending_documents' => 0, // Implement real document count when documents module is built
+            'pending_payments_count' => $pendingPaymentsCount,
+            'pending_payments_total' => $pendingPaymentsTotal,
+            'open_tickets' => 0, // Implement real tickets count when support module is built
+            'profile_completion' => $profileCompletion,
+        ];
 
         return view('dashboard.index', [
-            'stats' => $store->stats(),
-            'applications' => array_slice($store->applications(), 0, 4),
-            'documents' => array_slice($store->documents(), 0, 4),
-            'payments' => array_slice($store->payments(), 0, 4),
-            'notifications' => array_slice($store->notifications(), 0, 5),
-            'tickets' => $store->tickets(),
-            'serviceMeta' => DemoDataStore::serviceMeta(),
+            'user' => $user,
+            'stats' => $stats,
+            'activeServices' => $activeServices,
+            'latestApplication' => $latestApplication,
+            'payments' => \App\Models\Payment::where('user_id', $user->id)->latest()->take(4)->get(),
+            'documents' => [], // real documents later
+            'notifications' => [], // real notifications later
+            'tickets' => [], // real tickets later
         ]);
     }
 }

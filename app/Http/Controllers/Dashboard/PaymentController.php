@@ -11,19 +11,49 @@ class PaymentController extends Controller
 {
     public function index(Request $request)
     {
-        $store = new DemoDataStore($request->user());
+        $user = $request->user();
+        $payments = \App\Models\Payment::where('user_id', $user->id)->latest()->get();
+        
+        $pendingPayments = $payments->where('status', 'pending');
+        $paidPayments = $payments->where('status', 'approved');
+
+        // Services that need payment
+        $servicesNeedingPayment = $user->services()->wherePivot('status', 'active')->get()->filter(function ($service) use ($user) {
+            // Check if there's an approved or pending payment for this service
+            $hasPayment = \App\Models\Payment::where('user_id', $user->id)
+                ->where('service_id', $service->id)
+                ->whereIn('status', ['approved', 'pending'])
+                ->exists();
+            return !$hasPayment;
+        });
 
         return view('dashboard.payments.index', [
-            'payments' => $store->payments(),
-            'stats' => $store->stats(),
+            'payments' => $payments,
+            'pendingPayments' => $pendingPayments,
+            'paidPayments' => $paidPayments,
+            'servicesNeedingPayment' => $servicesNeedingPayment,
         ]);
     }
 
-    public function pay(Request $request, string $payment): RedirectResponse
+    public function pay(Request $request)
     {
-        $store = new DemoDataStore($request->user());
-        $store->markPaymentPaid($payment);
+        $request->validate([
+            'service_id' => 'required|exists:services,id',
+            'screenshot' => 'required|image|max:2048',
+        ]);
 
-        return back()->with('status', 'payment-completed');
+        $service = \App\Models\Service::findOrFail($request->service_id);
+        
+        $path = $request->file('screenshot')->store('payments', 'public');
+
+        \App\Models\Payment::create([
+            'user_id' => $request->user()->id,
+            'service_id' => $service->id,
+            'amount' => $service->price ?? 0,
+            'screenshot_path' => $path,
+            'status' => 'pending',
+        ]);
+
+        return back()->with('success', 'Payment receipt uploaded successfully. Waiting for admin approval.');
     }
 }

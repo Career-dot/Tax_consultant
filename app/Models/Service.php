@@ -16,12 +16,14 @@ class Service extends Model
         'short_description',
         'icon',
         'price',
+        'deadline_date',
         'sort_order',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'deadline_date' => 'date',
     ];
 
     public function users()

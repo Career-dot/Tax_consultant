@@ -71,7 +71,7 @@
                     <p>Join a guided online workflow built for taxpayers, SMEs and corporate groups.</p>
                 </div>
 
-                <form class="pf-auth-modal-form" data-auth-form="sign-up" action="{{ route('register') }}" method="post">
+                <form class="pf-auth-modal-form" data-auth-form="sign-up" action="{{ route('register.post') }}" method="post">
                     @csrf
                     <p class="pf-auth-error-summary" data-auth-error-summary hidden></p>
 

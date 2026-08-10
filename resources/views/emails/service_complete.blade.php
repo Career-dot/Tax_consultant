@@ -31,7 +31,7 @@
             
             <p>Our team has finished processing your request. If you have any questions about the completed work or need further assistance, please don't hesitate to reach out.</p>
 
-            <p>You can view your completed services and documents in your <a href="{{ route('portal.dashboard') }}">portal dashboard</a>.</p>
+            <p>You can view your completed services and documents in your <a href="{{ route('dashboard.index') }}">portal dashboard</a>.</p>
 
             <p>Thank you for choosing FINANIC Business Consultants!</p>
             

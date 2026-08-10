@@ -50,7 +50,7 @@
                 <li>Upload a clear screenshot of the payment</li>
             </ol>
 
-            <p>You can re-submit your payment from your <a href="{{ route('portal.payment') }}">payment page</a>.</p>
+            <p>You can re-submit your payment from your <a href="{{ route('payments') }}">payment page</a>.</p>
             
             <p>If you have questions, contact us at <a href="mailto:info@finanic.com">info@finanic.com</a>.</p>
             

@@ -87,37 +87,41 @@
             <div class="pfd-card-header">
                 <div>
                     <h2>Application Status</h2>
-                    <p>@if($latestApplication) {{ $latestApplication['title'] }} — {{ $latestApplication['reference'] }} @else No applications yet @endif</p>
+                    <p>@if($latestApplication) {{ $latestApplication->name }} @else No applications yet @endif</p>
                 </div>
-                @if ($latestApplication)
-                    <a class="pfd-card-link" href="{{ route('dashboard.applications.show', $latestApplication['id']) }}">View details <i class="fa fa-angle-right"></i></a>
-                @endif
             </div>
             <div class="pfd-card-body">
                 @if ($latestApplication)
-                    <ol class="pfd-timeline">
-                        @foreach ($latestApplication['timeline'] as $step)
-                            <li class="pfd-timeline-step is-{{ str_replace('_', '-', $step['state']) }}">
-                                <span class="pfd-timeline-dot">
-                                    @if ($step['state'] === 'done')
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                    @else
-                                        {{ $loop->iteration }}
-                                    @endif
-                                </span>
-                                <span class="pfd-timeline-label">{{ $step['label'] }}</span>
-                                @if ($step['date'])
-                                    <span class="pfd-timeline-date">{{ $step['date'] }}</span>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ol>
+                    @php
+                        $status = $latestApplication->pivot->service_status ?? 'pending';
+                        $progress = match($status) {
+                            'pending' => 20,
+                            'under_review' => 50,
+                            'processing' => 75,
+                            'complete' => 100,
+                            default => 0
+                        };
+                        $statusLabel = match($status) {
+                            'pending' => 'Pending',
+                            'under_review' => 'Under Review',
+                            'processing' => 'Processing',
+                            'complete' => 'Complete',
+                            default => ucfirst($status)
+                        };
+                    @endphp
+                    <div style="margin-bottom: 20px;">
+                        <p style="margin-bottom: 5px;"><strong>Status:</strong> <span class="badge bg-primary">{{ $statusLabel }}</span></p>
+                        @if($latestApplication->deadline_date)
+                            <p style="margin-bottom: 5px; color: var(--accent-coral);"><strong><i class="fa fa-calendar"></i> Deadline:</strong> {{ \Carbon\Carbon::parse($latestApplication->deadline_date)->format('M d, Y') }}</p>
+                        @endif
+                    </div>
+                    
                     <div style="margin-top:26px;">
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:12.5px; font-weight:700; color:var(--pf-muted);">
                             <span>Filing progress</span>
-                            <span>{{ \App\Support\Dashboard\DemoDataStore::stageProgress($latestApplication['status']) }}%</span>
+                            <span>{{ $progress }}%</span>
                         </div>
-                        <div class="pfd-progress"><div class="pfd-progress-bar" data-progress="{{ \App\Support\Dashboard\DemoDataStore::stageProgress($latestApplication['status']) }}" style="width:0"></div></div>
+                        <div class="pfd-progress"><div class="pfd-progress-bar" data-progress="{{ $progress }}" style="width:{{ $progress }}%"></div></div>
                     </div>
                 @else
                     <x-dashboard.empty-state icon="pe-7s-note2" title="No applications yet" text="Start your first tax filing to see progress here." action-label="Start Filing" :action-url="route('dashboard.filing.create', 'personal-tax')" />

@@ -137,10 +137,22 @@
                             </div>
                         </td>
                         <td>
-                            <span class="adm-badge {{ $service->pivot->status === 'active' ? 'adm-badge-green' : ($service->pivot->status === 'paused' ? 'adm-badge-gold' : 'adm-badge-red') }}">
-                                <span class="adm-badge-dot"></span>
-                                {{ ucfirst($service->pivot->status) }}
-                            </span>
+                            <div style="display: flex; gap: 4px; flex-direction: column;">
+                                <span class="adm-badge {{ $service->pivot->status === 'active' ? 'adm-badge-green' : ($service->pivot->status === 'paused' ? 'adm-badge-gold' : 'adm-badge-red') }}">
+                                    <span class="adm-badge-dot"></span>
+                                    Access: {{ ucfirst($service->pivot->status) }}
+                                </span>
+                                
+                                <form action="{{ route('admin.users.services.status', [$user->id, $service->id]) }}" method="POST" style="margin-top: 5px;">
+                                    @csrf
+                                    <select name="service_status" class="adm-form-select" onchange="this.form.submit()" style="padding: 2px 5px; font-size: 11px;">
+                                        <option value="pending" {{ ($service->pivot->service_status ?? 'pending') === 'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="under_review" {{ ($service->pivot->service_status ?? 'pending') === 'under_review' ? 'selected' : '' }}>Under Review</option>
+                                        <option value="processing" {{ ($service->pivot->service_status ?? 'pending') === 'processing' ? 'selected' : '' }}>Processing</option>
+                                        <option value="complete" {{ ($service->pivot->service_status ?? 'pending') === 'complete' ? 'selected' : '' }}>Complete</option>
+                                    </select>
+                                </form>
+                            </div>
                         </td>
                         <td style="color: var(--muted); font-size: 13px;">
                             {{ $service->pivot->assigned_at ? \Carbon\Carbon::parse($service->pivot->assigned_at)->format('M d, Y') : 'N/A' }}

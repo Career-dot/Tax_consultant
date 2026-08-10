@@ -37,15 +37,19 @@
                 <textarea name="description" class="form-control" rows="6">{{ old('description', $service->description) }}</textarea>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-3 mb-4">
                     <label class="form-label">Price (Rs)</label>
                     <input type="number" name="price" class="form-control" value="{{ old('price', $service->price) }}" placeholder="e.g., 999" min="0" step="0.01">
                 </div>
-                <div class="col-md-4 mb-4">
-                    <label class="form-label">Icon <span class="label-hint">(Font Awesome)</span></label>
+                <div class="col-md-3 mb-4">
+                    <label class="form-label">Deadline</label>
+                    <input type="date" name="deadline_date" class="form-control" value="{{ old('deadline_date', $service->deadline_date ? $service->deadline_date->format('Y-m-d') : '') }}">
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label class="form-label">Icon <span class="label-hint">(Font Awesome class)</span></label>
                     <input type="text" name="icon" class="form-control" value="{{ old('icon', $service->icon) }}" placeholder="e.g., fa-file-invoice-dollar">
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-3 mb-4">
                     <label class="form-label">Sort Order</label>
                     <input type="number" name="sort_order" class="form-control" value="{{ old('sort_order', $service->sort_order) }}">
                 </div>

@@ -45,10 +45,10 @@ class AuthController extends Controller
 
             // Check if user has services assigned
             if ($user->services()->wherePivot('status', 'active')->count() === 0) {
-                return redirect()->route('portal.select-services');
+                return redirect()->route('dashboard.index'); // They will select services from dashboard
             }
 
-            return redirect()->route('portal.dashboard');
+            return redirect()->route('dashboard.index');
         }
 
         return back()->withErrors([
@@ -70,7 +70,7 @@ class AuthController extends Controller
             'role' => 'required|in:trader,corporate,client',
             'business_name' => 'nullable|string|max:255',
             'password' => ['required', 'confirmed', Password::min(8)],
-            'terms' => 'required',
+            'terms' => 'required|accepted',
             'service' => 'nullable|string',
         ]);
 
@@ -110,20 +110,17 @@ class AuthController extends Controller
 
         // Send welcome email
         try {
-            Mail::send('emails.welcome', ['user' => $user], function ($message) use ($user) {
-                $message->to($user->email)
-                    ->subject('Welcome to FINANIC Business Consultants');
-            });
+            Mail::to($user->email)->send(new \App\Mail\WelcomeEmail($user));
         } catch (\Exception $e) {
             \Log::error('Failed to send welcome email: ' . $e->getMessage());
         }
 
         // Redirect to payment if service was assigned, otherwise to dashboard
         if ($hasService) {
-            return redirect()->route('portal.payment');
+            return redirect()->route('dashboard.payments');
         }
 
-        return redirect()->route('portal.dashboard');
+        return redirect()->route('dashboard.index');
     }
 
     public function logout(Request $request)
@@ -151,5 +148,34 @@ class AuthController extends Controller
         return $status === \Illuminate\Support\Facades\Password::RESET_LINK_SENT
             ? back()->with('status', __($status))
             : back()->withErrors(['email' => __($status)]);
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('auth.reset-password')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
+    public function reset(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => ['required', 'confirmed', Password::min(8)],
+        ]);
+
+        $status = \Illuminate\Support\Facades\Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->save();
+            }
+        );
+
+        return $status === \Illuminate\Support\Facades\Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
     }
 }

@@ -39,7 +39,7 @@
 
             <p>Your document is now verified and on file. You can continue with the next steps in your tax filing process.</p>
 
-            <p>View your documents in your <a href="{{ route('portal.dashboard') }}">portal dashboard</a>.</p>
+            <p>View your documents in your <a href="{{ route('dashboard.index') }}">portal dashboard</a>.</p>
             
             <p>Best regards,<br><strong>FINANIC Business Consultants Team</strong></p>
         </div>

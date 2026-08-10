@@ -36,11 +36,15 @@
                 <textarea name="description" class="form-control" rows="6" placeholder="Detailed description of the service...">{{ old('description') }}</textarea>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-md-3 mb-4">
                     <label class="form-label">Price (Rs)</label>
                     <input type="number" name="price" class="form-control" value="{{ old('price') }}" placeholder="e.g., 999" min="0" step="0.01">
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-3 mb-4">
+                    <label class="form-label">Deadline</label>
+                    <input type="date" name="deadline_date" class="form-control" value="{{ old('deadline_date') }}">
+                </div>
+                <div class="col-md-3 mb-4">
                     <label class="form-label">Icon <span class="label-hint">(Font Awesome class)</span></label>
                     <input type="text" name="icon" class="form-control" value="{{ old('icon') }}" placeholder="e.g., fa-file-invoice-dollar">
                 </div>

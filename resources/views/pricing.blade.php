@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <a href="{{ url('/contact') }}" class="cr-btn"><span>Start Planner</span></a>
+                    <a href="{{ route('register') }}" class="cr-btn"><span>Register to Start</span></a>
                 </div>
             </div>
         </section>
@@ -174,7 +174,7 @@
                         <div class="calltoaction text-center">
                             <h3>Start Building Your <span class="color--theme">Tax Calendar</span></h3>
                             <p>Get in touch to build your personalized filing-deadline calendar and opt in to reminders.</p>
-                            <a href="{{ url('/contact') }}" class="cr-btn"><span>Start Planner</span></a>
+                            <a href="{{ route('register') }}" class="cr-btn"><span>Register to Start</span></a>
                         </div>
                     </div>
                 </div>
