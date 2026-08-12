@@ -11,51 +11,6 @@ use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
-
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            $request->session()->regenerate();
-
-            $user = auth()->user();
-
-            // Send login notification email
-            try {
-                Mail::send('emails.login_notification', ['user' => $user], function ($message) use ($user) {
-                    $message->to($user->email)
-                        ->subject('Login Notification - FINANIC');
-                });
-            } catch (\Exception $e) {
-                \Log::error('Failed to send login email: ' . $e->getMessage());
-            }
-
-            // Admin goes to admin dashboard
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard');
-            }
-
-            // Check if user has services assigned
-            if ($user->services()->wherePivot('status', 'active')->count() === 0) {
-                return redirect()->route('dashboard.index'); // They will select services from dashboard
-            }
-
-            return redirect()->route('dashboard.index');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-    }
-
     public function showRegistrationForm()
     {
         return view('auth.register');

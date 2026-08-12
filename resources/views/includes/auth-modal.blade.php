@@ -1,4 +1,4 @@
-<div class="pf-auth-modal" id="pfAuthModal" hidden aria-hidden="true" @if (session('open_auth_modal')) data-open-on-load="{{ session('open_auth_modal') }}" @endif>
+<div class="pf-auth-modal" id="pfAuthModal" hidden aria-hidden="true">
     <div class="pf-auth-modal-backdrop" data-auth-close></div>
 
     <section class="pf-auth-modal-dialog" role="dialog" aria-modal="true" aria-label="Authentication and onboarding" tabindex="-1">
@@ -6,63 +6,7 @@
             <i class="fa fa-times" aria-hidden="true"></i>
         </button>
 
-        <div class="pf-auth-modal-view is-active" data-auth-view="sign-in">
-            <div class="pf-auth-form-panel">
-                <div class="pf-auth-modal-header">
-                    <!-- <span class="pf-auth-modal-mark" aria-hidden="true">CI</span> -->
-                    <!-- <p class="pf-auth-modal-kicker">Secure account access</p> -->
-                    <h2 id="pfAuthModalTitle">Welcome back!</h2>
-                    <p>Sign in to continue your income tax, sales tax, withholding tax, or litigation case with FINANIC.</p>
-                </div>
-
-                <form class="pf-auth-modal-form" data-auth-form="sign-in" action="{{ route('login') }}" method="post">
-                    @csrf
-                    <p class="pf-auth-error-summary" data-auth-error-summary hidden></p>
-
-                    <div class="pf-auth-field">
-                        <label for="modalSigninEmail">Email address</label>
-                        <div class="pf-auth-input-icon">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            <input id="modalSigninEmail" name="signin_email" type="email" autocomplete="email" placeholder="you@example.com" required>
-                        </div>
-                        <span class="pf-auth-field-error" data-auth-error-for="signin_email" hidden></span>
-                    </div>
-
-                    <div class="pf-auth-field">
-                        <label for="modalSigninPassword">Password</label>
-                        <div class="pf-auth-password-row">
-                                <div class="pf-auth-input-icon">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                    <input id="modalSigninPassword" name="signin_password" type="password" autocomplete="current-password" minlength="8" placeholder="Enter your password" required>
-                                    <button class="pf-auth-password-toggle" type="button" data-modal-password-toggle aria-controls="modalSigninPassword" aria-label="Show password">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                        </div>
-                        <span class="pf-auth-field-error" data-auth-error-for="signin_password" hidden></span>
-                    </div>
-
-                    <div class="pf-auth-meta-row">
-                        <div class="form-check pf-auth-check">
-                            <input class="form-check-input" type="checkbox" id="modalRememberMe" name="remember_me">
-                            <label class="form-check-label" for="modalRememberMe">Remember me</label>
-                        </div>
-                        <button class="pf-auth-link-button" type="button" data-auth-switch="forgot-password">Forgot password?</button>
-                    </div>
-
-                    <button class="btn pf-auth-primary-button" type="submit">
-                        Sign In <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </form>
-
-                <p class="pf-auth-switch-text">
-                    New here?
-                    <button type="button" data-auth-switch="sign-up">Create your account <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                </p>
-            </div>
-        </div>
-
-        <div class="pf-auth-modal-view" data-auth-view="sign-up" hidden>
+        <div class="pf-auth-modal-view is-active" data-auth-view="sign-up">
             <div class="pf-auth-form-panel">
                 <div class="pf-auth-modal-header">
                     <!-- <span class="pf-auth-modal-mark" aria-hidden="true">CI</span> -->
@@ -153,38 +97,7 @@
 
                 <p class="pf-auth-switch-text">
                     Already have an account?
-                    <button type="button" data-auth-switch="sign-in">Sign in <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                </p>
-            </div>
-        </div>
-
-        <div class="pf-auth-modal-view" data-auth-view="forgot-password" hidden>
-            <div class="pf-auth-form-panel pf-auth-compact-panel">
-                <div class="pf-auth-modal-header">
-                    <!-- <span class="pf-auth-modal-mark" aria-hidden="true">CI</span> -->
-                    <p class="pf-auth-modal-kicker">Account recovery</p>
-                    <h2>Reset your password</h2>
-                    <p>Enter your email address and we will prepare a secure password reset flow.</p>
-                </div>
-
-                <form class="pf-auth-modal-form" data-auth-form="forgot-password" action="#" method="post">
-                    @csrf
-                    <div class="pf-auth-field">
-                        <label for="modalForgotEmail">Email address</label>
-                        <div class="pf-auth-input-icon">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            <input id="modalForgotEmail" name="forgot_email" type="email" autocomplete="email" placeholder="you@example.com" required>
-                        </div>
-                    </div>
-
-                    <button class="btn pf-auth-primary-button" type="submit">
-                        Continue <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </form>
-
-                <p class="pf-auth-switch-text">
-                    Remembered it?
-                    <button type="button" data-auth-switch="sign-in">Back to sign in</button>
+                    <a href="{{ route('login') }}">Sign in <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </p>
             </div>
         </div>
