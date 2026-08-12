@@ -34,6 +34,13 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/book-consultation', function () {
+    if (auth()->check()) {
+        return redirect()->route('dashboard.index');
+    }
+    return redirect()->route('register');
+})->name('book.consultation');
+
 Route::get('/pricing', function () {
     return view('pricing');
 })->name('pricing');

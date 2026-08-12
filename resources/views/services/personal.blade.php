@@ -78,7 +78,7 @@
                 </p>
 
                 <div class="personal-hero-actions">
-                    <a href="{{ route('contact') }}" class="btn-hero-primary">Start Income Tax Filing <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="{{ route('book.consultation') }}" class="btn-hero-primary">Start Income Tax Filing <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     <a href="#personal-included" class="btn-hero-secondary">What's Included</a>
                 </div>
 
@@ -183,7 +183,7 @@
                     <h2 id="personal-cta-title" class="cta-banner-title">Ready to Get Your Income Tax Filing Handled?</h2>
                     <p class="cta-banner-desc">Talk to a FINANIC consultant about registration, annual filing, or an FBR notice you've received.</p>
                     <div class="cta-buttons">
-                        <a href="{{ route('contact') }}" class="btn-cta-light">Start Filing Now <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{{ route('book.consultation') }}" class="btn-cta-light">Start Filing Now <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                         <a href="{{ route('contact') }}" class="btn-cta-outline"><i class="fa fa-comments-o" aria-hidden="true"></i> Talk to a Consultant</a>
                     </div>
                 </div>

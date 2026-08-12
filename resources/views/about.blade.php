@@ -81,7 +81,7 @@
                                 <li><i class="fa {{ $item['icon'] }}" aria-hidden="true"></i><span>{{ $item['text'] }}</span></li>
                             @endforeach
                         </ul>
-                        <a href="{{ url('/contact') }}" class="cr-btn"><span>Talk to a Consultant</span></a>
+                        <a href="{{ route('book.consultation') }}" class="cr-btn"><span>Talk to a Consultant</span></a>
                     </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@
                             <h3>Let's Simplify Your <span class="color--theme">Tax Matters</span></h3>
                             <p>Whether you're an individual taxpayer, a growing business, or a corporate group, FINANIC Business Consultants is ready to provide practical, reliable, and professional tax solutions.</p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a href="{{ url('/contact') }}" class="cr-btn"><span>Book a Consultation</span></a>
+                                <a href="{{ route('book.consultation') }}" class="cr-btn"><span>Book a Consultation</span></a>
                                 <a href="{{ url('/contact') }}" class="cr-btn cr-btn--transparent"><span>Contact Us</span></a>
                             </div>
                         </div>

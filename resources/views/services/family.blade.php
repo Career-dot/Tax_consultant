@@ -24,7 +24,7 @@
                 </p>
 
                 <div class="hero-buttons">
-                  <a href="{{ route('contact') }}" class="btn btn-white">
+                  <a href="{{ route('book.consultation') }}" class="btn btn-white">
                     Talk to a Consultant
                     <span class="arrow">&rarr;</span>
                   </a>
@@ -286,7 +286,7 @@
                 <p class="cta-description">Talk to a FINANIC consultant about your withholding tax position today.</p>
 
                 <div class="cta-buttons">
-                  <a href="{{ route('contact') }}" class="btn btn-white">
+                  <a href="{{ route('book.consultation') }}" class="btn btn-white">
                     Talk to a Consultant
                     <span class="arrow">&rarr;</span>
                   </a>

@@ -14,7 +14,7 @@
         <h1 id="hero-title">Sales Tax Registration, Filing, Audits & Refunds</h1>
         <p class="hero-text">From sales tax registration to monthly return filing, audits, and refunds — we keep your sales
           tax compliance current and defensible.</p>
-        <a href="{{ route('contact') }}" class="btn-hero-primary">Talk to a Consultant <i class="fa fa-arrow-right"
+        <a href="{{ route('book.consultation') }}" class="btn-hero-primary">Talk to a Consultant <i class="fa fa-arrow-right"
             aria-hidden="true"></i></a>
         <ul class="hero-badges" role="list">
           <li class="hero-badge">FBR STRN Registration</li>
@@ -148,7 +148,7 @@
           <h2 id="cta-title">Ready to Get Your Sales Tax Compliance in Order?</h2>
           <p>Talk to a FINANIC consultant about registration, filing, or an audit notice you've received.</p>
           <div class="cta-btn-row">
-            <a href="{{ route('contact') }}" class="btn-cta-primary">Talk to a Consultant <i class="fa fa-arrow-right"
+            <a href="{{ route('book.consultation') }}" class="btn-cta-primary">Talk to a Consultant <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
             <a href="https://wa.me/923222244000" class="btn-cta-secondary" target="_blank" rel="noopener"><i class="fa fa-whatsapp" aria-hidden="true"></i> Message on WhatsApp</a>
           </div>

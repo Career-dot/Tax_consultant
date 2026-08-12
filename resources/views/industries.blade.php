@@ -103,7 +103,7 @@
                     administrative burdens.
                 </p>
                 <div class="hero-btn-row">
-                    <a href="{{ route('contact') }}" class="btn-hero-primary">Book a Consultation <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="{{ route('book.consultation') }}" class="btn-hero-primary">Book a Consultation <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     <a href="{{ route('contact') }}" class="btn-hero-secondary">Contact Our Experts</a>
                 </div>
                 <ul class="hero-badges" role="list">
@@ -194,7 +194,7 @@
                     <h2 id="cta-title">Need Industry-Specific Tax Guidance?</h2>
                     <p>Whether you operate in cement distribution, transport, pharmaceuticals, or FMCG, our team can help you manage compliance requirements and respond confidently to tax challenges.</p>
                     <div class="cta-btn-row">
-                        <a href="{{ route('contact') }}" class="btn-cta-primary">Book Consultation <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{{ route('book.consultation') }}" class="btn-cta-primary">Book Consultation <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                         <a href="{{ route('contact') }}" class="btn-cta-secondary"><i class="fa fa-comments-o" aria-hidden="true"></i> Contact Us Today</a>
                     </div>
                 </div>

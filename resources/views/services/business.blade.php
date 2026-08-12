@@ -15,7 +15,7 @@
         <p class="hero-text">When a dispute arises, we represent you at every forum — from the assessing officer through
           to the Appellate Tribunal and the High Court — building a clear, well-documented case at each stage.</p>
         <div class="hero-btn-row">
-          <a href="{{ route('contact') }}" class="btn-hero-primary">Talk to a Consultant <i class="fa fa-arrow-right"
+          <a href="{{ route('book.consultation') }}" class="btn-hero-primary">Talk to a Consultant <i class="fa fa-arrow-right"
               aria-hidden="true"></i></a>
           <a href="#ladder" class="btn-hero-secondary">See the Representation Ladder</a>
         </div>
@@ -181,7 +181,7 @@
           <h2 id="cta-title">Received an Unfavorable Order or Notice?</h2>
           <p>Reach out as soon as possible — appeal deadlines are strict. Talk to a FINANIC consultant today.</p>
           <div class="cta-btn-row">
-            <a href="{{ route('contact') }}" class="btn-cta-primary">Talk to a Consultant <i class="fa fa-arrow-right"
+            <a href="{{ route('book.consultation') }}" class="btn-cta-primary">Talk to a Consultant <i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
             <a href="https://wa.me/923222244000" class="btn-cta-secondary" target="_blank" rel="noopener"><i class="fa fa-whatsapp" aria-hidden="true"></i> Message on WhatsApp</a>
           </div>

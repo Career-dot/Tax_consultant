@@ -55,8 +55,8 @@
                                 <div class="d-flex flex-wrap gap-3 mt-3">
                                     <a href="https://wa.me/923222244000" class="cr-btn" target="_blank" rel="noopener"><span><i class="fa fa-whatsapp"></i> WhatsApp Us</span></a>
                                     <a href="tel:+923222244000" class="cr-btn cr-btn--transparent"><span><i class="fa fa-phone"></i> Call Now</span></a>
-                                    <a href="{{ url('/contact') }}" class="cr-btn cr-btn--transparent"><span>Book a Consultation</span></a>
-                                    <a href="{{ url('/pricing') }}" class="cr-btn cr-btn--transparent"><span>Check Your Filing Deadlines</span></a>
+                                    <a href="{{ route('book.consultation') }}" class="cr-btn cr-btn--transparent"><span>Book a Consultation</span></a>
+                                    <a href="{{ url('/planner') }}" class="cr-btn cr-btn--transparent"><span>Check Your Filing Deadlines</span></a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                     <h2>Your Next Filing Deadline</h2>
                     <p>Your next filing deadline is in <strong>{{ $plannerDaysLeft }} days</strong>. Get a personalized filing-deadline calendar built around your taxpayer type, registrations and sector.</p>
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-3">
-                        <a href="{{ url('/pricing') }}" class="btn pf-cta-primary">Open Planner</a>
+                        <a href="{{ url('/planner') }}" class="btn pf-cta-primary">Open Planner</a>
                     </div>
                 </div>
             </div>

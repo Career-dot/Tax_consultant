@@ -21,7 +21,7 @@
         'readTime' => '3 min read',
         'title' => 'FBR Deadline Reminder: Staying Ahead of Your Filing Dates',
         'excerpt' => 'Missed deadlines are one of the most common (and most avoidable) causes of penalties and lost Active Taxpayer List status. Here\'s how to keep your income tax, sales tax, and withholding tax deadlines on your radar, and how our Tax Compliance Planner can build a personalized calendar for you.',
-        'url' => url('/pricing'),
+        'url' => url('/planner'),
     ];
 
     $articles = [
@@ -219,7 +219,7 @@
                 </div>
 
                 <div class="text-center" style="margin-top: 32px;">
-                    <a href="{{ url('/pricing') }}" class="btn-hero-primary">Build My Deadline Calendar <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="{{ url('/planner') }}" class="btn-hero-primary">Build My Deadline Calendar <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
@@ -253,7 +253,7 @@
                     </table>
                 </div>
 
-                <p class="calc-disclaimer" style="margin-top: 18px;">Exact statutory dates are announced by FBR each year and should always be confirmed before filing. Our <a href="{{ url('/pricing') }}">Tax Compliance Planner</a> keeps these dates current for your specific profile.</p>
+                <p class="calc-disclaimer" style="margin-top: 18px;">Exact statutory dates are announced by FBR each year and should always be confirmed before filing. Our <a href="{{ url('/planner') }}">Tax Compliance Planner</a> keeps these dates current for your specific profile.</p>
             </div>
         </section>
 
