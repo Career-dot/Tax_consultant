@@ -17,4 +17,16 @@ class ContactController extends Controller
     {
         return view('admin.contacts.show', compact('contact'));
     }
+
+    public function updateStatus(Contact $contact)
+    {
+        $validated = request()->validate([
+            'status' => 'required|in:pending,contacted,resolved',
+        ]);
+
+        $contact->update($validated);
+
+        return redirect()->route('admin.contacts.show', $contact->id)
+            ->with('success', 'Contact status updated.');
+    }
 }

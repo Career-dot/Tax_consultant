@@ -65,6 +65,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store')
+    ->middleware('throttle:10,1');
+
 Route::prefix('services')->name('services.')->group(function () {
     Route::get('/personal-tax-filing', function () {
         return view('services.personal');
@@ -165,6 +168,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
+    Route::put('contacts/{contact}/status', [ContactController::class, 'updateStatus'])->name('contacts.status');
 
     Route::get('notifications', [AdminNotificationController::class, 'index'])->name('notifications.index');
 

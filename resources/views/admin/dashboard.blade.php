@@ -114,38 +114,47 @@
 <div class="pfd-grid pfd-grid-4" style="margin-bottom: 24px;">
     <div class="pfd-card pfd-admin-stat">
         <div class="pfd-stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div>
+            <p class="pfd-stat-value">{{ $stats['total_users'] ?? 0 }}</p>
+            <p class="pfd-stat-label">Total Users</p>
+            <span class="pfd-badge is-info" style="margin-top: 8px;">
+                <span></span> {{ $stats['total_clients'] ?? 0 }} clients
+            </span>
+        </div>
+    </div>
+    <div class="pfd-card pfd-admin-stat">
+        <div class="pfd-stat-icon is-blue">
+            <i class="fas fa-file-alt"></i>
+        </div>
+        <div>
+            <p class="pfd-stat-value">{{ $stats['total_documents'] ?? 0 }}</p>
+            <p class="pfd-stat-label">Total Documents</p>
+            <span class="pfd-badge is-warning" style="margin-top: 8px;">
+                <span></span> {{ $stats['pending_documents'] ?? 0 }} pending
+            </span>
+        </div>
+    </div>
+    <div class="pfd-card pfd-admin-stat">
+        <div class="pfd-stat-icon is-gold">
+            <i class="fas fa-credit-card"></i>
+        </div>
+        <div>
+            <p class="pfd-stat-value">{{ $stats['total_payments'] ?? 0 }}</p>
+            <p class="pfd-stat-label">Total Payments</p>
+            <span class="pfd-badge is-warning" style="margin-top: 8px;">
+                <span></span> {{ $stats['pending_payments'] ?? 0 }} pending
+            </span>
+        </div>
+    </div>
+    <div class="pfd-card pfd-admin-stat">
+        <div class="pfd-stat-icon is-danger">
             <i class="fas fa-briefcase"></i>
         </div>
         <div>
             <p class="pfd-stat-value">{{ $stats['services'] }}</p>
             <p class="pfd-stat-label">Services</p>
-        </div>
-    </div>
-    <div class="pfd-card pfd-admin-stat">
-        <div class="pfd-stat-icon is-blue">
-            <i class="fas fa-question-circle"></i>
-        </div>
-        <div>
-            <p class="pfd-stat-value">{{ $stats['faqs'] }}</p>
-            <p class="pfd-stat-label">FAQs</p>
-        </div>
-    </div>
-    <div class="pfd-card pfd-admin-stat">
-        <div class="pfd-stat-icon is-gold">
-            <i class="fas fa-newspaper"></i>
-        </div>
-        <div>
-            <p class="pfd-stat-value">{{ $stats['tax_updates'] }}</p>
-            <p class="pfd-stat-label">Tax Updates</p>
-        </div>
-    </div>
-    <div class="pfd-card pfd-admin-stat">
-        <div class="pfd-stat-icon is-danger">
-            <i class="fas fa-user-tie"></i>
-        </div>
-        <div>
-            <p class="pfd-stat-value">{{ $stats['team_members'] }}</p>
-            <p class="pfd-stat-label">Team Members</p>
         </div>
     </div>
 </div>

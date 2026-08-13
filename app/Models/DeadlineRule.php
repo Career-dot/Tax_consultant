@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DeadlineRule extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -52,5 +53,10 @@ class DeadlineRule extends Model
     public function scopeWithWithholdingAgent($query)
     {
         return $query->where('requires_withholding_agent', true);
+    }
+
+    public function plannerDeadlines()
+    {
+        return $this->hasMany(PlannerDeadline::class);
     }
 }

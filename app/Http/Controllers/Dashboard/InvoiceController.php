@@ -3,30 +3,31 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Support\Dashboard\DemoDataStore;
+use App\Models\Payment;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class InvoiceController extends Controller
 {
     public function index(Request $request)
     {
-        $store = new DemoDataStore($request->user());
+        $payments = Payment::where('user_id', $request->user()->id)
+            ->with('service')
+            ->latest()
+            ->get();
 
         return view('dashboard.invoices.index', [
-            'invoices' => $store->invoices(),
+            'invoices' => $payments,
         ]);
     }
 
-    public function show(Request $request, string $invoice)
+    public function show(Request $request, Payment $invoice)
     {
-        $store = new DemoDataStore($request->user());
-        $record = $store->invoice($invoice);
+        abort_unless($invoice->user_id === $request->user()->id, 403);
 
-        abort_if(! $record, Response::HTTP_NOT_FOUND);
+        $invoice->load('service', 'user');
 
         return view('dashboard.invoices.show', [
-            'invoice' => $record,
+            'invoice' => $invoice,
             'user' => $request->user(),
         ]);
     }

@@ -41,7 +41,7 @@ class PlannerController extends Controller
         }
 
         $rules = $query->get();
-        $deadlines = $this->calculateDeadlines($rules);
+        $deadlines = $this->calculateDeadlines($rules, 12);
 
         return response()->json([
             'deadlines' => $deadlines,
@@ -67,10 +67,9 @@ class PlannerController extends Controller
 
         $subscription = PlannerSubscription::updateOrCreate(
             ['session_token' => $sessionToken],
-            $validated + ['session_token' => $sessionToken]
+            array_merge($validated, ['session_token' => $sessionToken])
         );
 
-        // Generate deadlines for this subscription
         $this->generateDeadlinesForSubscription($subscription);
 
         return response()->json([
@@ -142,33 +141,51 @@ class PlannerController extends Controller
             ->orderBy('due_date')
             ->get();
 
-        // For now, return a simple text-based PDF content
-        // In production, use a PDF library like dompdf or barryvdh/laravel-dompdf
-        $content = "FINANIC Business Consultants - Tax Compliance Calendar\n";
-        $content .= "Generated: " . now()->format('F j, Y') . "\n";
-        $content .= str_repeat('=', 60) . "\n\n";
+        $html = view('emails.planner_pdf', compact('deadlines', 'subscription'))->render();
 
-        foreach ($deadlines as $deadline) {
-            $content .= $deadline->due_date->format('F j, Y') . " - " . $deadline->name . "\n";
-            if ($deadline->description) {
-                $content .= "  " . $deadline->description . "\n";
+        try {
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadHtml($html)
+                ->setPaper('a4')
+                ->setOption('isRemoteEnabled', true);
+
+            return $pdf->download('finanic_tax_calendar.pdf');
+        } catch (\Exception $e) {
+            $content = "FINANIC Business Consultants - Tax Compliance Calendar\n";
+            $content .= "Generated: " . now()->format('F j, Y') . "\n";
+            $content .= str_repeat('=', 60) . "\n\n";
+
+            foreach ($deadlines as $deadline) {
+                $content .= $deadline->due_date->format('F j, Y') . " - " . $deadline->name . "\n";
+                if ($deadline->description) {
+                    $content .= "  " . $deadline->description . "\n";
+                }
+                $content .= "\n";
             }
-            $content .= "\n";
-        }
 
-        return response($content)
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'attachment; filename="finanic_tax_calendar.pdf"');
+            return response($content)
+                ->header('Content-Type', 'text/plain')
+                ->header('Content-Disposition', 'attachment; filename="finanic_tax_calendar.txt"');
+        }
     }
 
-    private function calculateDeadlines($rules)
+    private function calculateDeadlines($rules, $monthsAhead = 12)
     {
         $deadlines = [];
         $now = Carbon::now();
+        $end = $now->copy()->addMonths($monthsAhead);
 
         foreach ($rules as $rule) {
-            $nextDate = $this->getNextDeadlineDate($rule, $now);
-            if ($nextDate) {
+            $current = $now->copy();
+            $safetyCounter = 0;
+
+            while ($current->lte($end) && $safetyCounter < 100) {
+                $safetyCounter++;
+                $nextDate = $this->getNextDeadlineDate($rule, $current);
+
+                if (!$nextDate || $nextDate->gt($end)) {
+                    break;
+                }
+
                 $deadlines[] = [
                     'name' => $rule->name,
                     'description' => $rule->description,
@@ -177,12 +194,12 @@ class PlannerController extends Controller
                     'deadline_type' => $rule->deadline_type,
                     'statutory_basis' => $rule->statutory_basis,
                 ];
+
+                $current = $nextDate->copy()->addDay();
             }
         }
 
-        usort($deadlines, function ($a, $b) {
-            return strtotime($a['due_date']) - strtotime($b['due_date']);
-        });
+        usort($deadlines, fn ($a, $b) => strtotime($a['due_date']) - strtotime($b['due_date']));
 
         return $deadlines;
     }
@@ -191,34 +208,37 @@ class PlannerController extends Controller
     {
         switch ($rule->frequency) {
             case 'monthly':
-                $next = $from->copy()->addMonth();
+                $next = $from->copy()->addMonth()->startOfMonth();
                 if ($rule->day_of_month) {
-                    $next->day((int) $rule->day_of_month);
+                    $next->day(min((int) $rule->day_of_month, $next->daysInMonth));
                 } else {
-                    $next->day(18); // Default: 18th for monthly sales tax
+                    $next->day(18);
                 }
                 if ($next->lte($from)) {
                     $next->addMonth();
+                    if ($rule->day_of_month) {
+                        $next->day(min((int) $rule->day_of_month, $next->daysInMonth));
+                    }
                 }
                 return $next;
 
             case 'quarterly':
-                $next = $from->copy()->addMonth();
+                $next = $from->copy()->addMonth()->startOfMonth();
                 while ($next->month % 3 !== 0) {
                     $next->addMonth();
                 }
                 if ($rule->day_of_month) {
-                    $next->day((int) $rule->day_of_month);
+                    $next->day(min((int) $rule->day_of_month, $next->daysInMonth));
                 } else {
-                    $next->day(15); // Default: 15th of last month of quarter
+                    $next->day(15);
                 }
                 if ($next->lte($from)) {
-                    $next->addMonths(3);
+                    $next->addMonths(3)->startOfMonth();
                     while ($next->month % 3 !== 0) {
                         $next->addMonth();
                     }
                     if ($rule->day_of_month) {
-                        $next->day((int) $rule->day_of_month);
+                        $next->day(min((int) $rule->day_of_month, $next->daysInMonth));
                     } else {
                         $next->day(15);
                     }
@@ -226,15 +246,19 @@ class PlannerController extends Controller
                 return $next;
 
             case 'annually':
-                $next = $from->copy()->addYear();
-                $next->month(9); // Default: September for annual returns
-                if ($rule->day_of_month) {
-                    $next->day((int) $rule->day_of_month);
+                $next = $from->copy()->addYear()->startOfMonth();
+                if ($rule->day_of_month && $rule->month_of_quarter) {
+                    $next->month((int) $rule->month_of_quarter);
+                    $next->day(min((int) $rule->day_of_month, $next->daysInMonth));
                 } else {
-                    $next->day(30);
+                    $next->month(9)->day(30);
                 }
                 if ($next->lte($from)) {
                     $next->addYear();
+                    if ($rule->day_of_month && $rule->month_of_quarter) {
+                        $next->month((int) $rule->month_of_quarter);
+                        $next->day(min((int) $rule->day_of_month, $next->daysInMonth));
+                    }
                 }
                 return $next;
 
@@ -262,7 +286,15 @@ class PlannerController extends Controller
 
         $rules = $rules->get();
 
+        $existingDeadlines = PlannerDeadline::where('planner_subscription_id', $subscription->id)
+            ->pluck('deadline_rule_id')
+            ->toArray();
+
         foreach ($rules as $rule) {
+            if (in_array($rule->id, $existingDeadlines)) {
+                continue;
+            }
+
             $nextDate = $this->getNextDeadlineDate($rule, Carbon::now());
             if ($nextDate) {
                 PlannerDeadline::create([
@@ -285,8 +317,8 @@ class PlannerController extends Controller
 
         foreach ($deadlines as $deadline) {
             $ics .= "BEGIN:VEVENT\r\n";
-            $ics .= "DTSTART:" . $deadline->due_date->format('Ymd') . "\r\n";
-            $ics .= "DTEND:" . $deadline->due_date->format('Ymd') . "\r\n";
+            $ics .= "DTSTART;VALUE=DATE:" . $deadline->due_date->format('Ymd') . "\r\n";
+            $ics .= "DTEND;VALUE=DATE:" . $deadline->due_date->addDay()->format('Ymd') . "\r\n";
             $ics .= "SUMMARY:" . $this->escapeIcs($deadline->name) . "\r\n";
             if ($deadline->description) {
                 $ics .= "DESCRIPTION:" . $this->escapeIcs($deadline->description) . "\r\n";

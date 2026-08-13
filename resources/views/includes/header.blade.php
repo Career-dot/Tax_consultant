@@ -60,9 +60,9 @@
                             <button class="btn pf-mobile-btn pf-mobile-btn-muted w-100" type="submit">Logout</button>
                         </form>
                     @else
-                        <a class="btn pf-mobile-btn pf-mobile-btn-muted" href="{{ route('/login') }}" data-auth-open="sign-in">Sign In</a>
-                        <a class="btn pf-mobile-btn pf-mobile-btn-outline" href="{{ route('/register') }}" data-auth-open="sign-up">Register</a>
-                        <a class="btn pf-mobile-btn pf-mobile-btn-primary" href="#" data-auth-open="get-started">Get Started</a>
+                        <a class="btn pf-mobile-btn pf-mobile-btn-muted" href="{{ route('login') }}">Sign In</a>
+                        <a class="btn pf-mobile-btn pf-mobile-btn-outline" href="{{ route('register') }}">Register</a>
+                        <a class="btn pf-mobile-btn pf-mobile-btn-primary" href="{{ url('/contact') }}">Get Started</a>
                     @endauth
                 </div>
             </div>
@@ -87,9 +87,9 @@
                         </ul>
                     </div>
                 @else
-                    <a class="btn btn-outline-secondary" href="#" data-auth-open="sign-in">Sign In</a>
-                    <a class="btn btn-outline-success" href="#" data-auth-open="sign-up">Register</a>
-                    <a class="btn btn-outline-danger" href="#" data-auth-open="get-started">Get Started</a>
+                    <a class="btn btn-outline-secondary" href="{{ route('login') }}">Sign In</a>
+                    <a class="btn btn-outline-success" href="{{ route('register') }}">Register</a>
+                    <a class="btn btn-outline-danger" href="{{ url('/contact') }}">Get Started</a>
                 @endauth
             </div>
         </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Jobs\SendPaymentStatusEmail;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -13,34 +15,28 @@ class PaymentController extends Controller
         return view('admin.payments', compact('payments'));
     }
 
-    public function approve(Payment $payment)
+    public function approvePayment(Payment $payment)
     {
-        $payment->update([
-            'status' => 'approved',
-            'verified_at' => now(),
-        ]);
+        $payment->update(['status' => 'approved', 'verified_at' => now()]);
 
-        try {
-            \Illuminate\Support\Facades\Mail::to($payment->user->email)->send(new \App\Mail\PaymentStatusEmail($payment, 'approved'));
-        } catch (\Exception $e) {
-            \Log::error('Payment email failed: ' . $e->getMessage());
-        }
+        SendPaymentStatusEmail::dispatch($payment, 'approved');
 
-        return back()->with('success', 'Payment approved successfully.');
+        return redirect()->back()->with('success', 'Payment approved successfully.');
     }
 
-    public function reject(Payment $payment)
+    public function rejectPayment(Request $request, Payment $payment)
     {
-        $payment->update([
-            'status' => 'rejected',
+        $request->validate([
+            'admin_notes' => 'required|string|max:500',
         ]);
 
-        try {
-            \Illuminate\Support\Facades\Mail::to($payment->user->email)->send(new \App\Mail\PaymentStatusEmail($payment, 'rejected'));
-        } catch (\Exception $e) {
-            \Log::error('Payment email failed: ' . $e->getMessage());
-        }
+        $payment->update([
+            'status' => 'rejected',
+            'admin_notes' => $request->admin_notes,
+        ]);
 
-        return back()->with('success', 'Payment rejected.');
+        SendPaymentStatusEmail::dispatch($payment, 'rejected');
+
+        return redirect()->back()->with('success', 'Payment rejected.');
     }
 }

@@ -36,19 +36,20 @@
                                 <p>We'll get back to you as soon as possible.</p>
                             </div>
 
-                            <form class="contact-form" action="{{ route('contact') }}" method="GET">
+                            <form class="contact-form" action="{{ route('contact.store') }}" method="POST">
+                                @csrf
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="contact-field">
                                             <label for="contact-name">Full Name</label>
-                                            <input id="contact-name" name="name" type="text" placeholder="Ahmed Khan" autocomplete="name">
+                                            <input id="contact-name" name="name" type="text" placeholder="Ahmed Khan" autocomplete="name" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="contact-field">
                                             <label for="contact-email">Email Address</label>
-                                            <input id="contact-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+                                            <input id="contact-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
                                         </div>
                                     </div>
 
@@ -62,29 +63,21 @@
                                     <div class="col-md-6">
                                         <div class="contact-field">
                                             <label for="contact-service">Service Interested In</label>
-                                            <select id="contact-service" name="service">
+                                            <select id="contact-service" name="service_interest">
                                                 <option value="">Select a service...</option>
-                                                <option value="income-tax">Income Tax Services</option>
-                                                <option value="sales-tax">Sales Tax Services</option>
-                                                <option value="withholding-tax">Withholding Tax Services</option>
-                                                <option value="litigation">Tax Litigation & Representation</option>
-                                                <option value="corporate-retainer">Corporate / Retainer Services</option>
-                                                <!-- <option value="ntn-registration">NTN Registration</option> -->
+                                                <option value="Income Tax Services">Income Tax Services</option>
+                                                <option value="Sales Tax Services">Sales Tax Services</option>
+                                                <option value="Withholding Tax Services">Withholding Tax Services</option>
+                                                <option value="Tax Litigation & Representation">Tax Litigation & Representation</option>
+                                                <option value="Corporate / Retainer Services">Corporate / Retainer Services</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="contact-field">
-                                            <label for="contact-subject">Subject</label>
-                                            <input id="contact-subject" name="subject" type="text" placeholder="e.g. Tax filing deadline question">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="contact-field">
                                             <label for="contact-message">Message</label>
-                                            <textarea id="contact-message" name="message" rows="7" placeholder="Describe your question or requirement..."></textarea>
+                                            <textarea id="contact-message" name="message" rows="7" placeholder="Describe your question or requirement..." required></textarea>
                                         </div>
                                     </div>
 

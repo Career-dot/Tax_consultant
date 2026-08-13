@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Support\Dashboard\DemoDataStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -11,10 +10,7 @@ class SettingsController extends Controller
 {
     public function index(Request $request)
     {
-        $store = new DemoDataStore($request->user());
-
         return view('dashboard.settings.index', [
-            'stats' => $store->stats(),
             'preferences' => $request->user()->notification_preferences ?? [
                 'application_updates' => true,
                 'payment_reminders' => true,

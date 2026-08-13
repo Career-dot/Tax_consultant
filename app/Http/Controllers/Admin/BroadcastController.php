@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\NotificationsLog;
 use App\Models\PlannerSubscription;
+use App\Jobs\SendBroadcastEmail;
 use Illuminate\Http\Request;
 
 class BroadcastController extends Controller
@@ -31,14 +32,12 @@ class BroadcastController extends Controller
         $sentCount = 0;
         foreach ($subscriptions as $subscription) {
             if (in_array($validated['channel'], ['email', 'both']) && $subscription->email_reminders) {
-                NotificationsLog::create([
-                    'type' => 'broadcast',
-                    'channel' => 'email',
-                    'recipient' => $subscription->email,
-                    'subject' => $validated['subject'],
-                    'message' => $validated['message'],
-                    'status' => 'queued',
-                ]);
+                SendBroadcastEmail::dispatch(
+                    $validated['subject'],
+                    $validated['message'],
+                    $subscription->email,
+                    $subscription->id
+                );
                 $sentCount++;
             }
 

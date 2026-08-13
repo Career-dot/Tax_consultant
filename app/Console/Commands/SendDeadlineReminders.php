@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\PlannerDeadline;
 use App\Models\NotificationsLog;
+use App\Models\Setting;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
@@ -17,14 +18,24 @@ class SendDeadlineReminders extends Command
     {
         $this->info('Starting deadline reminder processing...');
 
-        // 7-day reminders (email only)
-        $this->sendReminders(7, 'email', '7-day deadline reminder');
+        $reminder7dayEnabled = Setting::get('reminder_7day', '1') === '1';
+        $reminder2dayEnabled = Setting::get('reminder_2day', '1') === '1';
+        $reminderTodayEnabled = Setting::get('reminder_today', '1') === '1';
 
-        // 2-day reminders (email + SMS)
-        $this->sendReminders(2, 'both', '2-day deadline reminder');
+        $reminder7dayDays = (int) Setting::get('reminder_7day_days', '7');
+        $reminder2dayDays = (int) Setting::get('reminder_2day_days', '2');
 
-        // Today reminders (SMS only)
-        $this->sendReminders(0, 'sms', 'Today deadline reminder');
+        if ($reminder7dayEnabled) {
+            $this->sendReminders($reminder7dayDays, 'email', '7-day deadline reminder');
+        }
+
+        if ($reminder2dayEnabled) {
+            $this->sendReminders($reminder2dayDays, 'both', '2-day deadline reminder');
+        }
+
+        if ($reminderTodayEnabled) {
+            $this->sendReminders(0, 'sms', 'Today deadline reminder');
+        }
 
         $this->info('Deadline reminder processing completed.');
         return Command::SUCCESS;
@@ -45,26 +56,20 @@ class SendDeadlineReminders extends Command
                 continue;
             }
 
-            $reminderField = "reminder_{$daysAhead}day_sent";
-            if ($daysAhead === 0) {
-                $reminderField = 'reminder_today_sent';
-            }
+            $reminderField = $daysAhead === 0 ? 'reminder_today_sent' : "reminder_{$daysAhead}day_sent";
 
             if ($deadline->$reminderField) {
-                continue; // Already sent
+                continue;
             }
 
-            // Send email reminder
             if (in_array($channel, ['email', 'both']) && $subscription->email_reminders) {
                 $this->sendEmailReminder($subscription, $deadline, $daysAhead);
             }
 
-            // Send SMS reminder
             if (in_array($channel, ['sms', 'both']) && $subscription->sms_reminders && $subscription->phone) {
                 $this->sendSmsReminder($subscription, $deadline, $daysAhead);
             }
 
-            // Mark as sent
             $deadline->update([$reminderField => true]);
         }
     }
@@ -76,7 +81,7 @@ class SendDeadlineReminders extends Command
                 'subscription' => $subscription,
                 'deadline' => $deadline,
                 'daysUntil' => $daysAhead,
-            ], function ($message) use ($subscription, $deadline) {
+            ], function ($message) use ($subscription, $deadline, $daysAhead) {
                 $message->to($subscription->email)
                     ->subject("Reminder: {$deadline->name} due in " . ($daysAhead === 0 ? 'TODAY' : "{$daysAhead} days"));
             });
@@ -112,15 +117,13 @@ class SendDeadlineReminders extends Command
             $message .= " is due in {$daysAhead} days ({$deadline->due_date->format('M j, Y')}).";
         }
 
-        // In production, integrate with SMS API (e.g., Twilio, SMSGateway, etc.)
-        // For now, just log it
         NotificationsLog::create([
             'type' => 'deadline_reminder',
             'channel' => 'sms',
             'recipient' => $subscription->phone,
             'subject' => null,
             'message' => $message,
-            'status' => 'sent',
+            'status' => 'queued',
             'sent_at' => now(),
         ]);
     }

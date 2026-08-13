@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Jobs\SendContactAcknowledgement;
+use App\Jobs\SendLeadNotification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -21,25 +22,11 @@ class ContactController extends Controller
 
         $contact = Contact::create($validated);
 
-        // Send acknowledgement email to visitor
-        try {
-            Mail::send('emails.contact_acknowledgement', ['contact' => $contact], function ($message) use ($contact) {
-                $message->to($contact->email)
-                    ->subject('Thank you for contacting FINANIC Business Consultants');
-            });
-        } catch (\Exception $e) {
-            // Log error but don't fail the request
-            \Log::error('Failed to send contact acknowledgement: ' . $e->getMessage());
-        }
+        SendContactAcknowledgement::dispatch($contact);
+        SendLeadNotification::dispatch($contact);
 
-        // Send notification to firm
-        try {
-            Mail::send('emails.new_lead', ['contact' => $contact], function ($message) {
-                $message->to(config('mail.from.address'))
-                    ->subject('New Contact Form Submission - FINANIC');
-            });
-        } catch (\Exception $e) {
-            \Log::error('Failed to send lead notification: ' . $e->getMessage());
+        if ($request->expectsJson()) {
+            return response()->json(['success' => true, 'message' => 'Thank you for your message. We will get back to you shortly.']);
         }
 
         return redirect()->back()->with('success', 'Thank you for your message. We will get back to you shortly.');

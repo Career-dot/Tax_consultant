@@ -37,10 +37,7 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
 
         try {
-            Mail::send('emails.login_notification', ['user' => $user], function ($message) use ($user) {
-                $message->to($user->email)
-                    ->subject('Login Notification - FINANIC');
-            });
+            \App\Jobs\SendLoginNotification::dispatch($user);
         } catch (\Exception $e) {
             \Log::error('Login notification email failed: ' . $e->getMessage());
         }

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Support\Dashboard\DemoDataStore;
+use App\Models\Document;
+use App\Models\RequiredDocument;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,43 +15,82 @@ class DocumentController extends Controller
 {
     public function index(Request $request)
     {
-        $store = new DemoDataStore($request->user());
+        $user = $request->user();
+        $documents = Document::where('user_id', $user->id)
+            ->with(['service', 'requiredDocument'])
+            ->latest()
+            ->get();
+
+        $services = $user->services()->wherePivot('status', 'active')->get();
+        $requiredDocuments = RequiredDocument::whereIn('service_id', $services->pluck('id'))
+            ->where('is_active', true)
+            ->with('service')
+            ->orderBy('sort_order')
+            ->get();
+
+        foreach ($requiredDocuments as $reqDoc) {
+            $reqDoc->is_uploaded = $documents->where('required_document_id', $reqDoc->id)->isNotEmpty();
+            $reqDoc->uploaded_doc = $documents->where('required_document_id', $reqDoc->id)->first();
+        }
 
         return view('dashboard.documents.index', [
-            'documents' => $store->documents(),
-            'applications' => $store->applications(),
+            'documents' => $documents,
+            'requiredDocuments' => $requiredDocuments,
+            'services' => $services,
         ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'file' => ['required', 'file', 'max:8192'],
+            'file' => ['required', 'file', 'max:10240'],
             'name' => ['nullable', 'string', 'max:255'],
-            'type' => ['required', 'string', 'in:cnic,salary_slip,bank_statement,other'],
-            'application_id' => ['nullable', 'integer'],
+            'required_document_id' => ['nullable', 'exists:required_documents,id'],
+            'service_id' => ['required', 'exists:services,id'],
         ]);
 
-        $store = new DemoDataStore($request->user());
-        $store->storeDocument($request->file('file'), $validated);
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $path = $file->store('documents/' . $request->user()->id, 'local');
+
+        Document::create([
+            'user_id' => $request->user()->id,
+            'service_id' => $validated['service_id'],
+            'required_document_id' => $validated['required_document_id'] ?? null,
+            'name' => $validated['name'] ?? $fileName,
+            'file_path' => $path,
+            'file_type' => $file->getMimeType(),
+            'file_size' => $file->getSize(),
+            'status' => 'pending',
+        ]);
 
         return back()->with('status', 'document-uploaded');
     }
 
-    public function download(Request $request, string $document): StreamedResponse
+    public function download(Request $request, Document $document): StreamedResponse
     {
-        $store = new DemoDataStore($request->user());
-        $record = $store->document($document);
+        abort_unless(
+            $document->user_id === $request->user()->id || $request->user()->isAdmin(),
+            Response::HTTP_FORBIDDEN
+        );
 
-        abort_if(! $record || ! $record['file_path'], Response::HTTP_NOT_FOUND);
+        abort_unless(
+            Storage::disk('local')->exists($document->file_path),
+            Response::HTTP_NOT_FOUND
+        );
 
-        return Storage::disk('public')->download($record['file_path'], $record['name']);
+        return Storage::disk('local')->download($document->file_path, $document->name);
     }
 
-    public function destroy(Request $request, string $document): RedirectResponse
+    public function destroy(Request $request, Document $document): RedirectResponse
     {
-        $store = new DemoDataStore($request->user());
-        $store->deleteDocument($document);
+        abort_unless($document->user_id === $request->user()->id, Response::HTTP_FORBIDDEN);
+
+        if (Storage::disk('local')->exists($document->file_path)) {
+            Storage::disk('local')->delete($document->file_path);
+        }
+
+        $document->delete();
 
         return back()->with('status', 'document-deleted');
     }

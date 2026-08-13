@@ -28,14 +28,10 @@ class AuthController extends Controller
 
             $user = auth()->user();
 
-            // Send login notification email
             try {
-                Mail::send('emails.login_notification', ['user' => $user], function ($message) use ($user) {
-                    $message->to($user->email)
-                        ->subject('Login Notification - FINANIC');
-                });
+                \App\Jobs\SendLoginNotification::dispatch($user);
             } catch (\Exception $e) {
-                \Log::error('Failed to send login email: ' . $e->getMessage());
+                \Log::error('Failed to queue login email: ' . $e->getMessage());
             }
 
             // Admin goes to admin dashboard
@@ -67,7 +63,6 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'nullable|string|max:20',
-            'role' => 'required|in:trader,corporate,client',
             'business_name' => 'nullable|string|max:255',
             'password' => ['required', 'confirmed', Password::min(8)],
             'terms' => 'required|accepted',
@@ -78,15 +73,13 @@ class AuthController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'] ?? null,
-            'role' => $validated['role'],
+            'role' => 'client',
             'business_name' => $validated['business_name'] ?? null,
-            'business_type' => $validated['role'] === 'trader' ? 'trader' : ($validated['role'] === 'corporate' ? 'corporate' : 'individual'),
             'password' => Hash::make($validated['password']),
         ]);
 
         Auth::login($user);
 
-        // Auto-assign service if provided
         $hasService = false;
         if (!empty($validated['service'])) {
             $service = \App\Models\Service::where('slug', $validated['service'])->where('is_active', true)->first();
@@ -97,7 +90,6 @@ class AuthController extends Controller
                 ]);
                 $hasService = true;
 
-                // Create welcome notification
                 \App\Models\Notification::create([
                     'user_id' => $user->id,
                     'title' => 'Welcome to FINANIC!',
@@ -108,14 +100,12 @@ class AuthController extends Controller
             }
         }
 
-        // Send welcome email
         try {
-            Mail::to($user->email)->send(new \App\Mail\WelcomeEmail($user));
+            \App\Jobs\SendWelcomeEmail::dispatch($user);
         } catch (\Exception $e) {
-            \Log::error('Failed to send welcome email: ' . $e->getMessage());
+            \Log::error('Failed to queue welcome email: ' . $e->getMessage());
         }
 
-        // Redirect to payment if service was assigned, otherwise to dashboard
         if ($hasService) {
             return redirect()->route('dashboard.payments');
         }

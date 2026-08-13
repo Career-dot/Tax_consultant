@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Support\Dashboard\DemoDataStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,10 +14,15 @@ class ProfileController extends Controller
 {
     public function edit(Request $request)
     {
-        $store = new DemoDataStore($request->user());
+        $user = $request->user();
+
+        $fields = [$user->name, $user->email, $user->phone, $user->cnic, $user->address, $user->city, $user->avatar_path];
+        $filled = collect($fields)->filter(fn ($value) => filled($value))->count();
+        $profileCompletion = (int) round(($filled / count($fields)) * 100);
 
         return view('dashboard.profile', [
-            'stats' => $store->stats(),
+            'user' => $user,
+            'stats' => ['profile_completion' => $profileCompletion],
         ]);
     }
 
@@ -28,7 +32,7 @@ class ProfileController extends Controller
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:30'],
+            'phone' => ['nullable', 'string', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
             'cnic' => ['nullable', 'string', 'max:20'],
             'city' => ['nullable', 'string', 'max:120'],

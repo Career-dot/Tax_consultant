@@ -32,6 +32,7 @@ class RegisteredUserController extends Controller
             'name' => $validated['name'],
             'phone' => $validated['phone'] ?? null,
             'email' => $validated['email'],
+            'role' => 'client',
             'password' => Hash::make($validated['password']),
         ]);
 
@@ -39,15 +40,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
         $request->session()->regenerate();
-        
+
         try {
-            \Illuminate\Support\Facades\Mail::to($user->email)->send(new \App\Mail\WelcomeEmail($user));
+            \App\Jobs\SendWelcomeEmail::dispatch($user);
         } catch (\Exception $e) {
             \Log::error('Welcome email failed: ' . $e->getMessage());
-        }
-
-        if ($user->role === 'admin') {
-            return redirect()->route('admin.dashboard');
         }
 
         return redirect()->route('dashboard.index');

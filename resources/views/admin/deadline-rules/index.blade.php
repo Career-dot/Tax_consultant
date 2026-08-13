@@ -62,7 +62,7 @@
                                 <a href="{{ route('admin.deadline-rules.edit', $rule->id) }}" class="adm-btn adm-btn-outline adm-btn-sm adm-btn-icon" title="Edit">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <form action="{{ route('admin.deadline-rules.delete', $rule->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this rule?')">
+                                <form action="{{ route('admin.deadline-rules.destroy', $rule->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this rule?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="adm-btn adm-btn-danger adm-btn-sm adm-btn-icon" title="Delete">

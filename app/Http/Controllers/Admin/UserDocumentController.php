@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Document;
-use App\Models\User;
+use App\Models\NotificationsLog;
+use App\Models\Payment;
+use App\Models\PlannerSubscription;
+use App\Jobs\SendDocumentStatusEmail;
+use App\Jobs\SendPaymentStatusEmail;
 use Illuminate\Http\Request;
 
 class UserDocumentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $query = User::with(['documents', 'documents.service'])
+        $query = \App\Models\User::with(['documents', 'documents.service'])
+            ->whereHas('documents')
             ->withCount('documents as total_documents')
             ->withCount(['documents as pending_documents' => function ($q) {
                 $q->where('status', 'pending');
@@ -21,17 +26,14 @@ class UserDocumentController extends Controller
             }])
             ->withCount(['documents as rejected_documents' => function ($q) {
                 $q->where('status', 'rejected');
-            }])
-            ->latest();
+            }]);
 
-        if (request()->filled('user_id')) {
-            $query->where('id', request('user_id'));
-        } else {
-            $query->whereHas('documents');
+        if ($request->filled('user_id')) {
+            $query->where('users.id', $request->user_id);
         }
 
-        $users = $query->paginate(20)->withQueryString();
-        $allUsers = User::whereHas('documents')->orderBy('name')->get();
+        $users = $query->latest()->paginate(20);
+        $allUsers = \App\Models\User::where('role', 'client')->orderBy('name')->get();
 
         $stats = [
             'total' => Document::count(),
@@ -43,7 +45,7 @@ class UserDocumentController extends Controller
         return view('admin.user-documents', compact('users', 'allUsers', 'stats'));
     }
 
-    public function show(User $user)
+    public function show(\App\Models\User $user)
     {
         $user->load('services');
 
@@ -51,68 +53,132 @@ class UserDocumentController extends Controller
             ->where('user_id', $user->id)
             ->latest()
             ->get();
-            
-        $requiredDocuments = collect(); // Mock required documents for now, until real logic is needed
 
-        return view('admin.user-documents-show', compact('user', 'documents', 'requiredDocuments'));
-    }
+        $serviceIds = $user->services->pluck('id')->toArray();
+        $requiredDocuments = \App\Models\RequiredDocument::with('service')
+            ->whereIn('service_id', $serviceIds)
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->get();
 
-    public function preview(Document $document)
-    {
-        if (!\Illuminate\Support\Facades\Storage::disk('public')->exists($document->file_path)) {
-            abort(404, 'File not found');
+        foreach ($requiredDocuments as $reqDoc) {
+            $reqDoc->is_uploaded = $documents->where('required_document_id', $reqDoc->id)->isNotEmpty();
+            $reqDoc->uploaded_doc = $documents->where('required_document_id', $reqDoc->id)->first();
         }
 
-        return response()->file(storage_path('app/public/' . $document->file_path));
+        $services = \App\Models\Service::orderBy('name')->get();
+
+        return view('admin.user-documents-show', compact('user', 'documents', 'services', 'requiredDocuments'));
     }
 
-    public function download(Document $document)
+    public function requestDocuments(Request $request, \App\Models\User $user)
     {
-        if (!\Illuminate\Support\Facades\Storage::disk('public')->exists($document->file_path)) {
-            abort(404, 'File not found');
+        $request->validate([
+            'required_document_ids' => 'required|array|min:1',
+            'required_document_ids.*' => 'exists:required_documents,id',
+            'message' => 'nullable|string|max:1000',
+        ]);
+
+        $requiredDocs = \App\Models\RequiredDocument::with('service')
+            ->whereIn('id', $request->required_document_ids)
+            ->get();
+
+        $grouped = $requiredDocs->groupBy('service.name');
+        $docList = '';
+        foreach ($grouped as $serviceName => $docs) {
+            $docList .= "\n{$serviceName}:\n";
+            foreach ($docs as $doc) {
+                $docList .= "  - {$doc->name}\n";
+            }
         }
 
-        return \Illuminate\Support\Facades\Storage::disk('public')->download($document->file_path, $document->name);
+        $customMessage = $request->message ?: 'Please upload the following required documents for your assigned services:';
+        $fullMessage = "{$customMessage}\n\nMissing Documents:{$docList}";
+
+        \App\Models\Notification::create([
+            'user_id' => $user->id,
+            'service_id' => $requiredDocs->first()->service_id ?? null,
+            'title' => 'Document Upload Required',
+            'message' => $fullMessage,
+            'type' => 'reminder',
+        ]);
+
+        return redirect()->back()->with('success', 'Document request sent to ' . $user->name . '.');
     }
 
-    public function approve(Document $document)
+    public function previewDocument(Document $document)
     {
-        $document->update(['status' => 'approved']);
-        
-        try {
-            \Illuminate\Support\Facades\Mail::to($document->user->email)->send(new \App\Mail\DocumentStatusEmail($document, 'approved'));
-        } catch (\Exception $e) {
-            \Log::error('Document email failed: ' . $e->getMessage());
+        if (!\Illuminate\Support\Facades\Storage::disk('local')->exists($document->file_path)) {
+            abort(404);
         }
 
-        return back()->with('success', 'Document approved.');
+        $mimeTypes = [
+            'pdf' => 'application/pdf',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'png' => 'image/png',
+            'doc' => 'application/msword',
+            'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ];
+
+        $ext = strtolower(pathinfo($document->name, PATHINFO_EXTENSION));
+        $mimeType = $mimeTypes[$ext] ?? 'application/octet-stream';
+
+        $fullPath = \Illuminate\Support\Facades\Storage::disk('local')->path($document->file_path);
+
+        return response()->file($fullPath, [
+            'Content-Type' => $mimeType,
+            'Content-Disposition' => 'inline; filename="' . $document->name . '"',
+        ]);
     }
 
-    public function reject(Request $request, Document $document)
+    public function approveDocument(Document $document)
     {
+        $document->update(['status' => 'approved', 'rejection_reason' => null]);
+
+        \App\Models\Notification::create([
+            'user_id' => $document->user_id,
+            'service_id' => $document->service_id,
+            'title' => 'Document Approved',
+            'message' => "Your document '{$document->name}' has been approved by our team.",
+            'type' => 'success',
+        ]);
+
+        SendDocumentStatusEmail::dispatch($document, 'approved');
+
+        return redirect()->back()->with('success', 'Document approved successfully.');
+    }
+
+    public function rejectDocument(Request $request, Document $document)
+    {
+        $request->validate([
+            'rejection_reason' => 'required|string|max:500',
+        ]);
+
         $document->update([
             'status' => 'rejected',
-            'rejection_reason' => $request->input('rejection_reason'),
+            'rejection_reason' => $request->rejection_reason,
         ]);
-        
-        try {
-            \Illuminate\Support\Facades\Mail::to($document->user->email)->send(new \App\Mail\DocumentStatusEmail($document, 'rejected', $request->input('rejection_reason')));
-        } catch (\Exception $e) {
-            \Log::error('Document email failed: ' . $e->getMessage());
-        }
 
-        return back()->with('success', 'Document rejected.');
+        \App\Models\Notification::create([
+            'user_id' => $document->user_id,
+            'service_id' => $document->service_id,
+            'title' => 'Document Rejected',
+            'message' => "Your document '{$document->name}' has been rejected. Reason: {$request->rejection_reason}. Please re-upload the correct document.",
+            'type' => 'error',
+        ]);
+
+        SendDocumentStatusEmail::dispatch($document, 'rejected', $request->rejection_reason);
+
+        return redirect()->back()->with('success', 'Document rejected. User has been notified.');
     }
 
-    public function request(Request $request, User $user)
+    public function downloadDocument(Document $document)
     {
-        // $validated = $request->validate([
-        //     'required_document_ids' => 'required|array',
-        //     'message' => 'nullable|string'
-        // ]);
-        
-        // Handle logic for requesting documents
-        
-        return back()->with('success', 'Document request sent to user.');
+        if (!\Illuminate\Support\Facades\Storage::disk('local')->exists($document->file_path)) {
+            abort(404);
+        }
+
+        return \Illuminate\Support\Facades\Storage::disk('local')->download($document->file_path, $document->name);
     }
 }

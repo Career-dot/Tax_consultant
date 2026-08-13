@@ -3,55 +3,62 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Support\Dashboard\DemoDataStore;
+use App\Models\Service;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
 class ApplicationController extends Controller
 {
     public function index(Request $request)
     {
-        $store = new DemoDataStore($request->user());
+        $user = $request->user();
+        $services = $user->services()->withPivot('status', 'assigned_at', 'service_status')->get();
 
         return view('dashboard.applications.index', [
-            'applications' => $store->applications(),
-            'serviceMeta' => DemoDataStore::serviceMeta(),
-            'stats' => $store->stats(),
+            'applications' => $services,
+            'stats' => [
+                'active_applications' => $services->where('pivot.status', 'active')->count(),
+                'completed_applications' => $services->where('pivot.status', 'completed')->count(),
+            ],
         ]);
     }
 
-    public function show(Request $request, string $application)
+    public function show(Request $request, Service $application)
     {
-        $store = new DemoDataStore($request->user());
-        $record = $store->application($application);
+        $user = $request->user();
+        $pivot = $user->services()->where('services.id', $application->id)->first();
 
-        abort_if(! $record, Response::HTTP_NOT_FOUND);
+        abort_unless($pivot, Response::HTTP_NOT_FOUND);
+
+        $documents = $user->documents()->where('service_id', $application->id)->get();
+        $requiredDocuments = $application->requiredDocuments()->where('is_active', true)->orderBy('sort_order')->get();
+
+        foreach ($requiredDocuments as $reqDoc) {
+            $reqDoc->is_uploaded = $documents->where('required_document_id', $reqDoc->id)->isNotEmpty();
+            $reqDoc->uploaded_doc = $documents->where('required_document_id', $reqDoc->id)->first();
+        }
 
         return view('dashboard.applications.show', [
-            'application' => $record,
-            'documents' => collect($store->documents())->where('application_id', $record['id'])->values()->all(),
-            'serviceMeta' => DemoDataStore::serviceMeta(),
+            'application' => $application,
+            'pivot' => $pivot,
+            'documents' => $documents,
+            'requiredDocuments' => $requiredDocuments,
         ]);
     }
 
     public function create(Request $request, string $service)
     {
-        $meta = DemoDataStore::serviceMeta();
-
-        abort_unless(array_key_exists($service, $meta), Response::HTTP_NOT_FOUND);
+        $serviceModel = Service::where('slug', $service)->where('is_active', true)->firstOrFail();
 
         return view('dashboard.filing.create', [
-            'service' => $service,
-            'meta' => $meta[$service],
+            'service' => $serviceModel,
         ]);
     }
 
     public function store(Request $request, string $service): RedirectResponse
     {
-        $meta = DemoDataStore::serviceMeta();
-        abort_unless(array_key_exists($service, $meta), Response::HTTP_NOT_FOUND);
+        $serviceModel = Service::where('slug', $service)->where('is_active', true)->firstOrFail();
 
         $validated = $request->validate([
             'full_name' => ['required', 'string', 'max:255'],
@@ -60,11 +67,25 @@ class ApplicationController extends Controller
             'notes' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        $store = new DemoDataStore($request->user());
-        $application = $store->createApplication($service, $validated);
+        $user = $request->user();
 
-        return redirect()
-            ->route('dashboard.applications.show', $application['id'])
+        $user->services()->syncWithoutDetaching([
+            $serviceModel->id => [
+                'assigned_at' => now(),
+                'status' => 'active',
+                'notes' => $validated['notes'] ?? null,
+            ]
+        ]);
+
+        \App\Models\Notification::create([
+            'user_id' => $user->id,
+            'service_id' => $serviceModel->id,
+            'title' => 'Service Application Started',
+            'message' => "Your {$serviceModel->name} application has been submitted. Our team will review it shortly.",
+            'type' => 'update',
+        ]);
+
+        return redirect()->route('dashboard.applications.show', $serviceModel->id)
             ->with('status', 'application-started');
     }
 }

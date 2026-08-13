@@ -11,6 +11,9 @@ use App\Models\PlannerSubscription;
 use App\Models\Service;
 use App\Models\TaxUpdate;
 use App\Models\TeamMember;
+use App\Models\User;
+use App\Models\Document;
+use App\Models\Payment;
 
 class DashboardController extends Controller
 {
@@ -19,27 +22,36 @@ class DashboardController extends Controller
         $stats = [
             'contacts' => Contact::count(),
             'pending_contacts' => Contact::where('status', 'pending')->count(),
-            'subscriptions' => PlannerSubscription::count(),
-            'deadline_rules' => DeadlineRule::count(),
-            'notifications_sent' => NotificationsLog::count(),
+            'subscriptions' => PlannerSubscription::where('is_active', true)->count(),
+            'deadline_rules' => DeadlineRule::where('is_active', true)->count(),
+            'notifications_sent' => NotificationsLog::where('status', 'sent')->count(),
             'notifications_failed' => NotificationsLog::where('status', 'failed')->count(),
             'services' => Service::count(),
             'faqs' => Faq::count(),
             'tax_updates' => TaxUpdate::count(),
             'team_members' => TeamMember::count(),
+            'total_users' => User::count(),
+            'total_clients' => User::where('role', 'client')->count(),
+            'total_documents' => Document::count(),
+            'pending_documents' => Document::where('status', 'pending')->count(),
+            'total_payments' => Payment::count(),
+            'pending_payments' => Payment::where('status', 'pending')->count(),
         ];
 
-        $serviceStats = Service::withCount('users')->get()->map(function ($service) {
-            $service->active_users_count = $service->users()->wherePivot('status', 'active')->count();
-            return $service;
-        });
+        $serviceStats = Service::withCount(['users as active_users_count' => function ($query) {
+            $query->where('service_user.status', 'active');
+        }])->orderBy('sort_order')->get();
 
         $recentContacts = Contact::latest()->take(5)->get();
 
-        $upcomingDeadlines = DeadlineRule::where('is_active', true)
-            ->orderBy('name')
-            ->take(5)
-            ->get();
+        $upcomingDeadlines = PlannerSubscription::where('is_active', true)
+            ->with('deadlines')
+            ->get()
+            ->pluck('deadlines')
+            ->flatten()
+            ->filter(fn ($d) => $d->due_date->gte(now()) && $d->due_date->lte(now()->addDays(30)))
+            ->sortBy('due_date')
+            ->take(10);
 
         $contactsChart = [];
         for ($i = 5; $i >= 0; $i--) {
