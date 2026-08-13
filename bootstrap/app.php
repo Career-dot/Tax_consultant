@@ -17,11 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => EnsureUserIsAdmin::class,
         ]);
 
-        $middleware->redirectGuestsTo(function ($request) {
-            $request->session()->flash('open_auth_modal', 'sign-in');
-
-            return route('home');
-        });
+        $middleware->redirectGuestsTo(fn () => route('login'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

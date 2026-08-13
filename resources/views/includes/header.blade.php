@@ -61,8 +61,13 @@
                         </form>
                     @else
                         <a class="btn pf-mobile-btn pf-mobile-btn-muted" href="{{ route('login') }}">Sign In</a>
+<<<<<<< HEAD
                         <a class="btn pf-mobile-btn pf-mobile-btn-outline" href="{{ route('register') }}">Register</a>
                         <a class="btn pf-mobile-btn pf-mobile-btn-primary" href="{{ url('/contact') }}">Get Started</a>
+=======
+                        <a class="btn pf-mobile-btn pf-mobile-btn-outline" href="#" data-auth-open="sign-up">Register</a>
+                        <a class="btn pf-mobile-btn pf-mobile-btn-primary" href="#" data-auth-open="get-started">Get Started</a>
+>>>>>>> 54ebbd0bcd325a51a991fc2b85d5c34a864808d3
                     @endauth
                 </div>
             </div>
@@ -88,8 +93,13 @@
                     </div>
                 @else
                     <a class="btn btn-outline-secondary" href="{{ route('login') }}">Sign In</a>
+<<<<<<< HEAD
                     <a class="btn btn-outline-success" href="{{ route('register') }}">Register</a>
                     <a class="btn btn-outline-danger" href="{{ url('/contact') }}">Get Started</a>
+=======
+                    <a class="btn btn-outline-success" href="#" data-auth-open="sign-up">Register</a>
+                    <a class="btn btn-outline-danger" href="#" data-auth-open="get-started">Get Started</a>
+>>>>>>> 54ebbd0bcd325a51a991fc2b85d5c34a864808d3
                 @endauth
             </div>
         </div>

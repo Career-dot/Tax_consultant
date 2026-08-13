@@ -11,6 +11,7 @@ use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
+<<<<<<< HEAD
     public function showLoginForm()
     {
         return view('auth.login');
@@ -52,6 +53,8 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
+=======
+>>>>>>> 54ebbd0bcd325a51a991fc2b85d5c34a864808d3
     public function showRegistrationForm()
     {
         return view('auth.register');

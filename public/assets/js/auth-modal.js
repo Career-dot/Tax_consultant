@@ -230,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const authFormEndpoints = {
-    'sign-in': true,
     'sign-up': true,
   };
 
